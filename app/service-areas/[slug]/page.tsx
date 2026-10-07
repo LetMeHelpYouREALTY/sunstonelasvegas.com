@@ -6,7 +6,7 @@ import Script from 'next/script'
 import { getServiceAreaBySlug, serviceAreas } from '@/lib/service-areas'
 import { CONTACT_EMAIL, CONTACT_PHONE, CONTACT_PHONE_LINK } from '@/lib/site'
 
-const baseUrl = 'https://www.sunstonewoodsidehomes.com'
+const baseUrl = 'https://www.sunstonelasvegas.com'
 
 type ServiceAreaPageProps = {
   params: Promise<{ slug: string }>

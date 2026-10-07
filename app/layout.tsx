@@ -26,7 +26,7 @@ const bodyFont = Source_Sans_3({
 })
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://www.sunstonewoodsidehomes.com'),
+  metadataBase: new URL('https://www.sunstonelasvegas.com'),
   title: {
     default: 'Dr. Duffyet Duffy | Las Vegas Real Estate Advisor',
     template: '%s | Dr. Duffyet Duffy Realty',
@@ -48,7 +48,7 @@ export const metadata: Metadata = {
     title: 'Dr. Duffyet Duffy | Las Vegas Real Estate Advisor',
     description:
       'Strategic buying, selling, and investment guidance for Sunstone, Summerlin, and the Las Vegas Valley.',
-    url: 'https://www.sunstonewoodsidehomes.com',
+    url: 'https://www.sunstonelasvegas.com',
     siteName: 'Dr. Duffyet Duffy Real Estate',
     locale: 'en_US',
     type: 'website',
@@ -87,12 +87,12 @@ export default function RootLayout({
           {JSON.stringify({
             '@context': 'https://schema.org',
             '@type': ['RealEstateAgent', 'Organization'],
-            '@id': 'https://www.sunstonewoodsidehomes.com/#realestateagent',
+            '@id': 'https://www.sunstonelasvegas.com/#realestateagent',
             name: 'Sunstone Woodside | Homes by Dr. Duffy',
             legalName: 'Homes by Dr. Duffy',
-            url: 'https://www.sunstonewoodsidehomes.com',
-            logo: 'https://www.sunstonewoodsidehomes.com/og-image.png',
-            image: 'https://www.sunstonewoodsidehomes.com/og-image.png',
+            url: 'https://www.sunstonelasvegas.com',
+            logo: 'https://www.sunstonelasvegas.com/og-image.png',
+            image: 'https://www.sunstonelasvegas.com/og-image.png',
             telephone: CONTACT_PHONE,
             email: CONTACT_EMAIL,
             priceRange: '$$',

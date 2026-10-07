@@ -4,7 +4,7 @@ import { models } from '@/lib/models'
 import { moveInReadyHomes } from '@/lib/move-in-ready'
 import { serviceAreas } from '@/lib/service-areas'
 
-const baseUrl = 'https://www.sunstonewoodsidehomes.com'
+const baseUrl = 'https://www.sunstonelasvegas.com'
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const staticRoutes = [

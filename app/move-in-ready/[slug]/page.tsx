@@ -9,7 +9,7 @@ import {
 } from '@/lib/move-in-ready'
 import { CONTACT_EMAIL, CONTACT_PHONE, CONTACT_PHONE_LINK } from '@/lib/site'
 
-const baseUrl = 'https://www.sunstonewoodsidehomes.com'
+const baseUrl = 'https://www.sunstonelasvegas.com'
 
 const specs = (home: (typeof moveInReadyHomes)[number]) => [
   { label: 'Bedrooms', value: home.beds },
