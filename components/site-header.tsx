@@ -2,10 +2,13 @@ import Link from 'next/link'
 
 import { CONTACT_PHONE, CONTACT_PHONE_LINK } from '@/lib/site'
 
+import { listingConsultationUrl } from '@/lib/calendly'
+
 const navItems = [
   { href: '/', label: 'Home' },
   { href: '/models', label: 'Home Plans' },
   { href: '/move-in-ready', label: 'Move-In Ready' },
+  { href: '/sell', label: 'Sell to Buy' },
   { href: '/buyers-guide', label: 'Buyer Journey' },
   { href: '/communities', label: 'Communities' },
   { href: '/service-areas', label: 'Service Areas' },
@@ -53,13 +56,13 @@ export default function SiteHeader() {
           >
             {CONTACT_PHONE}
           </Link>
-          <Link
-            href="/contact"
+          <a
+            href={listingConsultationUrl('header-sell-cta')}
             className="inline-flex items-center justify-center rounded-[10px] border border-[#A4A4A4] bg-primary px-5 py-3 text-base font-medium text-primary-foreground transition-colors hover:bg-primary-hover"
             style={{ fontFamily: 'var(--font-body), Manrope, sans-serif' }}
           >
-            SIGN UP
-          </Link>
+            Sell to buy
+          </a>
         </div>
       </div>
     </header>

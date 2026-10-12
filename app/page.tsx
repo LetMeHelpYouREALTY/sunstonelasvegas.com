@@ -17,13 +17,6 @@ import {
   SALES_HOURS,
 } from '@/lib/site'
 
-const highlightStats = [
-  { value: '$42K+', label: 'Average buyer incentives negotiated in 2024' },
-  { value: '37', label: 'Private model tours hosted this year' },
-  { value: '14', label: 'Days saved versus market-average closings' },
-  { value: '100%', label: 'Five-star reviews from Sunstone homeowners' },
-]
-
 const buyerSteps = [
   {
     title: '1. Strategy Consultation',
@@ -82,12 +75,6 @@ const testimonials = [
     name: 'Michelle R.',
     detail: 'Second-home buyer, Capella Aries Plan',
   },
-  {
-    quote:
-      'We toured Sunstone, Summerlin, and Skye Canyon. Janet’s insights made the decision obvious and confident.',
-    name: 'Marcus & Lena T.',
-    detail: 'First-time buyers',
-  },
 ]
 
 const conciergeServices = [
@@ -145,9 +132,9 @@ const homepageFaqs = getFaqsByCategory(['company'], [1, 2, 3, 4, 5])
 const homepageFaqSchema = homepageFaqs.slice(0, 6)
 
 export const metadata: Metadata = {
-  title: 'Sunstone Woodside Homes | Las Vegas New Construction Concierge',
+  title: 'Capella at Sunstone New Homes | Woodside',
   description:
-    'Discover move-in ready inventory, Capella floor plans, and Las Vegas service areas with Dr. Duffy’s concierge real estate guidance.',
+    'Capella at Sunstone new homes in Las Vegas 89143. Dr. Jan Duffy guides Woodside plans, move-in ready inventory, and buyer incentives.',
 }
 
 export default function HomePage() {
@@ -162,7 +149,7 @@ export default function HomePage() {
             <div className="space-y-8">
               <div className="space-y-4">
                 <h1 className="text-4xl font-bold tracking-tight text-foreground sm:text-5xl md:text-6xl">
-                  The Easiest & Quickest Way to Find Your Las Vegas Home
+                  The easiest way to find a Capella at Sunstone home
                 </h1>
                 <p className="text-xl text-muted-foreground">
                   We are a leading real estate advisor in Las Vegas, specializing in a seamless, personalized home search experience.
@@ -264,17 +251,6 @@ export default function HomePage() {
               SIGN UP
             </a>
           </div>
-        </div>
-      </section>
-
-      <section className="mx-auto max-w-6xl px-4">
-        <div className="grid gap-4 rounded-3xl border border-border/60 bg-card/80 p-6 shadow-sm sm:grid-cols-2 lg:grid-cols-4">
-          {highlightStats.map((stat) => (
-            <div key={stat.label} className="space-y-1 rounded-2xl border border-border/50 bg-background/70 p-4">
-              <p className="text-2xl font-semibold text-primary">{stat.value}</p>
-              <p className="text-sm text-muted-foreground">{stat.label}</p>
-            </div>
-          ))}
         </div>
       </section>
 
@@ -428,8 +404,12 @@ export default function HomePage() {
               className="flex h-full flex-col rounded-3xl border border-border bg-card/70 p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-lg"
             >
               <div className="text-sm text-muted-foreground">
-                <span>{model.priceFrom}</span>
-                <span className="mx-2 text-border">|</span>
+                {model.priceFrom ? (
+                  <>
+                    <span>{model.priceFrom}</span>
+                    <span className="mx-2 text-border">|</span>
+                  </>
+                ) : null}
                 <span>{model.size}</span>
               </div>
               <h3 className="mt-3 text-xl font-semibold text-foreground">{model.name}</h3>
@@ -471,7 +451,7 @@ export default function HomePage() {
               Navigate the homebuyer experience with confidence
             </h2>
             <p className="mt-3 text-lg text-muted-foreground">
-              From discovery sessions to closing day, Dr. Duffyet Duffy keeps every step transparent,
+              From discovery sessions to closing day, Dr. Jan Duffy keeps every step transparent,
               organized, and aligned with your goals.
             </p>
           </div>

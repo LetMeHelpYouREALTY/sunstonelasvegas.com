@@ -40,7 +40,7 @@ export const serviceAreas: ServiceArea[] = [
       'Lifestyle-driven amenities including parks, splash pads, and neighborhood events.',
     ],
     communityStats: [
-      { label: 'Starting price', value: '$562,990' },
+      { label: 'Starting price', value: '$585,990' },
       { label: 'Move-in ready inventory', value: 'Aries Plan 1 lots 49 & 93' },
       { label: 'HOA dues', value: '$75 / month (Sunstone master HOA)' },
       { label: 'Build timeline', value: '6 months average from contract to close' },

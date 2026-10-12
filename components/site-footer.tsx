@@ -1,5 +1,6 @@
 import Link from 'next/link'
 
+import { listingConsultationUrl } from '@/lib/calendly'
 import {
   CONTACT_ADDRESS,
   CONTACT_EMAIL,
@@ -11,6 +12,7 @@ import {
 const footerNav = [
   { href: '/models', label: 'Home Plans' },
   { href: '/move-in-ready', label: 'Move-In Ready' },
+  { href: '/sell', label: 'Sell to Buy at Capella' },
   { href: '/buyers-guide', label: 'Buyer Journey' },
   { href: '/service-areas', label: 'Service Areas' },
   { href: '/communities', label: 'Communities' },
@@ -56,6 +58,12 @@ export default function SiteFooter() {
             >
               {CONTACT_PHONE}
             </Link>
+            <a
+              href={listingConsultationUrl('footer-seller-cta')}
+              className="block font-semibold text-primary transition hover:text-primary/80"
+            >
+              Book listing consultation
+            </a>
             <p>{CONTACT_ADDRESS}</p>
           </div>
         </div>

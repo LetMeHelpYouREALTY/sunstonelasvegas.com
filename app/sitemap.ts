@@ -11,6 +11,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/',
     '/models',
     '/move-in-ready',
+    '/sell',
     '/buyers-guide',
     '/communities',
     '/service-areas',

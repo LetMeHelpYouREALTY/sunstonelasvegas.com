@@ -162,7 +162,17 @@ export default async function MoveInReadyDetailPage({
             name: 'Dr. Jan Duffy',
             url: `${baseUrl}/contact`,
             telephone: CONTACT_PHONE,
-            areaServed: ['Las Vegas NV', 'Henderson NV'],
+            areaServed: {
+              '@type': 'Place',
+              name: 'Capella at Sunstone',
+              address: {
+                '@type': 'PostalAddress',
+                addressLocality: 'Las Vegas',
+                addressRegion: 'NV',
+                postalCode: '89143',
+                addressCountry: 'US',
+              },
+            },
           },
           offers: {
             '@type': 'Offer',

@@ -62,7 +62,17 @@ export const realEstateAgentJsonLd = {
     '@type': 'ContactPoint',
     telephone: CONTACT_PHONE,
     contactType: 'customer service',
-    areaServed: 'US-NV',
+    areaServed: {
+      '@type': 'Place',
+      name: 'Capella at Sunstone',
+      address: {
+        '@type': 'PostalAddress',
+        addressLocality: 'Las Vegas',
+        addressRegion: 'NV',
+        postalCode: '89143',
+        addressCountry: 'US',
+      },
+    },
     availableLanguage: ['English'],
     hoursAvailable: [
       {
@@ -86,11 +96,27 @@ export const realEstateAgentJsonLd = {
       },
     ],
   },
-  areaServed: [
-    { '@type': 'City', name: 'Las Vegas', addressRegion: 'NV', addressCountry: 'US' },
-    { '@type': 'City', name: 'Henderson', addressRegion: 'NV', addressCountry: 'US' },
-    { '@type': 'City', name: 'North Las Vegas', addressRegion: 'NV', addressCountry: 'US' },
-  ],
+  areaServed: {
+    '@type': 'Place',
+    name: 'Capella at Sunstone',
+    address: {
+      '@type': 'PostalAddress',
+      addressLocality: 'Las Vegas',
+      addressRegion: 'NV',
+      postalCode: '89143',
+      addressCountry: 'US',
+    },
+    containedInPlace: {
+      '@type': 'Place',
+      name: 'Sunstone Master Plan',
+      containedInPlace: {
+        '@type': 'City',
+        name: 'Las Vegas',
+        addressRegion: 'NV',
+        addressCountry: 'US',
+      },
+    },
+  },
   knowsAbout: [
     'Sunstone new construction homes',
     'Capella at Sunstone Woodside Homes',

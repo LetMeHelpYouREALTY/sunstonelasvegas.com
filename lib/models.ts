@@ -7,7 +7,8 @@ export type ModelSpec = {
   name: string
   headline: string
   description: string
-  priceFrom: string
+  /** Builder-sourced starting price when published on Woodside Homes (optional per plan). */
+  priceFrom?: string
   size: string
   beds: string
   baths: string
@@ -25,7 +26,7 @@ export const models: ModelSpec[] = [
     headline: 'Open-concept living with flexible space for work or play',
     description:
       'The Aries Plan 1 brings Sunstone flair to a single-story layout, pairing a bright great room with a generous kitchen island and a flex suite that can morph into a study, hobby zone, or lounge.',
-    priceFrom: '$562,990',
+    priceFrom: '$585,990',
     size: '1,970 Sq Ft',
     beds: '3 Bedrooms',
     baths: '2.5 Baths',
@@ -49,7 +50,6 @@ export const models: ModelSpec[] = [
     headline: 'Room to gather with multi-gen and entertaining options',
     description:
       'The Taurus Plan 2 stretches out with an expansive great room, a culinary-forward kitchen, and an optional multi-gen suite that keeps guests close by with privacy intact.',
-    priceFrom: '$582,990',
     size: '2,093 Sq Ft',
     beds: '3 Bedrooms + Flex Suite',
     baths: '2.5 Baths',
@@ -73,7 +73,6 @@ export const models: ModelSpec[] = [
     headline: 'Luxury primary retreat with spa bath and bonus lounge',
     description:
       'The Virgo Plan 3 elevates single-level living with an optional fourth bedroom, a media-ready retreat, and a spa-inspired primary suite anchored by dual walk-in closets.',
-    priceFrom: '$617,990',
     size: '2,295 Sq Ft',
     beds: '3–4 Bedrooms',
     baths: '3.5 Baths',

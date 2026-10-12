@@ -62,8 +62,12 @@ export default async function ModelDetailPage({ params }: ModelPageProps) {
         </h1>
         <p className="text-lg text-muted-foreground">{model.description}</p>
         <div className="mt-6 flex flex-wrap items-center gap-4 text-sm text-muted-foreground">
-          <span>{model.priceFrom}</span>
-          <span className="text-border">|</span>
+          {model.priceFrom ? (
+            <>
+              <span>{model.priceFrom}</span>
+              <span className="text-border">|</span>
+            </>
+          ) : null}
           <span>{model.size}</span>
           <span className="text-border">|</span>
           <span>{model.beds}</span>

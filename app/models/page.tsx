@@ -46,8 +46,12 @@ export default function ModelsIndexPage() {
             className="flex h-full flex-col rounded-3xl border border-border bg-card/70 p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-lg"
           >
             <div className="text-sm text-muted-foreground">
-              <span>{model.priceFrom}</span>
-              <span className="mx-2 text-border">|</span>
+              {model.priceFrom ? (
+                <>
+                  <span>{model.priceFrom}</span>
+                  <span className="mx-2 text-border">|</span>
+                </>
+              ) : null}
               <span>{model.size}</span>
             </div>
             <h2 className="mt-3 text-xl font-semibold text-foreground">{model.name}</h2>
