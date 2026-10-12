@@ -3,6 +3,7 @@ import type { Metadata } from 'next'
 import { Manrope, Archivo, Roboto } from 'next/font/google'
 import Script from 'next/script'
 import { ThemeProvider } from 'next-themes'
+import { SpeedInsights } from '@vercel/speed-insights/next'
 import { JsonLd } from '@/components/json-ld'
 import SiteFooter from '@/components/site-footer'
 import SiteHeader from '@/components/site-header'
@@ -124,6 +125,7 @@ export default function RootLayout({
             <SiteFooter />
           </div>
         </ThemeProvider>
+        <SpeedInsights />
       </body>
     </html>
   )
