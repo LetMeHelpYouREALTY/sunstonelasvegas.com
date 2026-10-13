@@ -17,6 +17,7 @@ const links = [
   { href: '/buyers', label: 'Buy in Sunstone' },
   { href: '/sell', label: 'Sell my Sunstone home' },
   { href: '/communities', label: 'Sunstone neighborhoods' },
+  { href: '/local-guide', label: 'Sunstone local guide' },
   { href: '/new-construction', label: 'New construction' },
   { href: '/trilogy', label: 'Trilogy 55+ rules' },
   { href: '/market-report', label: 'Market report' },
