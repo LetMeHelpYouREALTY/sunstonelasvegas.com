@@ -11,6 +11,7 @@ const navItems = [
   { href: '/sell', label: 'Sell to Buy' },
   { href: '/buyers-guide', label: 'Buyer Journey' },
   { href: '/communities', label: 'Communities' },
+  { href: '/amenities', label: 'Nearby Amenities' },
   { href: '/service-areas', label: 'Service Areas' },
   { href: '/financing', label: 'Financing' },
   { href: '/contact', label: 'Contact' },

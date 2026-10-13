@@ -14,6 +14,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/sell',
     '/buyers-guide',
     '/communities',
+    '/amenities',
     '/service-areas',
     '/financing',
     '/contact',
