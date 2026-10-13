@@ -2,7 +2,9 @@
 
 Branch: `luxury-hyperlocal-sunstone`. Not merged. Not deployed to production.
 
-Area derived from the domain: Capella at Sunstone, inside the Sunstone master plan, Las Vegas, Nevada, ZIP 89143.
+The canonical site is https://www.sunstonelasvegas.com. Apex `sunstonelasvegas.com` already returns 308 to www. The older production hosts redirect to that www URL from the app.
+
+Area: Capella at Sunstone, inside the Sunstone master plan, Las Vegas, Nevada, ZIP 89143.
 
 ## Pages
 

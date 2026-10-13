@@ -1,5 +1,5 @@
 const FUB_EVENTS_URL = 'https://api.followupboss.com/v1/events'
-const SITE_ID = 'sunstonewoodsidehomes.com'
+const SITE_ID = 'sunstonelasvegas.com'
 
 export type FubEventType =
   | 'General Inquiry'
@@ -69,7 +69,7 @@ export async function submitFollowUpBossEvent(
   const apiKey = process.env.FOLLOW_UP_BOSS_API_KEY
   if (!apiKey) {
     console.error(
-      'FOLLOW_UP_BOSS_API_KEY is not configured for sunstonewoodsidehomes.com',
+      'FOLLOW_UP_BOSS_API_KEY is not configured for sunstonelasvegas.com',
     )
     return { ok: false, status: 503 }
   }
