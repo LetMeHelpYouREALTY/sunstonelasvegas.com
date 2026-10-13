@@ -12,7 +12,7 @@ import { RealScoutSearch } from '@/components/realscout-search'
 import { SunstoneMap } from '@/components/sunstone-map'
 import { featuredPlaces, sharedFaqs, WOODSIDE } from '@/lib/area'
 import { pageMeta } from '@/lib/metadata'
-import { CONTACT_PHONE_LINK } from '@/lib/site'
+import { CONTACT_PHONE, CONTACT_PHONE_LINK } from '@/lib/site'
 import { buildFaqPage } from '@/lib/structured-data'
 
 export const metadata = pageMeta({
@@ -41,7 +41,10 @@ export default function HomePage() {
               collection inside that plan.
             </Answer>
             <a className="btn w-fit" href={CONTACT_PHONE_LINK}>
-              Call Dr. Jan Duffy
+              <span className="grid gap-1 text-center leading-none">
+                <span>Call Dr. Jan Duffy</span>
+                <span className="text-base tracking-normal">{CONTACT_PHONE}</span>
+              </span>
             </a>
             <p className="text-sm">
               <Link href="/sell">Request a valuation</Link>
