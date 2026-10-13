@@ -27,8 +27,8 @@ export default function HomePage() {
     <div>
       <JsonLd id="schema-home-faq" data={buildFaqPage(sharedFaqs)} />
       <section className="hero-band">
-        <div className="mx-auto grid max-w-6xl gap-10 px-4 py-16 sm:py-24">
-          <div className="grid max-w-3xl gap-6">
+        <div className="mx-auto grid max-w-6xl items-center gap-10 px-4 py-16 sm:py-24 lg:grid-cols-[1.15fr_0.85fr]">
+          <div className="grid gap-6">
             <Eyebrow>Las Vegas 89143</Eyebrow>
             <h1 className="max-w-4xl font-heading text-5xl text-inherit sm:text-7xl">
               <span className="block sm:inline">Sunstone </span>

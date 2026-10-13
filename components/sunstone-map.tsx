@@ -2,7 +2,7 @@ import { DRIVES } from '@/lib/area'
 
 const LAS_VEGAS_CENTER = '36.1699,-115.1398'
 const SUNSTONE_PIN = '36.32484,-115.30583'
-const MAP_EMBED_URL = `https://maps.google.com/maps?ll=${LAS_VEGAS_CENTER}&q=${SUNSTONE_PIN}&z=10&output=embed`
+const MAP_EMBED_URL = `https://maps.google.com/maps?ll=${LAS_VEGAS_CENTER}&q=${SUNSTONE_PIN}&z=9&output=embed`
 
 export function SunstoneMap() {
   return (
@@ -10,7 +10,7 @@ export function SunstoneMap() {
       <iframe
         title="Map of Las Vegas with the Sunstone area marked in ZIP 89143"
         src={MAP_EMBED_URL}
-        className="h-[32rem] w-full border border-[#3a342c]"
+        className="h-64 w-full border border-[#3a342c]"
         loading="lazy"
       />
       <figcaption className="grid gap-2 text-sm">
