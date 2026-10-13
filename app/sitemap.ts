@@ -17,6 +17,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/faqs',
     '/about',
     '/contact',
+    '/local-guide',
   ]
 
   const dynamicRoutes = [

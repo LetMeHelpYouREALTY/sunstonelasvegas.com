@@ -106,6 +106,11 @@ export default function CommunitiesPage() {
             Sun Mountain Park, Sun Trails Park, the Nature Paseo, and the
             Moccasin Walking Trail are named by the association. Lennar also
             describes a sundial, play structures, a dino dig, and outdoor WiFi.
+            A Homes.com guide names those parks and one more, Alyn Beck Memorial
+            Park.
+          </p>
+          <p className="mt-3">
+            <Link href="/local-guide">Read the Sunstone local guide</Link>
           </p>
           <SourceLine href={HOA}>
             Sunstone Master Community Association, retrieved October 12, 2026
