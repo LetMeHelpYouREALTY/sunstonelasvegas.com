@@ -19,9 +19,14 @@ export default function OpenGraphImage() {
           padding: '64px',
         }}
       >
-        <div style={{ color: '#C4A574', fontSize: 22, letterSpacing: 6 }}>LAS VEGAS 89143</div>
-        <div style={{ fontSize: 76, marginTop: 18 }}>Capella at Sunstone</div>
+        <div style={{ color: '#C4A574', fontSize: 22, letterSpacing: 6 }}>
+          LAS VEGAS 89143
+        </div>
+        <div style={{ fontSize: 68, marginTop: 18 }}>Capella at Sunstone</div>
         <div style={{ fontSize: 32, marginTop: 12 }}>Homes for sale</div>
+        <div style={{ fontSize: 28, marginTop: 18 }}>
+          Sunstone | Homes by Dr. Jan Duffy
+        </div>
       </div>
     ),
     { ...size },

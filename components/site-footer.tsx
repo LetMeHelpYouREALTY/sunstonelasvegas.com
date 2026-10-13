@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import Link from 'next/link'
 
 import {
@@ -5,6 +6,7 @@ import {
   AGENT_LICENSE,
   AGENT_NAME,
   BROKERAGE_NAME,
+  SITE_LOGO,
   CONTACT_ADDRESS,
   CONTACT_EMAIL,
   CONTACT_PHONE,
@@ -27,9 +29,17 @@ export default function SiteFooter() {
     <footer className="border-t border-border bg-background">
       <div className="mx-auto grid max-w-6xl gap-10 px-4 py-14 sm:grid-cols-2 lg:grid-cols-3">
         <div className="space-y-3">
-          <p className="font-heading text-3xl">{AGENT_NAME}</p>
+          <Image
+            src="/images/about/dr-jan-duffy.webp"
+            alt="Portrait of Dr. Jan Duffy"
+            width={72}
+            height={72}
+            className="h-[4.5rem] w-[4.5rem]"
+          />
+          <p className="font-heading text-3xl leading-tight">{SITE_LOGO}</p>
           <p className="text-sm leading-relaxed text-muted-foreground">
-            {AGENT_CREDENTIAL}. Nevada license {AGENT_LICENSE}. Homes in Capella at Sunstone and the Sunstone master plan, Las Vegas 89143.
+            {AGENT_CREDENTIAL}. Nevada license {AGENT_LICENSE}. Homes in Capella
+            at Sunstone and the Sunstone master plan, Las Vegas 89143.
           </p>
         </div>
         <div className="space-y-2 text-sm">
@@ -56,10 +66,17 @@ export default function SiteFooter() {
       <div className="border-t border-border">
         <div className="mx-auto max-w-6xl space-y-2 px-4 py-6 text-xs leading-relaxed text-muted-foreground">
           <p>
-            {AGENT_NAME}, {AGENT_CREDENTIAL} | Nevada license {AGENT_LICENSE} | {BROKERAGE_NAME}
+            {AGENT_NAME}, {AGENT_CREDENTIAL} | Nevada license {AGENT_LICENSE} |{' '}
+            {BROKERAGE_NAME}
           </p>
-          <p>Equal Housing Opportunity. Builder prices are not MLS listings. Confirm every figure with the builder, the association, and the county before you offer.</p>
-          <p>© {new Date().getFullYear()} {BROKERAGE_NAME}</p>
+          <p>
+            Equal Housing Opportunity. Builder prices are not MLS listings.
+            Confirm every figure with the builder, the association, and the
+            county before you offer.
+          </p>
+          <p>
+            © {new Date().getFullYear()} {BROKERAGE_NAME}
+          </p>
         </div>
       </div>
     </footer>

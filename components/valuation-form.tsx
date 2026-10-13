@@ -44,25 +44,55 @@ export function ValuationForm() {
       />
       <label className="grid gap-2 text-sm" htmlFor="value-name">
         Name
-        <input id="value-name" name="name" required autoComplete="name" className="field" />
+        <input
+          id="value-name"
+          name="name"
+          required
+          autoComplete="name"
+          className="field"
+        />
       </label>
       <label className="grid gap-2 text-sm" htmlFor="value-email">
         Email
-        <input id="value-email" name="email" type="email" required autoComplete="email" className="field" />
+        <input
+          id="value-email"
+          name="email"
+          type="email"
+          required
+          autoComplete="email"
+          className="field"
+        />
       </label>
       <label className="grid gap-2 text-sm" htmlFor="value-phone">
         Phone
-        <input id="value-phone" name="phone" type="tel" required autoComplete="tel" className="field" />
+        <input
+          id="value-phone"
+          name="phone"
+          type="tel"
+          required
+          autoComplete="tel"
+          className="field"
+        />
       </label>
       <label className="grid gap-2 text-sm" htmlFor="value-address">
         Property address
-        <input id="value-address" name="address" required autoComplete="street-address" className="field" />
+        <input
+          id="value-address"
+          name="address"
+          required
+          autoComplete="street-address"
+          className="field"
+        />
       </label>
       <label className="grid gap-2 text-sm" htmlFor="value-note">
         What should we know
         <textarea id="value-note" name="message" rows={4} className="field" />
       </label>
-      <button className="btn w-fit" type="submit" disabled={status === 'submitting'}>
+      <button
+        className="btn w-fit"
+        type="submit"
+        disabled={status === 'submitting'}
+      >
         {status === 'submitting' ? 'Sending' : 'Request a valuation'}
       </button>
     </form>

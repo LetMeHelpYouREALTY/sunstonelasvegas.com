@@ -1,6 +1,12 @@
 import Link from 'next/link'
 
-import { Answer, Eyebrow, SourceLine } from '@/components/editorial'
+import {
+  AgentCredit,
+  Answer,
+  Eyebrow,
+  LogoLine,
+  SourceLine,
+} from '@/components/editorial'
 import { JsonLd } from '@/components/json-ld'
 import { HOA, SUNSTONE } from '@/lib/area'
 import { pageMeta } from '@/lib/metadata'
@@ -41,23 +47,36 @@ export default function CommunitiesPage() {
       />
       <header className="grid gap-4">
         <Eyebrow>Sunstone master plan</Eyebrow>
-        <h1 className="font-heading text-5xl sm:text-6xl">Sunstone neighborhoods</h1>
+        <h1 className="font-heading text-5xl sm:text-6xl">
+          Sunstone neighborhoods
+        </h1>
+        <LogoLine />
         <Answer>
-          Sunstone plans about 3,650 homes in ten neighborhoods in Las Vegas 89143. The site names parks, trails, a pump track, and an age-qualified neighborhood. Most neighborhoods have private entry gates, the master association says. Richmond American is a named builder without a collection assignment. Those pages were checked on October 12, 2026.
+          Sunstone plans about 3,650 homes in ten neighborhoods in Las Vegas
+          89143. The site names parks, trails, a pump track, and an
+          age-qualified neighborhood. Most neighborhoods have private entry
+          gates, the master association says. Richmond American is a named
+          builder without a collection assignment. Those pages were checked on
+          October 12, 2026.
         </Answer>
-        <SourceLine href={SUNSTONE}>sunstonelv.com, retrieved October 12, 2026</SourceLine>
+        <SourceLine href={SUNSTONE}>
+          sunstonelv.com, retrieved October 12, 2026
+        </SourceLine>
       </header>
 
       <section className="overflow-x-auto">
         <h2 className="font-heading text-4xl">Collections</h2>
+        <AgentCredit />
         <table className="mt-6 w-full min-w-[40rem] text-left text-sm">
           <thead>
             <tr className="border-b border-border">
-              {['Collection', 'Builder', 'Sq ft', 'Beds', 'From'].map((heading) => (
-                <th key={heading} className="py-3 pr-4 font-medium">
-                  {heading}
-                </th>
-              ))}
+              {['Collection', 'Builder', 'Sq ft', 'Beds', 'From'].map(
+                (heading) => (
+                  <th key={heading} className="py-3 pr-4 font-medium">
+                    {heading}
+                  </th>
+                ),
+              )}
             </tr>
           </thead>
           <tbody>
@@ -73,22 +92,31 @@ export default function CommunitiesPage() {
           </tbody>
         </table>
         <p className="mt-4 text-sm text-muted-foreground">
-          The “from” bands are labels on the master-plan site, retrieved October 12, 2026. Lennar and Shea published tighter prices on that same day. The new-construction page lists those tighter figures.
+          The “from” bands are labels on the master-plan site, retrieved October
+          12, 2026. Lennar and Shea published tighter prices on that same day.
+          The new-construction page lists those tighter figures.
         </p>
       </section>
 
       <section className="grid gap-4 md:grid-cols-2">
         <div>
           <h2 className="font-heading text-3xl">Parks and trails</h2>
+          <AgentCredit />
           <p className="mt-3 text-muted-foreground">
-            Sun Mountain Park, Sun Trails Park, the Nature Paseo, and the Moccasin Walking Trail are named by the association. Lennar also describes a sundial, play structures, a dino dig, and outdoor WiFi.
+            Sun Mountain Park, Sun Trails Park, the Nature Paseo, and the
+            Moccasin Walking Trail are named by the association. Lennar also
+            describes a sundial, play structures, a dino dig, and outdoor WiFi.
           </p>
-          <SourceLine href={HOA}>Sunstone Master Community Association, retrieved October 12, 2026</SourceLine>
+          <SourceLine href={HOA}>
+            Sunstone Master Community Association, retrieved October 12, 2026
+          </SourceLine>
         </div>
         <div>
           <h2 className="font-heading text-3xl">Keep going</h2>
+          <AgentCredit />
           <p className="mt-3 text-muted-foreground">
-            Capella plans, Trilogy’s age rule, and the October market notes are separate pages.
+            Capella plans, Trilogy’s age rule, and the October market notes are
+            separate pages.
           </p>
           <div className="mt-4">
             <Link className="btn" href="/new-construction">

@@ -5,7 +5,10 @@ type LeadFormAlertsProps = {
   successMessage: string
 }
 
-export function LeadFormAlerts({ status, successMessage }: LeadFormAlertsProps) {
+export function LeadFormAlerts({
+  status,
+  successMessage,
+}: LeadFormAlertsProps) {
   if (status === 'success') {
     return (
       <p

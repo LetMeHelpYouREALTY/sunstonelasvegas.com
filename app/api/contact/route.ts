@@ -1,10 +1,11 @@
 import { NextRequest, NextResponse } from 'next/server'
+import { start } from 'workflow/api'
 
 import {
   splitFullName,
-  submitFollowUpBossEvent,
   type FubEventType,
 } from '@/lib/fub-events'
+import { handleCapellaInquiry } from '@/workflows/capella-inquiry'
 
 type LeadFormKey = 'concierge' | 'find-your-home' | 'valuation'
 
@@ -164,27 +165,37 @@ export async function POST(request: NextRequest) {
   const sourceUrl =
     (typeof body.sourceUrl === 'string' && body.sourceUrl.trim()) || referer
 
-  const result = await submitFollowUpBossEvent({
-    type: formConfig.fubType,
-    message: formConfig.buildMessage(body),
-    description: formConfig.description,
-    sourceUrl,
-    person: {
-      firstName: person.firstName,
-      lastName: person.lastName,
-      email: person.email,
-      phone: person.phone,
-      formName: formConfig.formName,
-    },
-  })
-
-  if (!result.ok) {
-    const status = result.status === 503 ? 503 : 502
+  if (
+    process.env.NODE_ENV === 'production' &&
+    !process.env.FOLLOW_UP_BOSS_API_KEY
+  ) {
     return NextResponse.json(
       { error: 'Unable to submit your request at this time' },
-      { status },
+      { status: 503 },
     )
   }
 
-  return NextResponse.json({ success: true })
+  try {
+    const run = await start(handleCapellaInquiry, [
+      {
+        firstName: person.firstName,
+        lastName: person.lastName,
+        email: person.email,
+        phone: person.phone,
+        formName: formConfig.formName,
+        fubType: formConfig.fubType,
+        message: formConfig.buildMessage(body),
+        description: formConfig.description,
+        sourceUrl,
+      },
+    ])
+
+    return NextResponse.json({ success: true, runId: run.runId })
+  } catch (error) {
+    console.error('Unable to start the Capella inquiry workflow', error)
+    return NextResponse.json(
+      { error: 'Unable to submit your request at this time' },
+      { status: 502 },
+    )
+  }
 }

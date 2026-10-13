@@ -1,4 +1,10 @@
-import { Answer, Eyebrow, SourceLine } from '@/components/editorial'
+import {
+  AgentCredit,
+  Answer,
+  Eyebrow,
+  LogoLine,
+  SourceLine,
+} from '@/components/editorial'
 import { JsonLd } from '@/components/json-ld'
 import { SHEA, SUNSTONE } from '@/lib/area'
 import { pageMeta } from '@/lib/metadata'
@@ -24,36 +30,57 @@ export default function TrilogyPage() {
       />
       <header className="grid gap-4">
         <Eyebrow>Age-restricted neighborhood</Eyebrow>
-        <h1 className="font-heading text-5xl sm:text-6xl">Trilogy Sunstone 55+ rules</h1>
+        <h1 className="font-heading text-5xl sm:text-6xl">
+          Trilogy Sunstone 55+ rules
+        </h1>
+        <LogoLine />
         <Answer>
-          Trilogy Sunstone is a Shea Homes neighborhood in Las Vegas 89143. Shea labels the neighborhood 55+ on its October 12, 2026 page. Prices started at $399,990 for homes of 1,312 to 2,758 square feet. The exact occupancy formula was not printed on that page. Read the recorded rules before you write an offer on a lot.
+          Trilogy Sunstone is a Shea Homes neighborhood in Las Vegas 89143. Shea
+          labels the neighborhood 55+ on its October 12, 2026 page. Prices
+          started at $399,990 for homes of 1,312 to 2,758 square feet. The exact
+          occupancy formula was not printed on that page. Read the recorded
+          rules before you write an offer on a lot.
         </Answer>
-        <SourceLine href={SHEA}>Shea Homes, retrieved October 12, 2026</SourceLine>
+        <SourceLine href={SHEA}>
+          Shea Homes, retrieved October 12, 2026
+        </SourceLine>
       </header>
 
       <section className="grid gap-8 md:grid-cols-2">
         <div>
           <h2 className="font-heading text-3xl">What the club includes</h2>
+          <AgentCredit />
           <p className="mt-3 text-muted-foreground">
-            Shea describes the Cabochon Club as about 15,000 square feet. It lists a fitness center, resort pool, culinary studio, coffeehouse, pickleball courts, bocce courts, and an event venue.
+            Shea describes the Cabochon Club as about 15,000 square feet. It
+            lists a fitness center, resort pool, culinary studio, coffeehouse,
+            pickleball courts, bocce courts, and an event venue.
           </p>
         </div>
         <div>
           <h2 className="font-heading text-3xl">Gatehouse and dues</h2>
+          <AgentCredit />
           <p className="mt-3 text-muted-foreground">
-            Shea’s directions send tours through a welcome center and gatehouse at 9560 Lapis Ln. Dues were not printed. The master-plan site also calls this neighborhood age-qualified.
+            Shea’s directions send tours through a welcome center and gatehouse
+            at 9560 Lapis Ln. Dues were not printed. The master-plan site also
+            calls this neighborhood age-qualified.
           </p>
-          <SourceLine href={SUNSTONE}>sunstonelv.com, retrieved October 12, 2026</SourceLine>
+          <SourceLine href={SUNSTONE}>
+            sunstonelv.com, retrieved October 12, 2026
+          </SourceLine>
         </div>
       </section>
 
       <section>
-        <h2 className="font-heading text-3xl">Capella is a different neighborhood</h2>
+        <h2 className="font-heading text-3xl">
+          Capella is a different neighborhood
+        </h2>
+        <AgentCredit />
         <p className="mt-3 max-w-3xl text-muted-foreground">
-          Woodside does not label Capella as 55+. Do not apply Trilogy’s age rule to a Capella lot unless the recorded documents say so.
+          Woodside does not label Capella as 55+. Do not apply Trilogy’s age
+          rule to a Capella lot unless the recorded documents say so.
         </p>
         <a className="btn mt-6" href={CONTACT_PHONE_LINK}>
-          Call about a Trilogy or Capella tour
+          Call Dr. Jan Duffy about a tour
         </a>
       </section>
     </div>
