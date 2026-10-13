@@ -12,7 +12,7 @@ SunstoneWoodsideHomes.com currently relies on lightweight gradients and typograp
 - Provide 16:9 poster frames and transcripts for each video; add `VideoObject` schema.
 
 ## Lighthouse workflow
-1. `vercel build` (CI) or `vercel dev` locally, then run `npx @vercel/lighthouse https://www.sunstonewoodsidehomes.com`.
+1. `vercel build` (CI) or `vercel dev` locally, then run `npx @vercel/lighthouse https://www.sunstonelasvegas.com`.
 2. Track LCP hero text shifting—reserve space for future media with fixed aspect-ratio wrappers.
 3. Address any INP warnings by deferring non-critical scripts and trimming client-side filters if necessary.
 

@@ -1,6 +1,8 @@
 import type { NextConfig } from 'next'
 import { withWorkflow } from 'workflow/next'
 
+import { ALIAS_HOSTS, SITE_URL } from '@/lib/site'
+
 const nextConfig: NextConfig = {
   // Compress output (gzip/brotli)
   compress: true,
@@ -13,6 +15,23 @@ const nextConfig: NextConfig = {
     imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
   },
   
+  async redirects() {
+    return ALIAS_HOSTS.flatMap((host) => [
+      {
+        source: '/',
+        has: [{ type: 'host' as const, value: host }],
+        destination: SITE_URL,
+        permanent: true,
+      },
+      {
+        source: '/:path*',
+        has: [{ type: 'host' as const, value: host }],
+        destination: `${SITE_URL}/:path*`,
+        permanent: true,
+      },
+    ])
+  },
+
   // Performance headers
   async headers() {
     return [

@@ -14,7 +14,17 @@ export const SALES_OFFICE_ADDRESS = '9361 Blue Vega Ave., Las Vegas, NV 89143'
 export const HOA_OFFICE_ADDRESS =
   '7575 Norman Rockwell Ln., Ste. 110, Las Vegas, NV 89143'
 
-export const SITE_URL = 'https://www.sunstonewoodsidehomes.com'
+export const SITE_URL = 'https://www.sunstonelasvegas.com'
+
+/** Hosts that serve this app and should send visitors to SITE_URL. */
+export const ALIAS_HOSTS = [
+  'sunstonelasvegas.com',
+  'sunstonewoodsidehomes.com',
+  'www.sunstonewoodsidehomes.com',
+  'sunstonewoodsidehomescom.vercel.app',
+  'sunstonelasvegashomes.com',
+  'www.sunstonelasvegashomes.com',
+] as const
 export const AREA_NAME = 'Capella at Sunstone'
 export const MASTER_PLAN = 'Sunstone'
 export const AREA_ZIP = '89143'
