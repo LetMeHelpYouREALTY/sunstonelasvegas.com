@@ -25,7 +25,10 @@ export default function SiteHeader() {
             height={44}
             className="h-11 w-11"
           />
-          <span className="font-heading text-xl leading-tight sm:text-2xl">
+          <span className="font-heading text-2xl leading-tight md:hidden">
+            Sunstone
+          </span>
+          <span className="hidden font-heading text-2xl leading-tight md:inline">
             {SITE_LOGO}
           </span>
         </Link>

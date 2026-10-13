@@ -1,6 +1,6 @@
 import type { MetadataRoute } from 'next'
 
-import { capellaHomes, plans } from '@/lib/area'
+import { capellaHomes, collectionGuides, plans } from '@/lib/area'
 import { SITE_URL } from '@/lib/site'
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -17,11 +17,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/faqs',
     '/about',
     '/contact',
+    '/local-guide',
   ]
 
   const dynamicRoutes = [
     ...plans.map((plan) => `/models/${plan.slug}`),
     ...capellaHomes.map((home) => `/move-in-ready/${home.slug}`),
+    ...collectionGuides.map((guide) => guide.path),
   ]
 
   return [...staticRoutes, ...dynamicRoutes].map((path) => ({

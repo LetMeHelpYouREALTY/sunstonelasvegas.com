@@ -31,16 +31,16 @@ const headingFont = Cormorant_Garamond({
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: 'Capella at Sunstone Homes for Sale',
+    default: 'Sunstone Las Vegas Homes for Sale',
     template: '%s',
   },
   description:
-    'Dr. Jan Duffy represents buyers and sellers at Capella at Sunstone in Las Vegas 89143. Builder prices retrieved October 12, 2026 start at $599,950.',
+    'Dr. Jan Duffy represents buyers and sellers at Sunstone Las Vegas, ZIP 89143. Capella is one Woodside collection inside the master plan.',
   alternates: { canonical: '/' },
   openGraph: {
-    title: 'Capella at Sunstone Homes for Sale',
+    title: 'Sunstone Las Vegas Homes for Sale',
     description:
-      'Homes for sale in Capella at Sunstone, Las Vegas 89143, with Dr. Jan Duffy.',
+      'Homes for sale at Sunstone Las Vegas, ZIP 89143, with Dr. Jan Duffy.',
     url: SITE_URL,
     siteName: SITE_LOGO,
     locale: 'en_US',
@@ -48,9 +48,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Capella at Sunstone Homes for Sale',
+    title: 'Sunstone Las Vegas Homes for Sale',
     description:
-      'Homes for sale in Capella at Sunstone, Las Vegas 89143, with Dr. Jan Duffy.',
+      'Homes for sale at Sunstone Las Vegas, ZIP 89143, with Dr. Jan Duffy.',
   },
 }
 
