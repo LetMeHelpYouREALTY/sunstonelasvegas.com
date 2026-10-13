@@ -64,6 +64,242 @@ export const plans = [
   },
 ] as const
 
+export type CollectionRow = {
+  name: string
+  builder: string
+  sqft: string
+  beds: string
+  band: string
+  path: string | null
+}
+
+/** Bands are labels on sunstonelv.com, retrieved October 12, 2026. */
+export const collectionRows: CollectionRow[] = [
+  {
+    name: 'Capella',
+    builder: 'Woodside',
+    sqft: '1,970–2,295',
+    beds: '3–4',
+    band: 'From the $600s',
+    path: '/communities/capella',
+  },
+  {
+    name: 'Alia',
+    builder: 'Lennar',
+    sqft: '2,012–4,240',
+    beds: '3–5',
+    band: 'From the $600s',
+    path: '/communities/alia',
+  },
+  {
+    name: 'Asher',
+    builder: 'Lennar',
+    sqft: '1,248–1,724',
+    beds: '3',
+    band: 'Mid $400s',
+    path: null,
+  },
+  {
+    name: 'Lyra One',
+    builder: 'Woodside',
+    sqft: '2,488–2,752',
+    beds: '3–5',
+    band: 'From the $500s',
+    path: '/communities/lyra',
+  },
+  {
+    name: 'Lyra Two',
+    builder: 'Woodside',
+    sqft: '3,027–3,428',
+    beds: '4–6',
+    band: 'High $600s',
+    path: '/communities/lyra',
+  },
+  {
+    name: 'Axel',
+    builder: 'Lennar',
+    sqft: '1,807–1,927',
+    beds: '2–4',
+    band: 'High $300s',
+    path: '/communities/axel',
+  },
+  {
+    name: 'Solstice',
+    builder: 'Not named',
+    sqft: '2,640–3,280',
+    beds: '4–5',
+    band: 'From the $600s',
+    path: null,
+  },
+  {
+    name: 'Resort',
+    builder: 'Shea',
+    sqft: '1,342–1,678',
+    beds: '2',
+    band: 'From the $300s',
+    path: null,
+  },
+  {
+    name: 'Freedom 35',
+    builder: 'Shea',
+    sqft: '1,507–1,811',
+    beds: '2–4',
+    band: 'Mid $400s',
+    path: null,
+  },
+  {
+    name: 'Freedom 40',
+    builder: 'Shea',
+    sqft: '1,622–2,061',
+    beds: '2–3',
+    band: 'From the $500s',
+    path: null,
+  },
+  {
+    name: 'Freedom 50',
+    builder: 'Shea',
+    sqft: '2,041–2,579',
+    beds: '2–3',
+    band: 'High $500s',
+    path: null,
+  },
+  {
+    name: 'Modern',
+    builder: 'Shea',
+    sqft: '1,312–2,758',
+    beds: '2–3',
+    band: 'From the $300s',
+    path: null,
+  },
+]
+
+export type CollectionGuide = {
+  slug: string
+  name: string
+  title: string
+  description: string
+  path: string
+  builder: string
+  sentences: readonly string[]
+  sourceLabel: string
+  sourceHref: string
+  ctaHref: string
+  ctaLabel: string
+}
+
+export const collectionGuides: readonly CollectionGuide[] = [
+  {
+    slug: 'capella',
+    name: 'Capella',
+    title: 'Capella at Sunstone Las Vegas',
+    description:
+      'Capella is a Woodside collection in Sunstone Las Vegas 89143. On October 12, 2026, six homes were listed from $599,950 to $679,950.',
+    path: '/communities/capella',
+    builder: 'Woodside Homes',
+    sentences: [
+      'Capella is a Woodside collection inside Sunstone in ZIP 89143.',
+      'The plans are single story and run 1,970 to 2,295 square feet.',
+      'On October 12, 2026, Woodside listed six homes from $599,950 to $679,950.',
+      'Those figures are builder asking prices, and they are not closed sales.',
+    ],
+    sourceLabel: 'Woodside Capella page, retrieved October 12, 2026',
+    sourceHref: WOODSIDE,
+    ctaHref: '/move-in-ready',
+    ctaLabel: 'See the October 12 list',
+  },
+  {
+    slug: 'lyra',
+    name: 'Lyra',
+    title: 'Lyra at Sunstone Las Vegas',
+    description:
+      'Lyra is a Woodside collection in Sunstone Las Vegas 89143. Lyra One and Lyra Two square-foot bands were read on October 12, 2026.',
+    path: '/communities/lyra',
+    builder: 'Woodside Homes',
+    sentences: [
+      'Lyra is a Woodside collection inside the Sunstone master plan.',
+      'Lyra One runs 2,488 to 2,752 square feet with three to five bedrooms.',
+      'Lyra Two runs 3,027 to 3,428 square feet with four to six bedrooms.',
+      'The master-plan site labeled Lyra One from the $500s on October 12, 2026.',
+      'That same page labeled Lyra Two in the high $600s.',
+    ],
+    sourceLabel: 'sunstonelv.com collection cards, retrieved October 12, 2026',
+    sourceHref: SUNSTONE,
+    ctaHref: '/contact',
+    ctaLabel: 'Ask about Lyra',
+  },
+  {
+    slug: 'axel',
+    name: 'Axel',
+    title: 'Axel at Sunstone Las Vegas',
+    description:
+      'Axel is a Lennar collection in Sunstone Las Vegas 89143. Townhomes were listed from $383,990 to $462,565 on October 12, 2026.',
+    path: '/communities/axel',
+    builder: 'Lennar',
+    sentences: [
+      'Axel is a Lennar collection inside Sunstone in ZIP 89143.',
+      'Plans run 1,807 to 1,927 square feet with two to four bedrooms.',
+      'Lennar listed Axel townhomes from $383,990 to $462,565 on October 12, 2026.',
+      'That page showed an approximate monthly HOA of $210.',
+    ],
+    sourceLabel: 'Lennar Sunstone page, retrieved October 12, 2026',
+    sourceHref: LENNAR,
+    ctaHref: '/contact',
+    ctaLabel: 'Ask about Axel',
+  },
+  {
+    slug: 'alia',
+    name: 'Alia',
+    title: 'Alia at Sunstone Las Vegas',
+    description:
+      'Alia is a Lennar collection in Sunstone, Las Vegas 89143. Lennar listed Alia Estates from $862,990 on October 12, 2026.',
+    path: '/communities/alia',
+    builder: 'Lennar',
+    sentences: [
+      'Alia is a Lennar collection inside the Sunstone master plan.',
+      'Plans run 2,012 to 4,240 square feet with three to five bedrooms.',
+      'The master-plan site labeled Alia from the $600s on October 12, 2026.',
+      'Lennar listed Alia Estates from $862,990 on that same day.',
+    ],
+    sourceLabel: 'Lennar Sunstone page, retrieved October 12, 2026',
+    sourceHref: LENNAR,
+    ctaHref: '/contact',
+    ctaLabel: 'Ask about Alia',
+  },
+]
+
+export const featuredPlaces = [
+  {
+    name: 'Capella',
+    builder: 'Woodside Homes',
+    band: 'Listed from $599,950',
+    path: '/communities/capella',
+  },
+  {
+    name: 'Lyra',
+    builder: 'Woodside Homes',
+    band: 'From the $500s',
+    path: '/communities/lyra',
+  },
+  {
+    name: 'Axel',
+    builder: 'Lennar',
+    band: 'From $383,990',
+    path: '/communities/axel',
+  },
+  {
+    name: 'Alia',
+    builder: 'Lennar',
+    band: 'From $862,990',
+    path: '/communities/alia',
+  },
+  {
+    name: 'Trilogy',
+    builder: 'Shea Homes',
+    band: 'From $399,990',
+    path: '/trilogy',
+  },
+]
+
 export type AreaFaq = { question: string; answer: string }
 
 export const sharedFaqs: AreaFaq[] = [

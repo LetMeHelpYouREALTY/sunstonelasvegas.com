@@ -8,24 +8,9 @@ import {
   SourceLine,
 } from '@/components/editorial'
 import { JsonLd } from '@/components/json-ld'
-import { HOA, SUNSTONE } from '@/lib/area'
+import { collectionRows, HOA, SUNSTONE } from '@/lib/area'
 import { pageMeta } from '@/lib/metadata'
 import { buildBreadcrumbList, placeJsonLd } from '@/lib/structured-data'
-
-const collections = [
-  ['Capella', 'Woodside', '1,970–2,295', '3–4', 'From the $600s'],
-  ['Alia', 'Lennar', '2,012–4,240', '3–5', 'From the $600s'],
-  ['Asher', 'Lennar', '1,248–1,724', '3', 'Mid $400s'],
-  ['Lyra One', 'Woodside', '2,488–2,752', '3–5', 'From the $500s'],
-  ['Lyra Two', 'Woodside', '3,027–3,428', '4–6', 'High $600s'],
-  ['Axel', 'Lennar', '1,807–1,927', '2–4', 'High $300s'],
-  ['Solstice', 'Not named', '2,640–3,280', '4–5', 'From the $600s'],
-  ['Resort', 'Shea', '1,342–1,678', '2', 'From the $300s'],
-  ['Freedom 35', 'Shea', '1,507–1,811', '2–4', 'Mid $400s'],
-  ['Freedom 40', 'Shea', '1,622–2,061', '2–3', 'From the $500s'],
-  ['Freedom 50', 'Shea', '2,041–2,579', '2–3', 'High $500s'],
-  ['Modern', 'Shea', '1,312–2,758', '2–3', 'From the $300s'],
-]
 
 export const metadata = pageMeta({
   title: 'Sunstone Neighborhood Guide',
@@ -80,13 +65,19 @@ export default function CommunitiesPage() {
             </tr>
           </thead>
           <tbody>
-            {collections.map((row) => (
-              <tr key={row[0]} className="border-b border-border">
-                {row.map((cell) => (
-                  <td key={cell} className="py-3 pr-4">
-                    {cell}
-                  </td>
-                ))}
+            {collectionRows.map((row) => (
+              <tr key={row.name} className="border-b border-border">
+                <td className="py-3 pr-4">
+                  {row.path ? (
+                    <Link href={row.path}>{row.name}</Link>
+                  ) : (
+                    row.name
+                  )}
+                </td>
+                <td className="py-3 pr-4">{row.builder}</td>
+                <td className="py-3 pr-4">{row.sqft}</td>
+                <td className="py-3 pr-4">{row.beds}</td>
+                <td className="py-3 pr-4">{row.band}</td>
               </tr>
             ))}
           </tbody>

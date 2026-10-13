@@ -197,8 +197,23 @@
 }
 
 .hero-band .source-line,
-.hero-band .source-line a {
+.hero-band .source-line a,
+.hero-band figcaption,
+.hero-band figcaption a {
   color: #e7e0d4;
+}
+
+.hero-band .btn {
+  background: #f4efe6;
+  color: #1a1612;
+}
+
+.hero-band .btn:hover {
+  background: #e7e0d4;
+}
+
+.place-index a {
+  text-decoration: none;
 }
 
 @media (prefers-reduced-motion: reduce) {

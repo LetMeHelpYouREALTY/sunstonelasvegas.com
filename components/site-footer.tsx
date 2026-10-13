@@ -49,7 +49,7 @@ export default function SiteFooter() {
             {CONTACT_PHONE}
           </a>
           <a className="block" href={`mailto:${CONTACT_EMAIL}`}>
-            {CONTACT_EMAIL}
+            Email Dr. Jan Duffy
           </a>
           <p>{CONTACT_ADDRESS}</p>
           <p>
