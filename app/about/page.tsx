@@ -1,4 +1,6 @@
-import { Answer, Eyebrow } from '@/components/editorial'
+import Image from 'next/image'
+
+import { AgentCredit, Answer, Eyebrow, LogoLine } from '@/components/editorial'
 import { JsonLd } from '@/components/json-ld'
 import { ValuationForm } from '@/components/valuation-form'
 import { pageMeta } from '@/lib/metadata'
@@ -31,24 +33,40 @@ export default function AboutPage() {
           { name: 'About', path: '/about' },
         ])}
       />
-      <header className="grid gap-4">
-        <Eyebrow>About</Eyebrow>
-        <h1 className="font-heading text-5xl sm:text-6xl">About Dr. Jan Duffy</h1>
-        <Answer>
-          {`${AGENT_NAME} is a ${AGENT_CREDENTIAL} holding Nevada license ${AGENT_LICENSE}. She works with buyers and sellers in Capella at Sunstone, Las Vegas 89143. This page does not publish a sales total. The published address is ${CONTACT_ADDRESS}. Call the site number when you want a valuation.`}
-        </Answer>
+      <header className="grid gap-8 md:grid-cols-[16rem_1fr] md:items-start">
+        <Image
+          src="/images/about/dr-jan-duffy.webp"
+          alt="Portrait of Dr. Jan Duffy"
+          width={640}
+          height={640}
+          sizes="(min-width: 768px) 16rem, 12rem"
+          className="h-48 w-48 md:h-64 md:w-64"
+        />
+        <div className="grid gap-4">
+          <Eyebrow>About</Eyebrow>
+          <h1 className="font-heading text-5xl sm:text-6xl">
+            About Dr. Jan Duffy
+          </h1>
+          <LogoLine />
+          <Answer>
+            {`${AGENT_NAME} is a ${AGENT_CREDENTIAL} holding Nevada license ${AGENT_LICENSE}. She works with buyers and sellers in Capella at Sunstone, Las Vegas 89143. This page does not publish a sales total. The published address is ${CONTACT_ADDRESS}. Call the site number when you want a valuation.`}
+          </Answer>
+        </div>
       </header>
       <section>
         <h2 className="font-heading text-3xl">Brokerage and office</h2>
+        <AgentCredit />
         <p className="mt-3 max-w-3xl text-muted-foreground">
-          {BROKERAGE_NAME}. The builder’s Capella sales office is {SALES_OFFICE_ADDRESS}.
+          {BROKERAGE_NAME}. The builder’s Capella sales office is{' '}
+          {SALES_OFFICE_ADDRESS}.
         </p>
         <a className="btn mt-6" href={CONTACT_PHONE_LINK}>
-          Call {CONTACT_PHONE}
+          Call Dr. Jan Duffy
         </a>
       </section>
       <section>
         <h2 className="font-heading text-3xl">Valuation request</h2>
+        <AgentCredit />
         <div className="mt-4 max-w-xl">
           <ValuationForm />
         </div>

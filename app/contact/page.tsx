@@ -1,4 +1,6 @@
-import { Answer, Eyebrow } from '@/components/editorial'
+import Image from 'next/image'
+
+import { AgentCredit, Answer, Eyebrow, LogoLine } from '@/components/editorial'
 import { ContactForm } from '@/components/contact-form'
 import { DeferredRender } from '@/components/deferred-render'
 import { JsonLd } from '@/components/json-ld'
@@ -16,7 +18,8 @@ const MAP_EMBED_URL =
   'https://maps.google.com/maps?q=10249%20Celestial%20Pole%20St%20Las%20Vegas%2C%20NV%2089143&output=embed'
 const MAP_DIRECTIONS_URL =
   'https://www.google.com/maps/dir/?api=1&destination=10249+Celestial+Pole+St+Las+Vegas+NV+89143'
-const REVIEWS_URL = 'https://www.google.com/maps/search/?api=1&query=10249+Celestial+Pole+St+Las+Vegas+NV+89143'
+const REVIEWS_URL =
+  'https://www.google.com/maps/search/?api=1&query=10249+Celestial+Pole+St+Las+Vegas+NV+89143'
 
 export const metadata = pageMeta({
   title: 'Contact Dr. Jan Duffy | Sunstone',
@@ -37,7 +40,10 @@ export default function ContactPage() {
       />
       <header className="grid gap-4">
         <Eyebrow>Contact</Eyebrow>
-        <h1 className="font-heading text-5xl sm:text-6xl">Contact Dr. Jan Duffy</h1>
+        <h1 className="font-heading text-5xl sm:text-6xl">
+          Contact Dr. Jan Duffy
+        </h1>
+        <LogoLine />
         <Answer>
           {`Call ${CONTACT_PHONE} for a Capella tour or a Sunstone home valuation. The published community address is ${CONTACT_ADDRESS}. Woodside’s Capella sales office sits at ${SALES_OFFICE_ADDRESS}. Use the form below when you want a written reply.`}
         </Answer>
@@ -45,12 +51,21 @@ export default function ContactPage() {
       <section className="grid gap-10 lg:grid-cols-2">
         <div>
           <h2 className="font-heading text-3xl">Send a note</h2>
+          <AgentCredit />
           <div className="mt-4">
             <ContactForm />
           </div>
         </div>
         <div className="grid gap-4">
+          <Image
+            src="/images/about/dr-jan-duffy.webp"
+            alt="Portrait of Dr. Jan Duffy"
+            width={96}
+            height={96}
+            className="h-24 w-24"
+          />
           <h2 className="font-heading text-3xl">Map</h2>
+          <AgentCredit />
           <p>
             <a href={CONTACT_PHONE_LINK}>{CONTACT_PHONE}</a>
           </p>
@@ -69,7 +84,9 @@ export default function ContactPage() {
               View Google Reviews
             </a>
           </div>
-          <DeferredRender fallback={<div className="h-64 border border-border bg-muted" />}>
+          <DeferredRender
+            fallback={<div className="h-64 border border-border bg-muted" />}
+          >
             <iframe
               title="Map to 10249 Celestial Pole St, Las Vegas"
               src={MAP_EMBED_URL}

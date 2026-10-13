@@ -1,9 +1,20 @@
 import Link from 'next/link'
 
 import type { AreaFaq } from '@/lib/area'
+import { SITE_LOGO } from '@/lib/site'
 
 export function Eyebrow({ children }: { children: string }) {
   return <p className="eyebrow">{children}</p>
+}
+
+export function LogoLine({ className = '' }: { className?: string }) {
+  return (
+    <p className={`text-sm tracking-wide ${className}`.trim()}>{SITE_LOGO}</p>
+  )
+}
+
+export function AgentCredit() {
+  return <p className="mt-3 text-sm text-muted-foreground">Dr. Jan Duffy</p>
 }
 
 export function Answer({ children }: { children: string }) {
@@ -24,8 +35,17 @@ export function SourceLine({
   )
 }
 
-export function TextCta({ href, children }: { href: string; children: string }) {
-  const external = href.startsWith('http') || href.startsWith('tel:') || href.startsWith('mailto:')
+export function TextCta({
+  href,
+  children,
+}: {
+  href: string
+  children: string
+}) {
+  const external =
+    href.startsWith('http') ||
+    href.startsWith('tel:') ||
+    href.startsWith('mailto:')
   if (external) {
     return (
       <a className="btn" href={href}>

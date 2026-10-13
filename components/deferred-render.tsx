@@ -54,4 +54,3 @@ export function DeferredRender({
 
   return <div ref={containerRef}>{isVisible ? children : fallback}</div>
 }
-

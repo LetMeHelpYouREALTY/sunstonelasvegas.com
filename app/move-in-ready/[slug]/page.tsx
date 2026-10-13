@@ -1,7 +1,13 @@
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 
-import { Answer, Eyebrow, SourceLine } from '@/components/editorial'
+import {
+  AgentCredit,
+  Answer,
+  Eyebrow,
+  LogoLine,
+  SourceLine,
+} from '@/components/editorial'
 import { JsonLd } from '@/components/json-ld'
 import { capellaHomes, WOODSIDE } from '@/lib/area'
 import { pageMeta } from '@/lib/metadata'
@@ -21,7 +27,8 @@ export async function generateMetadata({ params }: HomePageProps) {
   if (!home) {
     return pageMeta({
       title: 'Home not on this list',
-      description: 'That Capella home is not on the October 12, 2026 Woodside list used here.',
+      description:
+        'That Capella home is not on the October 12, 2026 Woodside list used here.',
       path: '/move-in-ready',
     })
   }
@@ -46,17 +53,24 @@ export default async function ListedHomePage({ params }: HomePageProps) {
         data={buildBreadcrumbList([
           { name: 'Home', path: '/' },
           { name: 'Listed homes', path: '/move-in-ready' },
-          { name: `${home.plan} ${home.lot}`, path: `/move-in-ready/${home.slug}` },
+          {
+            name: `${home.plan} ${home.lot}`,
+            path: `/move-in-ready/${home.slug}`,
+          },
         ])}
       />
       <Eyebrow>Illustrative record, not a listing photo</Eyebrow>
       <h1 className="font-heading text-5xl">
         {home.plan} {home.lot}
       </h1>
+      <LogoLine />
+      <AgentCredit />
       <Answer>
         {`Woodside priced ${home.plan} ${home.lot} at ${home.price} on October 12, 2026. The card showed ${home.sqft} square feet, ${home.baths} baths, and a ${home.garage}-car garage. ${home.beds === 'Not on card' ? 'The card did not print a bedroom count for this lot.' : `The card printed ${home.beds} bedrooms for this lot.`} This page does not show a photograph of that lot. Treat the price as a builder asking price, not a closed sale.`}
       </Answer>
-      <SourceLine href={WOODSIDE}>Woodside Homes, retrieved October 12, 2026</SourceLine>
+      <SourceLine href={WOODSIDE}>
+        Woodside Homes, retrieved October 12, 2026
+      </SourceLine>
       <Link className="btn w-fit" href="/contact">
         Ask if this lot is still open
       </Link>

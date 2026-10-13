@@ -1,6 +1,12 @@
 import Link from 'next/link'
 
-import { Answer, Eyebrow, SourceLine } from '@/components/editorial'
+import {
+  AgentCredit,
+  Answer,
+  Eyebrow,
+  LogoLine,
+  SourceLine,
+} from '@/components/editorial'
 import { JsonLd } from '@/components/json-ld'
 import { plans, WOODSIDE } from '@/lib/area'
 import { pageMeta } from '@/lib/metadata'
@@ -25,16 +31,26 @@ export default function ModelsPage() {
       />
       <header className="grid gap-4">
         <Eyebrow>Woodside plans</Eyebrow>
-        <h1 className="font-heading text-5xl sm:text-6xl">Capella floor plans</h1>
+        <h1 className="font-heading text-5xl sm:text-6xl">
+          Capella floor plans
+        </h1>
+        <LogoLine />
         <Answer>
-          Woodside offers three single-story Capella plans in Las Vegas 89143. Aries measures 1,970 square feet with three bedrooms and 2.5 baths. Taurus measures 2,093 square feet with the same bedroom and bath count. Virgo measures 2,295 square feet and offers an optional fourth bedroom. Plan facts were read from Woodside on October 12, 2026.
+          Woodside offers three single-story Capella plans in Las Vegas 89143.
+          Aries measures 1,970 square feet with three bedrooms and 2.5 baths.
+          Taurus measures 2,093 square feet with the same bedroom and bath
+          count. Virgo measures 2,295 square feet and offers an optional fourth
+          bedroom. Plan facts were read from Woodside on October 12, 2026.
         </Answer>
-        <SourceLine href={WOODSIDE}>Woodside Homes, retrieved October 12, 2026</SourceLine>
+        <SourceLine href={WOODSIDE}>
+          Woodside Homes, retrieved October 12, 2026
+        </SourceLine>
       </header>
       <div className="grid gap-6 md:grid-cols-3">
         {plans.map((plan) => (
           <article key={plan.slug} className="border border-border p-6">
             <h2 className="font-heading text-3xl">{plan.name}</h2>
+            <AgentCredit />
             <p className="mt-3 text-muted-foreground">
               {plan.sqft}. {plan.beds}. {plan.baths}. {plan.garage}.
             </p>

@@ -1,4 +1,10 @@
-import { Answer, Eyebrow, FaqList } from '@/components/editorial'
+import {
+  AgentCredit,
+  Answer,
+  Eyebrow,
+  FaqList,
+  LogoLine,
+} from '@/components/editorial'
 import { JsonLd } from '@/components/json-ld'
 import { sharedFaqs } from '@/lib/area'
 import { pageMeta } from '@/lib/metadata'
@@ -24,8 +30,13 @@ export default function FaqsPage() {
       <JsonLd id="schema-faqs" data={buildFaqPage(sharedFaqs)} />
       <Eyebrow>Questions</Eyebrow>
       <h1 className="font-heading text-5xl">Sunstone home questions</h1>
+      <LogoLine />
+      <AgentCredit />
       <Answer>
-        These answers cover HOA fees, Capella prices, and the 55+ label. They also cover gates, SID notes, drive times, and builders. Each answer uses a source dated September 28 through October 12, 2026. If a dollar amount was missing, the answer says so plainly.
+        These answers cover HOA fees, Capella prices, and the 55+ label. They
+        also cover gates, SID notes, drive times, and builders. Each answer uses
+        a source dated September 28 through October 12, 2026. If a dollar amount
+        was missing, the answer says so plainly.
       </Answer>
       <FaqList faqs={sharedFaqs} />
     </div>

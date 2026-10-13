@@ -53,6 +53,10 @@ JSON-LD on the rendered pages:
 
 Google’s live Rich Results Test was not run. This branch is not on a public URL. Local HTML was checked for one H1, a canonical, a title at or under 60 characters, and a description at or under 155 characters.
 
+## Brand
+
+The header and footer lockup is “Sunstone | Homes by Dr. Jan Duffy.” Dr. Jan Duffy is named on each page and under each section heading. Her portrait is the favicon, the Apple icon, and the about, contact, and footer image.
+
 ## Workflow
 
 Contact and valuation forms start `handleCapellaInquiry` in `workflows/capella-inquiry.ts`. The run records the inquiry in Follow Up Boss, writes a welcome note, pauses 5 seconds, then writes an onboarding follow-up. `next.config.ts` is wrapped with `withWorkflow`. In production, a missing Follow Up Boss key returns 503 before a run starts.

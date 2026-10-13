@@ -6,8 +6,11 @@ import { ThemeProvider } from 'next-themes'
 import { JsonLd } from '@/components/json-ld'
 import SiteFooter from '@/components/site-footer'
 import SiteHeader from '@/components/site-header'
-import { localBusinessJsonLd, realEstateAgentJsonLd } from '@/lib/structured-data'
-import { SITE_URL } from '@/lib/site'
+import {
+  localBusinessJsonLd,
+  realEstateAgentJsonLd,
+} from '@/lib/structured-data'
+import { SITE_LOGO, SITE_URL } from '@/lib/site'
 
 import './globals.css'
 
@@ -39,7 +42,7 @@ export const metadata: Metadata = {
     description:
       'Homes for sale in Capella at Sunstone, Las Vegas 89143, with Dr. Jan Duffy.',
     url: SITE_URL,
-    siteName: 'Dr. Jan Duffy | Capella at Sunstone',
+    siteName: SITE_LOGO,
     locale: 'en_US',
     type: 'website',
   },
@@ -75,7 +78,12 @@ export default function RootLayout({
         <JsonLd id="localbusiness-schema" data={localBusinessJsonLd} />
       </head>
       <body className={`${headingFont.variable} ${bodyFont.variable}`}>
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
           <div className="flex min-h-screen flex-col">
             <SiteHeader />
             <main className="flex-1">{children}</main>
