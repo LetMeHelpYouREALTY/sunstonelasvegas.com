@@ -10,7 +10,7 @@ import {
 import { JsonLd } from '@/components/json-ld'
 import { RealScoutSearch } from '@/components/realscout-search'
 import { SunstoneMap } from '@/components/sunstone-map'
-import { featuredPlaces, sharedFaqs, SUNSTONE, WOODSIDE } from '@/lib/area'
+import { featuredPlaces, sharedFaqs, WOODSIDE } from '@/lib/area'
 import { pageMeta } from '@/lib/metadata'
 import { CONTACT_PHONE_LINK } from '@/lib/site'
 import { buildFaqPage } from '@/lib/structured-data'
@@ -40,9 +40,6 @@ export default function HomePage() {
               and Richmond American build there. Capella is one Woodside
               collection inside that plan.
             </Answer>
-            <SourceLine href={SUNSTONE}>
-              sunstonelv.com, retrieved October 13, 2026
-            </SourceLine>
             <a className="btn w-fit" href={CONTACT_PHONE_LINK}>
               Call Dr. Jan Duffy
             </a>
