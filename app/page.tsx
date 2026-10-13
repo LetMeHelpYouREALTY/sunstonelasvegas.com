@@ -18,7 +18,7 @@ import { buildFaqPage } from '@/lib/structured-data'
 export const metadata = pageMeta({
   title: 'Sunstone Las Vegas Homes for Sale',
   description:
-    'Sunstone Las Vegas homes for sale in 89143. Capella, Lyra, Axel, Alia, and Trilogy are collections inside the master plan.',
+    'Sunstone Las Vegas homes for sale in ZIP 89143. Ten neighborhoods and about 3,650 homes sit inside the master plan.',
   path: '/',
 })
 
@@ -36,9 +36,9 @@ export default function HomePage() {
             </h1>
             <Answer>
               Sunstone is the master plan in northwest Las Vegas. It sits in
-              ZIP 89143 and plans about 3,650 homes. Woodside, Lennar, Shea,
-              and Richmond American build there. Capella is one Woodside
-              collection inside that plan.
+              ZIP 89143 and plans about 3,650 homes. Ten neighborhoods include
+              townhomes, single-family homes, and age-qualified plans. Lennar,
+              Shea, Woodside, and Richmond American each build inside it.
             </Answer>
             <a className="btn w-fit" href={CONTACT_PHONE_LINK}>
               <span className="grid gap-1 text-center leading-none">

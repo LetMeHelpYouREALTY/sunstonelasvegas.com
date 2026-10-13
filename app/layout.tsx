@@ -35,7 +35,7 @@ export const metadata: Metadata = {
     template: '%s',
   },
   description:
-    'Dr. Jan Duffy represents buyers and sellers at Sunstone Las Vegas, ZIP 89143. Capella is one Woodside collection inside the master plan.',
+    'Dr. Jan Duffy represents buyers and sellers at Sunstone Las Vegas, ZIP 89143. Ten neighborhoods and about 3,650 homes sit inside that plan.',
   alternates: { canonical: '/' },
   openGraph: {
     title: 'Sunstone Las Vegas Homes for Sale',
