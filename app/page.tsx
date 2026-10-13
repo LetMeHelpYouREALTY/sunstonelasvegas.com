@@ -10,15 +10,15 @@ import {
 } from '@/components/editorial'
 import { JsonLd } from '@/components/json-ld'
 import { RealScoutSearch } from '@/components/realscout-search'
-import { DRIVES, sharedFaqs, WOODSIDE } from '@/lib/area'
+import { DRIVES, sharedFaqs, SUNSTONE, WOODSIDE } from '@/lib/area'
 import { pageMeta } from '@/lib/metadata'
 import { CONTACT_PHONE, CONTACT_PHONE_LINK } from '@/lib/site'
 import { buildFaqPage } from '@/lib/structured-data'
 
 export const metadata = pageMeta({
-  title: 'Capella at Sunstone Homes for Sale',
+  title: 'Sunstone Las Vegas Homes for Sale',
   description:
-    'Capella at Sunstone homes for sale in Las Vegas 89143. Woodside listed six homes from $599,950 to $679,950 on October 12, 2026.',
+    'Sunstone Las Vegas homes for sale in 89143. Capella is one Woodside collection. Six Capella homes were listed from $599,950 on October 12, 2026.',
   path: '/',
 })
 
@@ -30,18 +30,22 @@ export default function HomePage() {
         <div className="mx-auto grid max-w-6xl gap-10 px-4 py-20 sm:py-28">
           <Eyebrow>Las Vegas 89143</Eyebrow>
           <h1 className="max-w-4xl font-heading text-5xl text-inherit sm:text-7xl">
-            Capella at Sunstone homes for sale
+            <span className="block sm:inline">Sunstone </span>
+            <span className="block sm:inline">Las Vegas</span>
           </h1>
           <LogoLine className="text-inherit" />
           <Answer>
-            Capella at Sunstone is a Woodside Homes neighborhood in Las Vegas
-            89143. It sits inside the Sunstone master plan near US-95. On
-            October 12, 2026, Woodside listed six homes from $599,950 to
-            $679,950. Each plan is a single story from 1,970 to 2,295 square
-            feet.
+            Sunstone is the master plan in Las Vegas 89143. Woodside Homes is
+            one of the builders there. Capella is one Woodside collection inside
+            the Sunstone plan. On October 12, 2026, Woodside listed six Capella
+            homes from $599,950 to $679,950. Those plans run 1,970 to 2,295
+            square feet.
           </Answer>
+          <SourceLine href={SUNSTONE}>
+            sunstonelv.com collection cards, retrieved October 13, 2026
+          </SourceLine>
           <SourceLine href={WOODSIDE}>
-            Woodside Homes community page, retrieved October 12, 2026
+            Woodside Capella prices, retrieved October 12, 2026
           </SourceLine>
         </div>
       </section>
