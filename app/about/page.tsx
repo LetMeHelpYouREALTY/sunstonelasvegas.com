@@ -2,6 +2,7 @@ import Image from 'next/image'
 
 import { AgentCredit, Answer, Eyebrow, LogoLine } from '@/components/editorial'
 import { JsonLd } from '@/components/json-ld'
+import { RealScoutOffice } from '@/components/realscout-office'
 import { ValuationForm } from '@/components/valuation-form'
 import { pageMeta } from '@/lib/metadata'
 import {
@@ -53,6 +54,7 @@ export default function AboutPage() {
           </Answer>
         </div>
       </header>
+      <RealScoutOffice />
       <section>
         <h2 className="font-heading text-3xl">Brokerage and office</h2>
         <AgentCredit />

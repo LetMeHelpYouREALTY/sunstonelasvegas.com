@@ -8,7 +8,7 @@ import {
   SourceLine,
 } from '@/components/editorial'
 import { JsonLd } from '@/components/json-ld'
-import { RealScoutSearch } from '@/components/realscout-search'
+import { RealScoutOffice } from '@/components/realscout-office'
 import { SunstoneMap } from '@/components/sunstone-map'
 import { featuredPlaces, sharedFaqs, WOODSIDE } from '@/lib/area'
 import { pageMeta } from '@/lib/metadata'
@@ -56,6 +56,10 @@ export default function HomePage() {
         </div>
       </section>
 
+      <div className="mx-auto max-w-6xl px-4 py-12">
+        <RealScoutOffice />
+      </div>
+
       <section className="mx-auto grid max-w-6xl gap-8 px-4 py-16">
         <div className="grid gap-3">
           <h2 className="font-heading text-4xl">Sunstone neighborhoods</h2>
@@ -99,10 +103,6 @@ export default function HomePage() {
         <Link className="btn w-fit" href="/move-in-ready">
           See the six homes
         </Link>
-      </section>
-
-      <section className="mx-auto max-w-6xl px-4 pb-16">
-        <RealScoutSearch heading="Search Sunstone homes" />
       </section>
 
       <section className="mx-auto max-w-6xl px-4 pb-20">

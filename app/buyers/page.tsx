@@ -9,7 +9,7 @@ import {
   SourceLine,
 } from '@/components/editorial'
 import { JsonLd } from '@/components/json-ld'
-import { RealScoutSearch } from '@/components/realscout-search'
+import { RealScoutOffice } from '@/components/realscout-office'
 import {
   HOA,
   LENNAR,
@@ -89,6 +89,7 @@ export default function BuyersPage() {
           Sunstone master-plan site, retrieved October 12, 2026
         </SourceLine>
       </header>
+      <RealScoutOffice />
 
       <section className="grid gap-6">
         <h2 className="font-heading text-4xl">Neighborhood by neighborhood</h2>
@@ -177,8 +178,6 @@ export default function BuyersPage() {
           Lennar Axel page, retrieved October 12, 2026
         </SourceLine>
       </section>
-
-      <RealScoutSearch heading="Search homes inside Sunstone" />
 
       <section>
         <h2 className="font-heading text-4xl">Buyer questions</h2>

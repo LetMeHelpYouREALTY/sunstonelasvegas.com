@@ -76,6 +76,11 @@ export default function RootLayout({
         </Script>
         <JsonLd id="realestateagent-schema" data={realEstateAgentJsonLd} />
         <JsonLd id="localbusiness-schema" data={localBusinessJsonLd} />
+        <Script
+          src="https://em.realscout.com/widgets/realscout-web-components.umd.js"
+          type="module"
+          strategy="afterInteractive"
+        />
       </head>
       <body className={`${headingFont.variable} ${bodyFont.variable}`}>
         <ThemeProvider

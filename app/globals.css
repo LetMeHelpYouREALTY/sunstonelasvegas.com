@@ -216,6 +216,17 @@
   text-decoration: none;
 }
 
+realscout-office-listings {
+  --rs-listing-divider-color: #d9d0c2;
+  --rs-listing-background-color: #f7f3eb;
+  --rs-listing-text-color: #1a1612;
+  --rs-listing-price-color: #1a1612;
+  --rs-listing-stats-color: #4a453e;
+  --rs-listing-details-color: #4a453e;
+  --rs-listing-button-color: #1a1612;
+  --rs-listing-button-text-color: #f4efe6;
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,

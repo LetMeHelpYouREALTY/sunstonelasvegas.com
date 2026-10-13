@@ -9,6 +9,7 @@ import {
   SourceLine,
 } from '@/components/editorial'
 import { JsonLd } from '@/components/json-ld'
+import { RealScoutOffice } from '@/components/realscout-office'
 import { plans } from '@/lib/area'
 import { pageMeta } from '@/lib/metadata'
 import { buildBreadcrumbList } from '@/lib/structured-data'
@@ -68,6 +69,7 @@ export default async function ModelPage({ params }: PlanPageProps) {
       <Link className="btn w-fit" href="/contact">
         Ask for a model tour
       </Link>
+      <RealScoutOffice />
     </div>
   )
 }

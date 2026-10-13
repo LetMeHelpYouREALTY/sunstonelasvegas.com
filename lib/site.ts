@@ -8,6 +8,7 @@ export const BROKERAGE_NAME =
 export const CONTACT_EMAIL = 'DrDuffySells@SunstoneWoodsideHomes.com'
 export const CONTACT_PHONE = '(702) 766-7950'
 export const CONTACT_PHONE_LINK = 'tel:+17027667950'
+export const REALSCOUT_AGENT_ID = 'QWdlbnQtMjI1MDUw'
 
 export const CONTACT_ADDRESS = '10249 Celestial Pole St, Las Vegas, NV 89143'
 export const SALES_OFFICE_ADDRESS = '9361 Blue Vega Ave., Las Vegas, NV 89143'

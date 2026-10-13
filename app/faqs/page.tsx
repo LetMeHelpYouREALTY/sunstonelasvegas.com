@@ -6,6 +6,7 @@ import {
   LogoLine,
 } from '@/components/editorial'
 import { JsonLd } from '@/components/json-ld'
+import { RealScoutOffice } from '@/components/realscout-office'
 import { sharedFaqs } from '@/lib/area'
 import { pageMeta } from '@/lib/metadata'
 import { buildBreadcrumbList, buildFaqPage } from '@/lib/structured-data'
@@ -38,6 +39,7 @@ export default function FaqsPage() {
         a source dated September 28 through October 12, 2026. If a dollar amount
         was missing, the answer says so plainly.
       </Answer>
+      <RealScoutOffice />
       <FaqList faqs={sharedFaqs} />
     </div>
   )

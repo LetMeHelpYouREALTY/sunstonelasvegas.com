@@ -8,6 +8,7 @@ import {
   SourceLine,
 } from '@/components/editorial'
 import { JsonLd } from '@/components/json-ld'
+import { RealScoutOffice } from '@/components/realscout-office'
 import { DRIVES, LENNAR, SUNSTONE } from '@/lib/area'
 import { pageMeta } from '@/lib/metadata'
 import { CONTACT_PHONE_LINK } from '@/lib/site'
@@ -49,6 +50,7 @@ export default function LocalGuidePage() {
           Homes.com Sunstone guide, retrieved October 13, 2026
         </SourceLine>
       </header>
+      <RealScoutOffice />
 
       <section className="grid max-w-3xl gap-3">
         <h2 className="font-heading text-4xl">Figures with no date</h2>

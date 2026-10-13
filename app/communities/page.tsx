@@ -8,6 +8,7 @@ import {
   SourceLine,
 } from '@/components/editorial'
 import { JsonLd } from '@/components/json-ld'
+import { RealScoutOffice } from '@/components/realscout-office'
 import { collectionRows, HOA, SUNSTONE } from '@/lib/area'
 import { pageMeta } from '@/lib/metadata'
 import { buildBreadcrumbList, placeJsonLd } from '@/lib/structured-data'
@@ -48,6 +49,7 @@ export default function CommunitiesPage() {
           sunstonelv.com, retrieved October 12, 2026
         </SourceLine>
       </header>
+      <RealScoutOffice />
 
       <section className="overflow-x-auto">
         <h2 className="font-heading text-4xl">Collections</h2>
