@@ -8,7 +8,7 @@ import { postLeadForm } from '@/lib/lead-form-client'
 type FormStatus = 'idle' | 'submitting' | 'success' | 'error'
 
 const successMessage =
-  "Thank you — your concierge request was sent. Dr. Duffy's team will respond within one business day."
+  'Your note was sent. Dr. Jan Duffy will reply by phone or email.'
 
 export function ContactForm() {
   const [status, setStatus] = useState<FormStatus>('idle')
@@ -56,8 +56,8 @@ export function ContactForm() {
           <input
             name="name"
             type="text"
-            placeholder="Alex Martinez"
-            className="rounded-lg border border-border bg-background px-3 py-2 focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/30"
+            autoComplete="name"
+            className="field"
             required
             disabled={status === 'submitting'}
           />
@@ -67,8 +67,8 @@ export function ContactForm() {
           <input
             name="email"
             type="email"
-            placeholder="you@example.com"
-            className="rounded-lg border border-border bg-background px-3 py-2 focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/30"
+            autoComplete="email"
+            className="field"
             required
             disabled={status === 'submitting'}
           />
@@ -78,8 +78,8 @@ export function ContactForm() {
           <input
             name="phone"
             type="tel"
-            placeholder="(555) 123-4567"
-            className="rounded-lg border border-border bg-background px-3 py-2 focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/30"
+            autoComplete="tel"
+            className="field"
             disabled={status === 'submitting'}
           />
         </label>
@@ -87,7 +87,7 @@ export function ContactForm() {
           <span>Preferred move-in timeframe</span>
           <select
             name="timeline"
-            className="rounded-lg border border-border bg-background px-3 py-2 focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/30"
+            className="field"
             disabled={status === 'submitting'}
           >
             <option value="next-60-days">Next 60 days</option>
@@ -101,17 +101,16 @@ export function ContactForm() {
           <textarea
             name="message"
             rows={4}
-            placeholder="Tell us about the homes, floor plans, or financing guidance you need."
-            className="rounded-lg border border-border bg-background px-3 py-2 focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/30"
+            className="field"
             disabled={status === 'submitting'}
           />
         </label>
         <button
           type="submit"
           disabled={status === 'submitting'}
-          className="mt-2 inline-flex items-center justify-center rounded-full bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground transition hover:bg-primary/90 disabled:cursor-not-allowed disabled:opacity-70"
+          className="btn mt-2 w-fit disabled:opacity-70"
         >
-          {status === 'submitting' ? 'Sending…' : 'Send concierge request'}
+          {status === 'submitting' ? 'Sending' : 'Send message'}
         </button>
       </form>
     </div>

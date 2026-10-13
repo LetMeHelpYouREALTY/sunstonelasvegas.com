@@ -1,39 +1,52 @@
-import type { Metadata } from 'next'
+import Link from 'next/link'
 
-import MoveInReadyBrowser from './_components/move-in-ready-browser'
-import { FaqSection } from '@/components/faq-section'
+import { Answer, Eyebrow, SourceLine } from '@/components/editorial'
 import { JsonLd } from '@/components/json-ld'
-import { getFaqsByCategory } from '@/lib/faqs'
+import { RealScoutSearch } from '@/components/realscout-search'
+import { capellaHomes, WOODSIDE } from '@/lib/area'
+import { pageMeta } from '@/lib/metadata'
 import { buildBreadcrumbList } from '@/lib/structured-data'
 
-export const metadata: Metadata = {
-  title: 'Move-In Ready Homes | Sunstone Woodside by Dr. Duffy',
+export const metadata = pageMeta({
+  title: 'Capella Homes Woodside Listed',
   description:
-    'Filter designer-curated move-in-ready homes across Cadence, Sunstone, and Summerlin with concierge guidance from Dr. Duffy.',
-}
+    'Six Capella at Sunstone homes Woodside listed on October 12, 2026, from $599,950 to $679,950. Builder asking prices, not MLS listings.',
+  path: '/move-in-ready',
+})
 
-const moveInReadyFaqs = getFaqsByCategory(['specs'], [1, 2, 3, 4, 5])
-
-export default function MoveInReadyIndexPage() {
+export default function MoveInReadyPage() {
   return (
-    <>
+    <div className="mx-auto grid max-w-6xl gap-16 px-4 py-16">
       <JsonLd
-        id="schema-move-in-ready-breadcrumb"
+        id="schema-inventory-breadcrumb"
         data={buildBreadcrumbList([
           { name: 'Home', path: '/' },
-          { name: 'Move-In Ready Homes', path: '/move-in-ready' },
+          { name: 'Listed homes', path: '/move-in-ready' },
         ])}
       />
-      <MoveInReadyBrowser />
-      <div className="mx-auto max-w-6xl px-4 pb-16">
-        <FaqSection
-          title="Woodside Specification & Technology FAQs"
-          faqs={moveInReadyFaqs}
-          className="mt-12"
-          limit={6}
-          showMoreHref="/faqs#specs"
-        />
+      <header className="grid gap-4">
+        <Eyebrow>Builder list</Eyebrow>
+        <h1 className="font-heading text-5xl sm:text-6xl">Capella homes Woodside listed</h1>
+        <Answer>
+          These six homes were on Woodside’s Capella page on October 12, 2026. Asking prices run from $599,950 to $679,950 for one-story plans. They are builder prices, not closed sales and not an MLS feed. Woodside called this release a final opportunity on that page. Confirm the lot is still available before you schedule a tour.
+        </Answer>
+        <SourceLine href={WOODSIDE}>Retrieved October 12, 2026</SourceLine>
+      </header>
+      <div className="grid gap-4">
+        {capellaHomes.map((home) => (
+          <article key={home.slug} className="grid gap-2 border border-border p-6 sm:grid-cols-4">
+            <h2 className="font-heading text-3xl">
+              {home.plan} {home.lot}
+            </h2>
+            <p>{home.price}</p>
+            <p>
+              {home.sqft} sq ft · {home.baths} baths
+            </p>
+            <Link href={`/move-in-ready/${home.slug}`}>Details</Link>
+          </article>
+        ))}
       </div>
-    </>
+      <RealScoutSearch heading="Search beyond this builder list" />
+    </div>
   )
 }

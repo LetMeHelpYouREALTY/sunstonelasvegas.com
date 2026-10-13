@@ -1,32 +1,31 @@
-import { MetadataRoute } from 'next'
+import type { MetadataRoute } from 'next'
 
-import { models } from '@/lib/models'
-import { moveInReadyHomes } from '@/lib/move-in-ready'
-import { serviceAreas } from '@/lib/service-areas'
-
-const baseUrl = 'https://www.sunstonewoodsidehomes.com'
+import { capellaHomes, plans } from '@/lib/area'
+import { SITE_URL } from '@/lib/site'
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const staticRoutes = [
     '/',
+    '/buyers',
+    '/sell',
+    '/communities',
+    '/new-construction',
+    '/trilogy',
+    '/market-report',
     '/models',
     '/move-in-ready',
-    '/sell',
-    '/buyers-guide',
-    '/communities',
-    '/service-areas',
-    '/financing',
+    '/faqs',
+    '/about',
     '/contact',
   ]
 
   const dynamicRoutes = [
-    ...models.map((model) => `/models/${model.slug}`),
-    ...moveInReadyHomes.map((home) => `/move-in-ready/${home.slug}`),
-    ...serviceAreas.map((area) => `/service-areas/${area.slug}`),
+    ...plans.map((plan) => `/models/${plan.slug}`),
+    ...capellaHomes.map((home) => `/move-in-ready/${home.slug}`),
   ]
 
   return [...staticRoutes, ...dynamicRoutes].map((path) => ({
-    url: `${baseUrl}${path}`,
+    url: `${SITE_URL}${path}`,
     changeFrequency: 'weekly',
     priority: path === '/' ? 1 : 0.7,
   }))

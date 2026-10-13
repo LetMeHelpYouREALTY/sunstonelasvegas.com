@@ -1,13 +1,30 @@
 import {
+  AGENT_LICENSE,
+  AGENT_NAME,
+  AREA_NAME,
+  AREA_ZIP,
+  BROKERAGE_NAME,
+  CONTACT_ADDRESS,
   CONTACT_EMAIL,
   CONTACT_PHONE,
+  MASTER_PLAN,
+  SITE_URL,
 } from '@/lib/site'
 
-export const SITE_URL = 'https://www.sunstonewoodsidehomes.com'
+export { SITE_URL }
 
 export type BreadcrumbItem = {
   name: string
   path: string
+}
+
+const postalAddress = {
+  '@type': 'PostalAddress',
+  streetAddress: '10249 Celestial Pole St',
+  addressLocality: 'Las Vegas',
+  addressRegion: 'NV',
+  postalCode: AREA_ZIP,
+  addressCountry: 'US',
 }
 
 export function buildBreadcrumbList(items: BreadcrumbItem[]) {
@@ -38,96 +55,101 @@ export function buildFaqPage(faqs: { question: string; answer: string }[]) {
   }
 }
 
-export const realEstateAgentJsonLd = {
-  '@context': 'https://schema.org',
-  '@type': 'RealEstateAgent',
-  '@id': `${SITE_URL}/#realestateagent`,
-  name: 'Dr. Jan Duffy',
-  url: SITE_URL,
-  logo: `${SITE_URL}/og-image.png`,
-  image: `${SITE_URL}/og-image.png`,
-  telephone: CONTACT_PHONE,
-  email: CONTACT_EMAIL,
-  priceRange: '$$',
-  worksFor: {
-    '@type': 'RealEstateAgency',
-    name: 'Berkshire Hathaway HomeServices Nevada Properties',
-  },
-  hasCredential: {
-    '@type': 'EducationalOccupationalCredential',
-    credentialCategory: 'Real Estate License',
-    identifier: 'S.0197614.LLC',
-  },
-  contactPoint: {
-    '@type': 'ContactPoint',
-    telephone: CONTACT_PHONE,
-    contactType: 'customer service',
-    areaServed: {
-      '@type': 'Place',
-      name: 'Capella at Sunstone',
-      address: {
-        '@type': 'PostalAddress',
-        addressLocality: 'Las Vegas',
-        addressRegion: 'NV',
-        postalCode: '89143',
-        addressCountry: 'US',
-      },
+export function buildArticle(input: {
+  headline: string
+  description: string
+  path: string
+  datePublished: string
+}) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: input.headline,
+    description: input.description,
+    datePublished: input.datePublished,
+    dateModified: input.datePublished,
+    mainEntityOfPage: `${SITE_URL}${input.path}`,
+    image: [`${SITE_URL}/opengraph-image`],
+    author: {
+      '@type': 'Person',
+      name: AGENT_NAME,
+      url: `${SITE_URL}/about`,
     },
-    availableLanguage: ['English'],
-    hoursAvailable: [
-      {
-        '@type': 'OpeningHoursSpecification',
-        dayOfWeek: ['https://schema.org/Monday'],
-        opens: '14:00',
-        closes: '17:00',
-      },
-      {
-        '@type': 'OpeningHoursSpecification',
-        dayOfWeek: [
-          'https://schema.org/Tuesday',
-          'https://schema.org/Wednesday',
-          'https://schema.org/Thursday',
-          'https://schema.org/Friday',
-          'https://schema.org/Saturday',
-          'https://schema.org/Sunday',
-        ],
-        opens: '10:00',
-        closes: '17:00',
-      },
-    ],
-  },
-  areaServed: {
+    publisher: {
+      '@type': 'Organization',
+      name: BROKERAGE_NAME,
+    },
+  }
+}
+
+export const placeJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Place',
+  name: AREA_NAME,
+  address: postalAddress,
+  containedInPlace: {
     '@type': 'Place',
-    name: 'Capella at Sunstone',
+    name: `${MASTER_PLAN} master plan`,
     address: {
       '@type': 'PostalAddress',
       addressLocality: 'Las Vegas',
       addressRegion: 'NV',
-      postalCode: '89143',
+      postalCode: AREA_ZIP,
       addressCountry: 'US',
     },
-    containedInPlace: {
-      '@type': 'Place',
-      name: 'Sunstone Master Plan',
-      containedInPlace: {
-        '@type': 'City',
-        name: 'Las Vegas',
-        addressRegion: 'NV',
-        addressCountry: 'US',
-      },
+  },
+}
+
+const areaServed = [
+  {
+    '@type': 'Place',
+    name: AREA_NAME,
+    address: postalAddress,
+  },
+  {
+    '@type': 'Place',
+    name: `${MASTER_PLAN} master plan`,
+    address: {
+      '@type': 'PostalAddress',
+      addressLocality: 'Las Vegas',
+      addressRegion: 'NV',
+      postalCode: AREA_ZIP,
+      addressCountry: 'US',
     },
   },
-  knowsAbout: [
-    'Sunstone new construction homes',
-    'Capella at Sunstone Woodside Homes',
-    'Las Vegas 55+ and active-adult communities',
-  ],
-  address: {
-    '@type': 'PostalAddress',
-    streetAddress: '10249 Celestial Pole St',
-    addressLocality: 'Las Vegas',
-    addressRegion: 'NV',
-    postalCode: '89143',
-    addressCountry: 'US',
+]
+
+export const realEstateAgentJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'RealEstateAgent',
+  '@id': `${SITE_URL}/#realestateagent`,
+  name: AGENT_NAME,
+  url: SITE_URL,
+  image: `${SITE_URL}/opengraph-image`,
+  telephone: CONTACT_PHONE,
+  email: CONTACT_EMAIL,
+  address: postalAddress,
+  areaServed,
+  identifier: AGENT_LICENSE,
+  worksFor: {
+    '@type': 'Organization',
+    name: BROKERAGE_NAME,
   },
-} as const satisfies Record<string, unknown>
+}
+
+export const localBusinessJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'LocalBusiness',
+  '@id': `${SITE_URL}/#localbusiness`,
+  name: `${AGENT_NAME} — ${AREA_NAME}`,
+  url: SITE_URL,
+  image: `${SITE_URL}/opengraph-image`,
+  telephone: CONTACT_PHONE,
+  email: CONTACT_EMAIL,
+  address: postalAddress,
+  areaServed,
+  parentOrganization: {
+    '@type': 'Organization',
+    name: BROKERAGE_NAME,
+  },
+}

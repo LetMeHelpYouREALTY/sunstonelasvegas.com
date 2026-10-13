@@ -1,39 +1,33 @@
-import type { Metadata } from 'next'
-import Link from 'next/link'
-
+import { Answer, Eyebrow } from '@/components/editorial'
+import { ContactForm } from '@/components/contact-form'
+import { DeferredRender } from '@/components/deferred-render'
+import { JsonLd } from '@/components/json-ld'
+import { pageMeta } from '@/lib/metadata'
 import {
   CONTACT_ADDRESS,
   CONTACT_EMAIL,
   CONTACT_PHONE,
   CONTACT_PHONE_LINK,
-  SALES_HOURS,
+  SALES_OFFICE_ADDRESS,
 } from '@/lib/site'
-import { ContactForm } from '@/components/contact-form'
-import { DeferredRender } from '@/components/deferred-render'
-import { JsonLd } from '@/components/json-ld'
 import { buildBreadcrumbList } from '@/lib/structured-data'
-
-const reasons = [
-  'Schedule a private tour of Capella model homes.',
-  'Request move-in ready inventory updates.',
-  'Review incentive stacking and design studio budgets.',
-  'Coordinate relocation services and utility setup.',
-]
 
 const MAP_EMBED_URL =
   'https://maps.google.com/maps?q=10249%20Celestial%20Pole%20St%20Las%20Vegas%2C%20NV%2089143&output=embed'
 const MAP_DIRECTIONS_URL =
   'https://www.google.com/maps/dir/?api=1&destination=10249+Celestial+Pole+St+Las+Vegas+NV+89143'
+const REVIEWS_URL = 'https://www.google.com/maps/search/?api=1&query=10249+Celestial+Pole+St+Las+Vegas+NV+89143'
 
-export const metadata: Metadata = {
-  title: 'Contact Dr. Duffy | Sunstone Woodside Home Concierge',
+export const metadata = pageMeta({
+  title: 'Contact Dr. Jan Duffy | Sunstone',
   description:
-    'Call or message Dr. Duffy to book Sunstone tours, preview move-in ready homes, and plan your Las Vegas relocation support.',
-}
+    'Call Dr. Jan Duffy at (702) 766-7950 for Capella at Sunstone in Las Vegas 89143. Office address 10249 Celestial Pole St.',
+  path: '/contact',
+})
 
 export default function ContactPage() {
   return (
-    <div className="mx-auto flex max-w-5xl flex-col gap-16 px-4 py-16">
+    <div className="mx-auto grid max-w-6xl gap-16 px-4 py-16">
       <JsonLd
         id="schema-contact-breadcrumb"
         data={buildBreadcrumbList([
@@ -41,94 +35,50 @@ export default function ContactPage() {
           { name: 'Contact', path: '/contact' },
         ])}
       />
-      <header className="space-y-4 text-center sm:text-left">
-        <p className="text-sm font-semibold uppercase tracking-[0.3em] text-primary">
-          Contact
-        </p>
-        <h1 className="text-balance text-4xl font-bold text-foreground sm:text-5xl">
-          Let’s plan your next move together
-        </h1>
-        <p className="text-lg text-muted-foreground">
-          Reach out by phone, email, or complete the concierge form below to begin your
-          personalized Capella at Sunstone experience.
-        </p>
+      <header className="grid gap-4">
+        <Eyebrow>Contact</Eyebrow>
+        <h1 className="font-heading text-5xl sm:text-6xl">Contact Dr. Jan Duffy</h1>
+        <Answer>
+          {`Call ${CONTACT_PHONE} for a Capella tour or a Sunstone home valuation. The published community address is ${CONTACT_ADDRESS}. Woodside’s Capella sales office sits at ${SALES_OFFICE_ADDRESS}. Use the form below when you want a written reply.`}
+        </Answer>
       </header>
-
-      <section className="grid gap-10 lg:grid-cols-[1.1fr_0.9fr]">
-        <div className="space-y-6 rounded-3xl border border-border bg-card/70 p-8 shadow-sm">
-          <h2 className="text-2xl font-semibold text-foreground">Concierge request form</h2>
-          <p className="text-sm text-muted-foreground">
-            Tell us who will be joining the journey, your target move-in date, and any must-haves.
-            Dr. Duffy’s team will respond within one business day.
-          </p>
-          <ContactForm />
+      <section className="grid gap-10 lg:grid-cols-2">
+        <div>
+          <h2 className="font-heading text-3xl">Send a note</h2>
+          <div className="mt-4">
+            <ContactForm />
+          </div>
         </div>
-        <aside className="space-y-6 rounded-3xl border border-dashed border-border/70 bg-background/60 p-6 text-sm text-muted-foreground">
-          <h2 className="text-base font-semibold text-foreground">Visit the sales center</h2>
-          <p>{CONTACT_ADDRESS}</p>
-          <p>Hours: {SALES_HOURS}</p>
-          <Link
-            href={CONTACT_PHONE_LINK}
-            className="inline-flex items-center font-semibold text-primary transition hover:text-primary/80"
-          >
-            Call {CONTACT_PHONE}
-          </Link>
+        <div className="grid gap-4">
+          <h2 className="font-heading text-3xl">Map</h2>
           <p>
-            Email:{' '}
-            <a
-              href={`mailto:${CONTACT_EMAIL}`}
-              className="font-semibold text-foreground transition hover:text-primary"
-            >
-              {CONTACT_EMAIL}
-            </a>
+            <a href={CONTACT_PHONE_LINK}>{CONTACT_PHONE}</a>
           </p>
-          <div className="border-t border-border/60 pt-4">
-            <h3 className="text-xs uppercase tracking-[0.25em] text-primary">Top requests</h3>
-            <ul className="mt-2 space-y-2">
-              {reasons.map((reason) => (
-                <li key={reason} className="flex items-start gap-2">
-                  <span className="mt-1 inline-block h-1.5 w-1.5 rounded-full bg-primary" aria-hidden />
-                  <span>{reason}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-          <div className="space-y-4 rounded-2xl border border-border/60 bg-background/80 p-4">
-            <h3 className="text-sm font-semibold text-foreground">Plan your visit</h3>
-            <p>
-              Use Google Maps to confirm travel time, preview street views, and save the sales center to your favorites so
-              directions are one tap away when you tour.
-            </p>
-            <a
-              href={MAP_DIRECTIONS_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center rounded-full bg-primary px-4 py-2 text-xs font-semibold text-primary-foreground transition hover:bg-primary/90"
-            >
-              Open directions in Google Maps
+          <p>
+            <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>
+          </p>
+          <p>{CONTACT_ADDRESS}</p>
+          <div className="flex flex-wrap gap-3">
+            <a className="btn" href={CONTACT_PHONE_LINK}>
+              Call
             </a>
-            <DeferredRender
-              fallback={
-                <div className="h-[220px] w-full animate-pulse rounded-xl border border-border/60 bg-muted/40" />
-              }
-            >
-              <div className="overflow-hidden rounded-xl border border-border/60">
-                <iframe
-                  title="Google Maps location for Dr. Duffy's Sunstone sales center"
-                  src={MAP_EMBED_URL}
-                  width="100%"
-                  height="220"
-                  style={{ border: 0 }}
-                  allowFullScreen
-                  loading="lazy"
-                  referrerPolicy="no-referrer-when-downgrade"
-                />
-              </div>
-            </DeferredRender>
+            <a className="btn-line" href={MAP_DIRECTIONS_URL}>
+              Directions
+            </a>
+            <a className="btn-line" href={REVIEWS_URL}>
+              View Google Reviews
+            </a>
           </div>
-        </aside>
+          <DeferredRender fallback={<div className="h-64 border border-border bg-muted" />}>
+            <iframe
+              title="Map to 10249 Celestial Pole St, Las Vegas"
+              src={MAP_EMBED_URL}
+              className="h-64 w-full border border-border"
+              loading="lazy"
+            />
+          </DeferredRender>
+        </div>
       </section>
     </div>
   )
 }
-

@@ -1,5 +1,4 @@
 @import "tailwindcss";
-@import "tw-animate-css";
 
 @custom-variant dark (&:is(.dark *));
 
@@ -8,291 +7,207 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-body);
   --font-heading: var(--font-heading);
-  --font-mono: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
-  --color-sidebar-ring: var(--sidebar-ring);
-  --color-sidebar-border: var(--sidebar-border);
-  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
-  --color-sidebar-accent: var(--sidebar-accent);
-  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
-  --color-sidebar-primary: var(--sidebar-primary);
-  --color-sidebar-foreground: var(--sidebar-foreground);
-  --color-sidebar: var(--sidebar);
-  --color-chart-5: var(--chart-5);
-  --color-chart-4: var(--chart-4);
-  --color-chart-3: var(--chart-3);
-  --color-chart-2: var(--chart-2);
-  --color-chart-1: var(--chart-1);
-  --color-ring: var(--ring);
-  --color-input: var(--input);
   --color-border: var(--border);
-  --color-destructive: var(--destructive);
-  --color-accent-foreground: var(--accent-foreground);
-  --color-accent: var(--accent);
-  --color-muted-foreground: var(--muted-foreground);
-  --color-muted: var(--muted);
-  --color-secondary-foreground: var(--secondary-foreground);
-  --color-secondary: var(--secondary);
-  --color-primary-foreground: var(--primary-foreground);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
   --color-primary: var(--primary);
-  --color-popover-foreground: var(--popover-foreground);
-  --color-popover: var(--popover);
-  --color-card-foreground: var(--card-foreground);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
   --color-card: var(--card);
-  --radius-sm: calc(var(--radius) - 4px);
-  --radius-md: calc(var(--radius) - 2px);
-  --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) + 4px);
-}
-
-/* Custom animations */
-@keyframes fade-in {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-@keyframes slide-up {
-  from {
-    /* opacity: 0; */
-    transform: translateY(2rem);
-  }
-  to {
-    /* opacity: 1; */
-    transform: translateY(0);
-  }
-}
-
-@keyframes slide-out-up {
-  from {
-    transform: translateY(0);
-    opacity: 1;
-  }
-  to {
-    transform: translateY(-100%);
-    opacity: 0;
-  }
-}
-
-@keyframes slide-in-down {
-  from {
-    transform: translateY(-100%);
-    opacity: 0;
-  }
-  to {
-    transform: translateY(0);
-    opacity: 1;
-  }
-}
-
-.animate-fade-in {
-  animation: fade-in 0.3s ease-out forwards;
-}
-
-.animate-slide-up {
-  animation: slide-up 0.2s ease-out forwards;
-}
-
-.animate-slide-out-up {
-  animation: slide-out-up 0.3s ease-out forwards;
-}
-
-.animate-slide-in-down {
-  animation: slide-in-down 0.3s ease-out forwards;
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-destructive: var(--destructive);
+  --radius-sm: 0px;
+  --radius-md: 0px;
+  --radius-lg: 0px;
+  --radius-xl: 0px;
 }
 
 :root {
-  --radius: 0.625rem;
-  
-  /* Next Step Realty Color Palette - Exact Match */
-  /* Primary: Dark Navy Blue - from their CSS (#173365) */
-  --primary: #173365; /* Dark navy for buttons, CTAs, links */
-  --primary-foreground: #FFFFFF; /* White text on blue */
-  --primary-hover: #0F2550; /* Darker navy for hover states */
-  
-  /* Backgrounds: Clean whites */
-  --background: #FFFFFF;
-  --card: #FFFFFF; /* White cards */
-  --card-foreground: #292929; /* Dark text from their CSS */
-  --popover: #FFFFFF;
-  --popover-foreground: #292929;
-  
-  /* Typography: Exact colors from Next Step Realty */
-  --foreground: #292929; /* Dark text from their CSS */
-  --muted-foreground: #A5A5A5; /* Muted grey from their CSS */
-  
-  /* Accents: Subtle, professional */
-  --accent: #173365; /* Same as primary */
-  --accent-foreground: #FFFFFF;
-  
-  /* Secondary & Muted */
-  --secondary: #F5F5F5; /* Light grey */
-  --secondary-foreground: #292929;
-  --muted: #F9F9F9; /* Very light grey */
-  
-  /* System colors */
-  --destructive: #DC2626; /* Standard red for errors */
-  --border: #EEEEEE; /* Light border from their CSS */
-  --input: #FFFFFF; /* White input backgrounds */
-  --ring: #173365; /* Focus rings match primary */
-  
-  /* Chart colors - matching their palette */
-  --chart-1: #173365; /* Primary navy */
-  --chart-2: #0F2550; /* Darker navy */
-  --chart-3: #292929; /* Dark text */
-  --chart-4: #A5A5A5; /* Muted grey */
-  --chart-5: #4A90E2; /* Lighter blue accent */
-  
-  /* Sidebar */
-  --sidebar: #FFFFFF;
-  --sidebar-foreground: #292929;
-  --sidebar-primary: #173365;
-  --sidebar-primary-foreground: #FFFFFF;
-  --sidebar-accent: #F5F5F5;
-  --sidebar-accent-foreground: #292929;
-  --sidebar-border: #EEEEEE;
-  --sidebar-ring: #173365;
+  --background: #f4efe6;
+  --foreground: #1a1612;
+  --card: #f7f3eb;
+  --card-foreground: #1a1612;
+  --popover: #f7f3eb;
+  --popover-foreground: #1a1612;
+  --primary: #1a1612;
+  --primary-foreground: #f4efe6;
+  --primary-hover: #2a241e;
+  --secondary: #e7e0d4;
+  --secondary-foreground: #1a1612;
+  --muted: #e7e0d4;
+  --muted-foreground: #4a453e;
+  --accent: #6a4524;
+  --accent-foreground: #f4efe6;
+  --destructive: #8c2f2f;
+  --border: #d9d0c2;
+  --input: #f7f3eb;
+  --ring: #6a4524;
+  --stone: #8c6239;
 }
 
 .dark {
-  /* Dark mode - maintaining professional blue theme */
-  --background: #0F172A;
-  --foreground: #F1F5F9;
-  --card: #1E293B;
-  --card-foreground: #F1F5F9;
-  --popover: #1E293B;
-  --popover-foreground: #F1F5F9;
-  
-  /* Primary colors - lighter blue for dark mode */
-  --primary: #3B82F6; /* Lighter blue for dark backgrounds */
-  --primary-foreground: #FFFFFF;
-  --primary-hover: #2563EB;
-  
-  --secondary: #1E293B;
-  --secondary-foreground: #F1F5F9;
-  --muted: #1E293B;
-  --muted-foreground: #94A3B8;
-  
-  /* Accents */
-  --accent: #FFB800; /* Gold accent */
-  --accent-foreground: #0F172A;
-  
-  --destructive: #EF4444;
-  --border: #334155;
-  --input: #1E293B;
-  --ring: #3B82F6;
-  
-  /* Chart colors */
-  --chart-1: #3B82F6;
-  --chart-2: #2563EB;
-  --chart-3: #FFB800;
-  --chart-4: #64748B;
-  --chart-5: #60A5FA;
-  
-  /* Sidebar */
-  --sidebar: #1E293B;
-  --sidebar-foreground: #F1F5F9;
-  --sidebar-primary: #3B82F6;
-  --sidebar-primary-foreground: #FFFFFF;
-  --sidebar-accent: #1E293B;
-  --sidebar-accent-foreground: #F1F5F9;
-  --sidebar-border: #334155;
-  --sidebar-ring: #3B82F6;
+  --background: #12100e;
+  --foreground: #f4efe6;
+  --card: #1b1815;
+  --card-foreground: #f4efe6;
+  --popover: #1b1815;
+  --popover-foreground: #f4efe6;
+  --primary: #f4efe6;
+  --primary-foreground: #12100e;
+  --primary-hover: #e7e0d4;
+  --secondary: #2a241e;
+  --secondary-foreground: #f4efe6;
+  --muted: #2a241e;
+  --muted-foreground: #d4cdc0;
+  --accent: #c4a574;
+  --accent-foreground: #12100e;
+  --destructive: #e7b4b4;
+  --border: #3a342c;
+  --input: #1b1815;
+  --ring: #c4a574;
+  --stone: #c4a574;
 }
 
 @layer base {
   * {
-    @apply border-border outline-ring/50;
+    @apply border-border;
   }
-  body {
-    @apply bg-background text-foreground font-sans;
-  }
+
   html {
-    font-family: var(--font-body), 'Manrope', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-family: var(--font-body), Manrope, sans-serif;
   }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-size: 1.0625rem;
+    line-height: 1.7;
+  }
+
   h1,
   h2,
   h3,
-  h4,
-  h5,
-  h6 {
-    font-family: var(--font-heading), 'Archivo', 'Manrope', sans-serif;
-    font-weight: 600;
-    letter-spacing: -0.01em;
-    color: #292929; /* Next Step Realty dark text */
+  h4 {
+    font-family: var(--font-heading), "Cormorant Garamond", serif;
+    font-weight: 500;
+    letter-spacing: -0.02em;
+    line-height: 1.05;
+    color: var(--foreground);
   }
-  
-  /* Next Step Realty Header Style */
-  .glass-effect {
-    background: #FFFFFF;
-    border-bottom: 1.2px solid #EEEEEE;
+
+  a {
+    color: inherit;
+    text-underline-offset: 0.2em;
   }
-  
-  /* Professional hover effects - matching Next Step */
-  .hover-lift {
-    transition: all 0.2s ease;
-  }
-  
-  .hover-lift:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(23, 51, 101, 0.1);
-  }
-  
-  /* Card hover effects - matching their border style */
-  article:hover,
-  .card-hover:hover {
-    border-color: #EEEEEE;
-    box-shadow: 0 4px 16px rgba(23, 51, 101, 0.08);
-  }
-  
-  /* Link hover states - matching their underline style */
-  a:hover {
-    color: var(--primary);
+
+  p a,
+  li a {
     text-decoration: underline;
-    text-decoration-color: var(--primary);
-    text-underline-offset: 4px;
-    text-decoration-thickness: 2px;
-  }
-  
-  /* Next Step Realty button style */
-  .btn-nextstep {
-    font-family: 'Manrope', sans-serif;
-    font-size: 16px;
-    font-weight: 500;
-    padding: 12px 20px;
-    border-radius: 10px;
-    border: 1.2px solid #A4A4A4;
-    background-color: #173365;
-    color: #FFFFFF;
-    transition: all 0.2s ease;
-  }
-  
-  .btn-nextstep:hover {
-    background-color: #0F2550;
-  }
-  
-  .btn-nextstep-outline {
-    font-family: 'Manrope', sans-serif;
-    font-size: 16px;
-    font-weight: 500;
-    padding: 12px 20px;
-    border-radius: 10px;
-    border: 1.2px solid #EEEEEE;
-    background-color: #FFFFFF;
-    color: #000000;
-    transition: all 0.2s ease;
-  }
-  
-  .btn-nextstep-outline:hover {
-    background-color: #F5F5F5;
+    text-decoration-thickness: 1px;
   }
 }
 
-/* Stack mobile deploy buttons vertically on very small screens */
-@media (max-width: 360px) {
-  .mobile-deploy-buttons {
-    flex-direction: column !important;
+.eyebrow {
+  font-family: var(--font-body), Manrope, sans-serif;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.answer {
+  max-width: 42rem;
+  font-size: 1.125rem;
+  line-height: 1.7;
+}
+
+.field {
+  width: 100%;
+  border: 1px solid var(--border);
+  background: var(--input);
+  color: var(--foreground);
+  padding: 0.85rem 0.9rem;
+  border-radius: 0;
+}
+
+.field:focus {
+  outline: 2px solid var(--ring);
+  outline-offset: 2px;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0;
+  background: var(--primary);
+  color: var(--primary-foreground);
+  padding: 0.85rem 1.25rem;
+  font-size: 0.95rem;
+  letter-spacing: 0.04em;
+  text-decoration: none;
+}
+
+.btn:hover {
+  background: var(--primary-hover);
+}
+
+.btn-line {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0;
+  border: 1px solid var(--foreground);
+  color: var(--foreground);
+  padding: 0.85rem 1.25rem;
+  font-size: 0.95rem;
+  letter-spacing: 0.04em;
+  text-decoration: none;
+  background: transparent;
+}
+
+.source-line {
+  font-size: 0.85rem;
+  color: var(--muted-foreground);
+}
+
+.source-line a {
+  text-decoration: underline;
+}
+
+.hero-band {
+  background: #1a1612;
+  color: #f4efe6;
+}
+
+.dark .hero-band {
+  background: #0c0b0a;
+  color: #f4efe6;
+}
+
+.hero-band .eyebrow {
+  color: #c4a574;
+}
+
+.hero-band .source-line,
+.hero-band .source-line a {
+  color: #e7e0d4;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
 }

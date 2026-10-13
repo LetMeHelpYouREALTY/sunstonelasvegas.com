@@ -1,93 +1,49 @@
-import type { Metadata } from 'next'
 import Link from 'next/link'
 
-import { models } from '@/lib/models'
-import { FaqSection } from '@/components/faq-section'
+import { Answer, Eyebrow, SourceLine } from '@/components/editorial'
 import { JsonLd } from '@/components/json-ld'
-import { getFaqsByCategory } from '@/lib/faqs'
+import { plans, WOODSIDE } from '@/lib/area'
+import { pageMeta } from '@/lib/metadata'
 import { buildBreadcrumbList } from '@/lib/structured-data'
-import { CONTACT_EMAIL } from '@/lib/site'
 
-export const metadata: Metadata = {
-  title: 'Capella Floor Plans | Sunstone Woodside Models in Las Vegas',
+export const metadata = pageMeta({
+  title: 'Capella Floor Plans | Sunstone',
   description:
-    'Compare the Aries, Taurus, and Virgo single-story plans with pricing, square footage, and concierge design insights for Sunstone Woodside Homes.',
-}
+    'Capella at Sunstone floor plans: Aries 1,970 sq ft, Taurus 2,093 sq ft, and Virgo 2,295 sq ft. Woodside plan pages retrieved October 12, 2026.',
+  path: '/models',
+})
 
-const modelFaqs = getFaqsByCategory(['floorplans'], [1, 2, 3, 4, 5])
-
-export default function ModelsIndexPage() {
+export default function ModelsPage() {
   return (
-    <div className="mx-auto flex max-w-6xl flex-col gap-16 px-4 py-16">
+    <div className="mx-auto grid max-w-6xl gap-16 px-4 py-16">
       <JsonLd
         id="schema-models-breadcrumb"
         data={buildBreadcrumbList([
           { name: 'Home', path: '/' },
-          { name: 'Floor Plans', path: '/models' },
+          { name: 'Floor plans', path: '/models' },
         ])}
       />
-      <header className="space-y-4 text-center sm:text-left">
-        <p className="text-sm font-semibold uppercase tracking-[0.3em] text-primary">
-          Capella Collection
-        </p>
-        <h1 className="text-balance text-4xl font-bold text-foreground sm:text-5xl">
-          Compare the single-story plans at Capella
-        </h1>
-        <p className="text-lg text-muted-foreground">
-          Each plan layers indoor-outdoor living, energy efficiency, and smart design to suit
-          move-up buyers, multi-gen households, and luxury downsizers alike.
-        </p>
+      <header className="grid gap-4">
+        <Eyebrow>Woodside plans</Eyebrow>
+        <h1 className="font-heading text-5xl sm:text-6xl">Capella floor plans</h1>
+        <Answer>
+          Woodside offers three single-story Capella plans in Las Vegas 89143. Aries measures 1,970 square feet with three bedrooms and 2.5 baths. Taurus measures 2,093 square feet with the same bedroom and bath count. Virgo measures 2,295 square feet and offers an optional fourth bedroom. Plan facts were read from Woodside on October 12, 2026.
+        </Answer>
+        <SourceLine href={WOODSIDE}>Woodside Homes, retrieved October 12, 2026</SourceLine>
       </header>
-
-      <section className="grid gap-6 md:grid-cols-3">
-        {models.map((model) => (
-          <article
-            key={model.slug}
-            className="flex h-full flex-col rounded-3xl border border-border bg-card/70 p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-lg"
-          >
-            <div className="text-sm text-muted-foreground">
-              {model.priceFrom ? (
-                <>
-                  <span>{model.priceFrom}</span>
-                  <span className="mx-2 text-border">|</span>
-                </>
-              ) : null}
-              <span>{model.size}</span>
-            </div>
-            <h2 className="mt-3 text-xl font-semibold text-foreground">{model.name}</h2>
-            <p className="mt-2 text-sm text-muted-foreground">{model.headline}</p>
-            <ul className="mt-4 space-y-2 text-sm text-muted-foreground">
-              <li>{model.beds}</li>
-              <li>{model.baths}</li>
-              <li>{model.garage}</li>
-              <li>{model.outdoor}</li>
-            </ul>
-            <div className="mt-auto space-y-3">
-              <Link
-                href={`/models/${model.slug}`}
-                className="inline-flex items-center font-semibold text-primary transition hover:text-primary/80"
-              >
-                See floor plan story &rsaquo;
-              </Link>
-              <a
-                href={`mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(model.name)}%20Design%20Inquiry`}
-                className="inline-flex items-center text-sm font-semibold text-foreground transition hover:text-primary"
-              >
-                Ask about incentives &rsaquo;
-              </a>
-            </div>
+      <div className="grid gap-6 md:grid-cols-3">
+        {plans.map((plan) => (
+          <article key={plan.slug} className="border border-border p-6">
+            <h2 className="font-heading text-3xl">{plan.name}</h2>
+            <p className="mt-3 text-muted-foreground">
+              {plan.sqft}. {plan.beds}. {plan.baths}. {plan.garage}.
+            </p>
+            <Link className="btn mt-6" href={`/models/${plan.slug}`}>
+              Read {plan.name}
+            </Link>
           </article>
         ))}
-      </section>
-
-      <FaqSection
-        title="Woodside Floor Plan & Customization FAQs"
-        faqs={modelFaqs}
-        className="mt-16"
-        limit={6}
-        showMoreHref="/faqs#floorplans"
-      />
+      </div>
     </div>
   )
 }
-

@@ -6,7 +6,7 @@ import {
   type FubEventType,
 } from '@/lib/fub-events'
 
-type LeadFormKey = 'concierge' | 'find-your-home'
+type LeadFormKey = 'concierge' | 'find-your-home' | 'valuation'
 
 type ContactBody = {
   form?: string
@@ -37,8 +37,8 @@ const timelineLabels: Record<string, string> = {
 
 const LEAD_FORMS: Record<LeadFormKey, LeadFormConfig> = {
   concierge: {
-    formName: 'Concierge request form',
-    description: 'Concierge request form — Contact',
+    formName: 'Contact form',
+    description: 'Contact form',
     fubType: 'General Inquiry',
     buildMessage: buildConciergeMessage,
   },
@@ -47,6 +47,12 @@ const LEAD_FORMS: Record<LeadFormKey, LeadFormConfig> = {
     description: 'Find Your Home form - homepage',
     fubType: 'Property Inquiry',
     buildMessage: buildFindYourHomeMessage,
+  },
+  valuation: {
+    formName: 'Home valuation request',
+    description: 'Seller valuation request',
+    fubType: 'Seller Inquiry',
+    buildMessage: buildConciergeMessage,
   },
 }
 
@@ -62,8 +68,8 @@ function parseContactBody(raw: unknown): ContactBody | null {
 }
 
 function resolveFormKey(raw: string | undefined): LeadFormKey {
-  if (raw === 'find-your-home') {
-    return 'find-your-home'
+  if (raw === 'find-your-home' || raw === 'valuation') {
+    return raw
   }
   return 'concierge'
 }

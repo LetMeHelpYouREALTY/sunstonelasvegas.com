@@ -1,152 +1,86 @@
-import type { Metadata } from 'next'
-import Link from 'next/link'
-
+import { Answer, Eyebrow, FaqList, SourceLine } from '@/components/editorial'
 import { JsonLd } from '@/components/json-ld'
-import { listingConsultationUrl } from '@/lib/calendly'
-import {
-  CAPELLA_BED_RANGE,
-  CAPELLA_BUILDER_PAGE_URL,
-  CAPELLA_COMMUNITY_STARTING_PRICE,
-  CAPELLA_SALES_OFFICE,
-  CAPELLA_SQFT_RANGE,
-} from '@/lib/capella-builder-facts'
-import { CONTACT_PHONE, CONTACT_PHONE_LINK } from '@/lib/site'
+import { ValuationForm } from '@/components/valuation-form'
+import { LYRA_NOTE, sharedFaqs, WOODSIDE } from '@/lib/area'
+import { pageMeta } from '@/lib/metadata'
 import { buildBreadcrumbList, buildFaqPage } from '@/lib/structured-data'
 
-const sellFaqs = [
-  {
-    question: 'How does Dr. Jan Duffy coordinate selling and buying at Capella at Sunstone?',
-    answer:
-      'Dr. Jan Duffy maps your resale timeline against Woodside build milestones, lender conditions, and move-in goals. You get one coordinated calendar for listing prep, showings, contract dates, and Capella lot or quick move-in selection inside the Sunstone master plan (Las Vegas, 89143).',
-  },
-  {
-    question: 'What Capella at Sunstone inventory should I know before listing my current home?',
-    answer:
-      `Woodside Homes lists Capella as single-story ${CAPELLA_BED_RANGE} homes from ${CAPELLA_SQFT_RANGE}, with community pricing from ${CAPELLA_COMMUNITY_STARTING_PRICE} on the builder site (2026-10-12). Dr. Jan Duffy compares those plans with your equity position so you know what is realistic before your home hits the market.`,
-  },
-  {
-    question: 'Where is the Capella sales office?',
-    answer: `Model tours and builder appointments run from ${CAPELLA_SALES_OFFICE}, within the Sunstone master plan in northwest Las Vegas (ZIP 89143). Dr. Jan Duffy schedules builder visits around your listing milestones.`,
-  },
-]
+const sellFaqs = sharedFaqs.filter((faq) =>
+  [
+    'What are HOA fees in Capella at Sunstone?',
+    'How much are Capella at Sunstone homes?',
+    'Does Sunstone charge a SID or LID?',
+    'How fast are Sunstone homes selling?',
+    'Is Capella at Sunstone gated?',
+    'Which builders are in the Sunstone master plan?',
+  ].includes(faq.question),
+)
 
-export const metadata: Metadata = {
-  title: 'Sell to Buy at Capella at Sunstone | Dr. Jan Duffy',
+export const metadata = pageMeta({
+  title: 'Sell My Sunstone Home | Dr. Duffy',
   description:
-    'Sell your current home and buy at Capella at Sunstone with Dr. Jan Duffy. Coordinated listing and new-build timelines in Las Vegas 89143.',
-}
+    'Request a valuation for a Sunstone or Capella home in Las Vegas 89143. Woodside’s October 12, 2026 list ran $599,950 to $679,950.',
+  path: '/sell',
+})
 
 export default function SellPage() {
-  const listingCta = listingConsultationUrl('sell-page-hero')
-
   return (
-    <div className="mx-auto flex max-w-6xl flex-col gap-16 px-4 py-16">
+    <div className="mx-auto grid max-w-6xl gap-16 px-4 py-16">
       <JsonLd
         id="schema-sell-breadcrumb"
         data={buildBreadcrumbList([
           { name: 'Home', path: '/' },
-          { name: 'Sell to Buy at Capella', path: '/sell' },
+          { name: 'Sell', path: '/sell' },
         ])}
       />
       <JsonLd id="schema-sell-faq" data={buildFaqPage(sellFaqs)} />
-
-      <header className="space-y-4 text-center sm:text-left">
-        <p className="text-sm font-semibold uppercase tracking-[0.3em] text-primary">
-          Sell to buy
-        </p>
-        <h1 className="text-balance text-4xl font-bold text-foreground sm:text-5xl">
-          Sell your current home to buy at Capella at Sunstone
-        </h1>
-        <p className="text-lg text-muted-foreground">
-          Dr. Jan Duffy aligns your listing strategy with Woodside Homes build timelines so you can
-          move into Capella at Sunstone inside the Sunstone master plan—Las Vegas, NV 89143—without
-          juggling two transactions alone.
-        </p>
-        <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
-          <a
-            href={listingCta}
-            className="inline-flex items-center justify-center rounded-full bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground transition hover:bg-primary/90"
-          >
-            Book a listing consultation
-          </a>
-          <Link
-            href={CONTACT_PHONE_LINK}
-            className="inline-flex items-center justify-center rounded-full border border-input px-6 py-3 text-sm font-semibold text-foreground transition hover:bg-muted"
-          >
-            Call {CONTACT_PHONE}
-          </Link>
-        </div>
+      <header className="grid gap-4">
+        <Eyebrow>Sellers in 89143</Eyebrow>
+        <h1 className="max-w-3xl font-heading text-5xl sm:text-6xl">Sell my Sunstone home</h1>
+        <Answer>
+          A Sunstone seller is pricing against new Woodside, Lennar, and Shea homes, not only resales. On October 12, 2026, Woodside listed Capella from $599,950 to $679,950. No Sunstone closed-sale set from the last 90 days was available for this report. Send the address and we will price the home you actually own.
+        </Answer>
+        <SourceLine href={WOODSIDE}>Woodside asking prices, retrieved October 12, 2026</SourceLine>
       </header>
 
-      <section className="grid gap-8 md:grid-cols-2">
-        <article className="rounded-3xl border border-border bg-card/70 p-6 shadow-sm">
-          <h2 className="text-xl font-semibold text-foreground">Builder snapshot (Woodside Homes)</h2>
-          <ul className="mt-4 space-y-3 text-sm text-muted-foreground">
-            <li>
-              <span className="font-semibold text-foreground">Community:</span> Capella at Sunstone,
-              single-story new construction in northwest Las Vegas.
-            </li>
-            <li>
-              <span className="font-semibold text-foreground">Homes:</span> {CAPELLA_BED_RANGE}{' '}
-              plans from {CAPELLA_SQFT_RANGE}.
-            </li>
-            <li>
-              <span className="font-semibold text-foreground">Published starting price:</span>{' '}
-              {CAPELLA_COMMUNITY_STARTING_PRICE} (Woodside community page, 2026-10-12).
-            </li>
-            <li>
-              <span className="font-semibold text-foreground">Sales office:</span> {CAPELLA_SALES_OFFICE}.
-            </li>
-          </ul>
-          <a
-            href={CAPELLA_BUILDER_PAGE_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="mt-6 inline-flex text-sm font-semibold text-primary transition hover:text-primary/80"
-          >
-            View Woodside Capella details ›
-          </a>
-        </article>
-
-        <article className="rounded-3xl border border-border bg-card/70 p-6 shadow-sm">
-          <h2 className="text-xl font-semibold text-foreground">How Dr. Jan Duffy helps sellers</h2>
-          <ul className="mt-4 space-y-3 text-sm text-muted-foreground">
-            <li>Equity and net-sheet modeling tied to your target Capella plan or quick move-in.</li>
-            <li>Listing prep that keeps your resale competitive while you reserve builder inventory.</li>
-            <li>Contract dates synchronized with Woodside milestones, inspections, and closing.</li>
-            <li>Concierge introductions for staging, movers, and utility transfers.</li>
-          </ul>
-          <a
-            href={listingConsultationUrl('sell-page-sidebar')}
-            className="mt-6 inline-flex items-center justify-center rounded-full border border-primary px-6 py-3 text-sm font-semibold text-primary transition hover:bg-primary/10"
-          >
-            Schedule listing consult
-          </a>
-        </article>
+      <section className="grid gap-10 lg:grid-cols-2">
+        <div>
+          <h2 className="font-heading text-4xl">Request a valuation</h2>
+          <p className="mt-4 text-muted-foreground">
+            Use the address, not a community average. Dr. Jan Duffy replies by phone or email.
+          </p>
+          <div className="mt-6">
+            <ValuationForm />
+          </div>
+        </div>
+        <div className="grid gap-8">
+          <div>
+            <h2 className="font-heading text-3xl">Pricing against builders</h2>
+            <p className="mt-3 text-muted-foreground">
+              Capella is in a final Woodside release. Lennar still prices Axel from $383,990 and Alia Estates from $862,990. A resale has to sit next to those bands.
+            </p>
+          </div>
+          <div>
+            <h2 className="font-heading text-3xl">Prep for these plans</h2>
+            <p className="mt-3 text-muted-foreground">
+              Capella plans are one story, 1,970 to 2,295 square feet, with covered patios. A Lyra tour on September 28, 2026 said that model’s yard was unfinished dirt. Ask what your lot includes before you stage the patio.
+            </p>
+            <SourceLine href={LYRA_NOTE}>Lyra yard note, September 28, 2026</SourceLine>
+          </div>
+          <div>
+            <h2 className="font-heading text-3xl">HOA and disclosures</h2>
+            <p className="mt-3 text-muted-foreground">
+              Order the NRS 116.4109 resale package when you go under contract. It carries the dues, the gate rules, and any special assessment. A transfer-fee dollar amount was not on the association site on October 12, 2026.
+            </p>
+          </div>
+        </div>
       </section>
 
-      <section className="rounded-3xl border border-border bg-muted/20 p-8">
-        <h2 className="text-2xl font-semibold text-foreground">Questions sellers ask</h2>
-        <dl className="mt-6 space-y-6">
-          {sellFaqs.map((faq) => (
-            <div key={faq.question}>
-              <dt className="text-base font-semibold text-foreground">{faq.question}</dt>
-              <dd className="mt-2 text-sm text-muted-foreground">{faq.answer}</dd>
-            </div>
-          ))}
-        </dl>
-      </section>
-
-      <section className="text-center">
-        <p className="text-lg text-muted-foreground">
-          Ready to line up your sale and a Capella at Sunstone purchase?
-        </p>
-        <a
-          href={listingConsultationUrl('sell-page-footer')}
-          className="mt-6 inline-flex items-center justify-center rounded-full bg-primary px-8 py-3 text-base font-semibold text-primary-foreground transition hover:bg-primary/90"
-        >
-          Book listing consultation with Dr. Jan Duffy
-        </a>
+      <section>
+        <h2 className="font-heading text-4xl">Questions sellers ask</h2>
+        <div className="mt-6">
+          <FaqList faqs={sellFaqs} />
+        </div>
       </section>
     </div>
   )
