@@ -62,25 +62,8 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
-        <Script
-          src="https://www.googletagmanager.com/gtag/js?id=G-1HCM0VVVP8"
-          strategy="lazyOnload"
-        />
-        <Script id="google-analytics" strategy="lazyOnload">
-          {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'G-1HCM0VVVP8');
-          `}
-        </Script>
         <JsonLd id="realestateagent-schema" data={realEstateAgentJsonLd} />
         <JsonLd id="localbusiness-schema" data={localBusinessJsonLd} />
-        <Script
-          src="https://em.realscout.com/widgets/realscout-web-components.umd.js"
-          type="module"
-          strategy="afterInteractive"
-        />
       </head>
       <body className={`${headingFont.variable} ${bodyFont.variable}`}>
         <ThemeProvider
@@ -95,6 +78,18 @@ export default function RootLayout({
             <SiteFooter />
           </div>
         </ThemeProvider>
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-1HCM0VVVP8"
+          strategy="lazyOnload"
+        />
+        <Script id="google-analytics" strategy="lazyOnload">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-1HCM0VVVP8');
+          `}
+        </Script>
       </body>
     </html>
   )
