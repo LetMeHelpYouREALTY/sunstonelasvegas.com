@@ -10,8 +10,11 @@ import {
 } from '@/components/editorial'
 import { JsonLd } from '@/components/json-ld'
 import { capellaHomes, WOODSIDE } from '@/lib/area'
-import { pageMeta } from '@/lib/metadata'
-import { buildBreadcrumbList } from '@/lib/structured-data'
+import { notFoundMeta, pageMeta } from '@/lib/metadata'
+import {
+  buildBreadcrumbList,
+  buildRealEstateListing,
+} from '@/lib/structured-data'
 
 type HomePageProps = {
   params: Promise<{ slug: string }>
@@ -25,11 +28,11 @@ export async function generateMetadata({ params }: HomePageProps) {
   const { slug } = await params
   const home = capellaHomes.find((item) => item.slug === slug)
   if (!home) {
-    return pageMeta({
+    return notFoundMeta({
       title: 'Home not on this list',
       description:
         'That Capella home is not on the October 12, 2026 Woodside list used here.',
-      path: '/move-in-ready',
+      path: `/move-in-ready/${slug}`,
     })
   }
   return pageMeta({
@@ -48,6 +51,7 @@ export default async function ListedHomePage({ params }: HomePageProps) {
 
   return (
     <div className="mx-auto grid max-w-3xl gap-6 px-4 py-16">
+      <JsonLd id="schema-home-listing" data={buildRealEstateListing(home)} />
       <JsonLd
         id="schema-home-breadcrumb"
         data={buildBreadcrumbList([

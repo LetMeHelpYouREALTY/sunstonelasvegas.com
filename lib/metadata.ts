@@ -8,6 +8,27 @@ type PageMetaInput = {
   path: string
 }
 
+export const indexableRobots: Metadata['robots'] = {
+  index: true,
+  follow: true,
+  googleBot: {
+    index: true,
+    follow: true,
+    'max-image-preview': 'large',
+    'max-snippet': -1,
+    'max-video-preview': -1,
+  },
+}
+
+const hiddenRobots: Metadata['robots'] = {
+  index: false,
+  follow: false,
+  googleBot: {
+    index: false,
+    follow: false,
+  },
+}
+
 export function pageMeta({
   title,
   description,
@@ -17,6 +38,7 @@ export function pageMeta({
     title: { absolute: title },
     description,
     alternates: { canonical: path },
+    robots: indexableRobots,
     openGraph: {
       title,
       description,
@@ -30,5 +52,19 @@ export function pageMeta({
       title,
       description,
     },
+  }
+}
+
+/** Metadata for a slug that will render the real 404. */
+export function notFoundMeta({
+  title,
+  description,
+  path,
+}: PageMetaInput): Metadata {
+  return {
+    title: { absolute: title },
+    description,
+    alternates: { canonical: path },
+    robots: hiddenRobots,
   }
 }

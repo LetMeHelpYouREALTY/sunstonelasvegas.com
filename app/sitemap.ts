@@ -3,6 +3,9 @@ import type { MetadataRoute } from 'next'
 import { capellaHomes, collectionGuides, plans } from '@/lib/area'
 import { SITE_URL } from '@/lib/site'
 
+/** Close of the October 12–13, 2026 research used in the current copy. */
+const CONTENT_UPDATED = '2026-10-13'
+
 export default function sitemap(): MetadataRoute.Sitemap {
   const staticRoutes = [
     '/',
@@ -27,7 +30,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
   ]
 
   return [...staticRoutes, ...dynamicRoutes].map((path) => ({
-    url: `${SITE_URL}${path}`,
+    url: `${SITE_URL}${path === '/' ? '' : path}`,
+    lastModified: CONTENT_UPDATED,
     changeFrequency: 'weekly',
     priority: path === '/' ? 1 : 0.7,
   }))
