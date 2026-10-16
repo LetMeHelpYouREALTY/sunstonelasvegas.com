@@ -10,7 +10,7 @@ import {
 } from '@/components/editorial'
 import { JsonLd } from '@/components/json-ld'
 import { plans } from '@/lib/area'
-import { pageMeta } from '@/lib/metadata'
+import { notFoundMeta, pageMeta } from '@/lib/metadata'
 import { buildBreadcrumbList } from '@/lib/structured-data'
 
 type PlanPageProps = {
@@ -25,10 +25,10 @@ export async function generateMetadata({ params }: PlanPageProps) {
   const { slug } = await params
   const plan = plans.find((item) => item.slug === slug)
   if (!plan) {
-    return pageMeta({
+    return notFoundMeta({
       title: 'Plan not found | Capella',
       description: 'That Capella floor plan is not on this site.',
-      path: '/models',
+      path: `/models/${slug}`,
     })
   }
   return pageMeta({

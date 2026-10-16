@@ -154,3 +154,71 @@ export const localBusinessJsonLd = {
     name: BROKERAGE_NAME,
   },
 }
+
+export const websiteJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  '@id': `${SITE_URL}/#website`,
+  name: SITE_LOGO,
+  url: SITE_URL,
+  publisher: {
+    '@id': `${SITE_URL}/#realestateagent`,
+  },
+}
+
+const listingAddress = {
+  '@type': 'PostalAddress',
+  addressLocality: 'Las Vegas',
+  addressRegion: 'NV',
+  postalCode: AREA_ZIP,
+  addressCountry: 'US',
+}
+
+export function buildRealEstateListing(home: {
+  slug: string
+  plan: string
+  lot: string
+  price: string
+  beds: string
+  baths: string
+  sqft: string
+}) {
+  const name = `${home.plan} ${home.lot}`
+  const price = Number(home.price.replace(/[^0-9.]/g, ''))
+  const sqft = Number(home.sqft.replace(/[^0-9.]/g, ''))
+  const baths = Number(home.baths)
+  const itemOffered: Record<string, unknown> = {
+    '@type': 'House',
+    name,
+    address: listingAddress,
+  }
+  if (!Number.isNaN(sqft)) {
+    itemOffered.floorSize = {
+      '@type': 'QuantitativeValue',
+      value: sqft,
+      unitCode: 'FTK',
+    }
+  }
+  if (!Number.isNaN(baths)) {
+    itemOffered.numberOfBathroomsTotal = baths
+  }
+  if (/^\d+$/.test(home.beds)) {
+    itemOffered.numberOfBedrooms = Number(home.beds)
+  }
+
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'RealEstateListing',
+    name,
+    url: `${SITE_URL}/move-in-ready/${home.slug}`,
+    datePosted: '2026-10-12',
+    address: listingAddress,
+    offers: {
+      '@type': 'Offer',
+      price,
+      priceCurrency: 'USD',
+      businessFunction: 'http://purl.org/goodrelations/v1#Sell',
+      itemOffered,
+    },
+  }
+}

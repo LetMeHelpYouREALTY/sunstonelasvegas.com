@@ -1,10 +1,16 @@
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 
-import { AgentCredit, Answer, Eyebrow, LogoLine, SourceLine } from '@/components/editorial'
+import {
+  AgentCredit,
+  Answer,
+  Eyebrow,
+  LogoLine,
+  SourceLine,
+} from '@/components/editorial'
 import { JsonLd } from '@/components/json-ld'
 import { collectionGuides } from '@/lib/area'
-import { pageMeta } from '@/lib/metadata'
+import { notFoundMeta, pageMeta } from '@/lib/metadata'
 import { buildBreadcrumbList } from '@/lib/structured-data'
 
 type CollectionPageProps = {
@@ -19,10 +25,10 @@ export async function generateMetadata({ params }: CollectionPageProps) {
   const { slug } = await params
   const guide = collectionGuides.find((item) => item.slug === slug)
   if (!guide) {
-    return pageMeta({
+    return notFoundMeta({
       title: 'Collection not found',
       description: 'That Sunstone collection is not on this site.',
-      path: '/communities',
+      path: `/communities/${slug}`,
     })
   }
   return pageMeta({
