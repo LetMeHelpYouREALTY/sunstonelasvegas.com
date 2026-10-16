@@ -6,6 +6,7 @@ import {
   SourceLine,
 } from '@/components/editorial'
 import { JsonLd } from '@/components/json-ld'
+import { RealScoutOffice } from '@/components/realscout-office'
 import { capellaHomes, DRIVES, LENNAR, SHEA, WOODSIDE } from '@/lib/area'
 import { pageMeta } from '@/lib/metadata'
 import { buildArticle, buildBreadcrumbList } from '@/lib/structured-data'
@@ -51,6 +52,7 @@ export default function MarketReportPage() {
           figures were not in an allowed local source.
         </Answer>
       </header>
+      <RealScoutOffice />
 
       <section>
         <h2 className="font-heading text-4xl">Capella asking prices</h2>

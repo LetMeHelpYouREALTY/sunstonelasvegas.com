@@ -9,6 +9,7 @@ import {
   SourceLine,
 } from '@/components/editorial'
 import { JsonLd } from '@/components/json-ld'
+import { RealScoutOffice } from '@/components/realscout-office'
 import { LENNAR, SHEA, sharedFaqs, WOODSIDE } from '@/lib/area'
 import { pageMeta } from '@/lib/metadata'
 import { buildBreadcrumbList, buildFaqPage } from '@/lib/structured-data'
@@ -45,6 +46,7 @@ export default function NewConstructionPage() {
           $28,000 on some plans.
         </Answer>
       </header>
+      <RealScoutOffice />
 
       <section className="grid gap-8 md:grid-cols-3">
         <article className="border border-border p-6">

@@ -35,7 +35,7 @@ export const metadata: Metadata = {
     template: '%s',
   },
   description:
-    'Dr. Jan Duffy represents buyers and sellers at Sunstone Las Vegas, ZIP 89143. Capella is one Woodside collection inside the master plan.',
+    'Dr. Jan Duffy represents buyers and sellers at Sunstone Las Vegas, ZIP 89143. Ten neighborhoods and about 3,650 homes sit inside that plan.',
   alternates: { canonical: '/' },
   openGraph: {
     title: 'Sunstone Las Vegas Homes for Sale',
@@ -62,18 +62,6 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
-        <Script
-          src="https://www.googletagmanager.com/gtag/js?id=G-1HCM0VVVP8"
-          strategy="lazyOnload"
-        />
-        <Script id="google-analytics" strategy="lazyOnload">
-          {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'G-1HCM0VVVP8');
-          `}
-        </Script>
         <JsonLd id="realestateagent-schema" data={realEstateAgentJsonLd} />
         <JsonLd id="localbusiness-schema" data={localBusinessJsonLd} />
       </head>
@@ -90,6 +78,18 @@ export default function RootLayout({
             <SiteFooter />
           </div>
         </ThemeProvider>
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-1HCM0VVVP8"
+          strategy="lazyOnload"
+        />
+        <Script id="google-analytics" strategy="lazyOnload">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-1HCM0VVVP8');
+          `}
+        </Script>
       </body>
     </html>
   )

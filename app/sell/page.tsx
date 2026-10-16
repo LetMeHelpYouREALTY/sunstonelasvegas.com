@@ -7,6 +7,7 @@ import {
   SourceLine,
 } from '@/components/editorial'
 import { JsonLd } from '@/components/json-ld'
+import { RealScoutOffice } from '@/components/realscout-office'
 import { ValuationForm } from '@/components/valuation-form'
 import { LYRA_NOTE, sharedFaqs, WOODSIDE } from '@/lib/area'
 import { pageMeta } from '@/lib/metadata'
@@ -58,6 +59,7 @@ export default function SellPage() {
           Woodside asking prices, retrieved October 12, 2026
         </SourceLine>
       </header>
+      <RealScoutOffice />
 
       <section className="grid gap-10 lg:grid-cols-2">
         <div>

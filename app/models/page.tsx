@@ -8,6 +8,7 @@ import {
   SourceLine,
 } from '@/components/editorial'
 import { JsonLd } from '@/components/json-ld'
+import { RealScoutOffice } from '@/components/realscout-office'
 import { plans, WOODSIDE } from '@/lib/area'
 import { pageMeta } from '@/lib/metadata'
 import { buildBreadcrumbList } from '@/lib/structured-data'
@@ -46,6 +47,7 @@ export default function ModelsPage() {
           Woodside Homes, retrieved October 12, 2026
         </SourceLine>
       </header>
+      <RealScoutOffice />
       <div className="grid gap-6 md:grid-cols-3">
         {plans.map((plan) => (
           <article key={plan.slug} className="border border-border p-6">

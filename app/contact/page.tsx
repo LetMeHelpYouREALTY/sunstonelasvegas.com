@@ -4,6 +4,7 @@ import { AgentCredit, Answer, Eyebrow, LogoLine } from '@/components/editorial'
 import { ContactForm } from '@/components/contact-form'
 import { DeferredRender } from '@/components/deferred-render'
 import { JsonLd } from '@/components/json-ld'
+import { RealScoutOffice } from '@/components/realscout-office'
 import { pageMeta } from '@/lib/metadata'
 import {
   CONTACT_ADDRESS,
@@ -48,6 +49,7 @@ export default function ContactPage() {
           {`Call ${CONTACT_PHONE} for a Capella tour or a Sunstone home valuation. The published community address is ${CONTACT_ADDRESS}. Woodside’s Capella sales office sits at ${SALES_OFFICE_ADDRESS}. Use the form below when you want a written reply.`}
         </Answer>
       </header>
+      <RealScoutOffice />
       <section className="grid gap-10 lg:grid-cols-2">
         <div>
           <h2 className="font-heading text-3xl">Send a note</h2>

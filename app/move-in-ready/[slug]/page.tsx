@@ -9,6 +9,7 @@ import {
   SourceLine,
 } from '@/components/editorial'
 import { JsonLd } from '@/components/json-ld'
+import { RealScoutOffice } from '@/components/realscout-office'
 import { capellaHomes, WOODSIDE } from '@/lib/area'
 import { pageMeta } from '@/lib/metadata'
 import { buildBreadcrumbList } from '@/lib/structured-data'
@@ -74,6 +75,7 @@ export default async function ListedHomePage({ params }: HomePageProps) {
       <Link className="btn w-fit" href="/contact">
         Ask if this lot is still open
       </Link>
+      <RealScoutOffice />
     </div>
   )
 }

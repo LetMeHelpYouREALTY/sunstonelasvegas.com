@@ -6,6 +6,7 @@ import {
   SourceLine,
 } from '@/components/editorial'
 import { JsonLd } from '@/components/json-ld'
+import { RealScoutOffice } from '@/components/realscout-office'
 import { SHEA, SUNSTONE } from '@/lib/area'
 import { pageMeta } from '@/lib/metadata'
 import { CONTACT_PHONE_LINK } from '@/lib/site'
@@ -45,6 +46,7 @@ export default function TrilogyPage() {
           Shea Homes, retrieved October 12, 2026
         </SourceLine>
       </header>
+      <RealScoutOffice />
 
       <section className="grid gap-8 md:grid-cols-2">
         <div>
