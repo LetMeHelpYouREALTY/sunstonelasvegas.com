@@ -9,21 +9,33 @@ import {
   SourceLine,
 } from '@/components/editorial'
 import { JsonLd } from '@/components/json-ld'
-import { RealScoutSearch } from '@/components/realscout-search'
+import { RealScoutOffice } from '@/components/realscout-office'
 import { capellaHomes, WOODSIDE } from '@/lib/area'
 import { pageMeta } from '@/lib/metadata'
-import { buildBreadcrumbList } from '@/lib/structured-data'
+import {
+  buildBreadcrumbList,
+  buildCapellaInventoryList,
+  buildWebPage,
+} from '@/lib/structured-data'
+
+const inventoryTitle = 'Capella at Sunstone Homes Listed by Woodside'
+const inventoryDescription =
+  'Six Capella at Sunstone homes in Las Vegas 89143 that Woodside listed on October 12, 2026, from $599,950 to $679,950. Builder asking prices, not MLS listings.'
 
 export const metadata = pageMeta({
-  title: 'Capella at Sunstone Homes Listed by Woodside',
-  description:
-    'Six Capella at Sunstone homes in Las Vegas 89143 that Woodside listed on October 12, 2026, from $599,950 to $679,950. Builder asking prices, not MLS listings.',
+  title: inventoryTitle,
+  description: inventoryDescription,
   path: '/move-in-ready',
 })
 
 export default function MoveInReadyPage() {
   return (
     <div className="mx-auto grid max-w-6xl gap-16 px-4 py-16">
+      <JsonLd
+        id="schema-inventory-webpage"
+        data={buildWebPage('/move-in-ready', inventoryTitle, inventoryDescription)}
+      />
+      <JsonLd id="schema-inventory-list" data={buildCapellaInventoryList()} />
       <JsonLd
         id="schema-inventory-breadcrumb"
         data={buildBreadcrumbList([
@@ -48,6 +60,7 @@ export default function MoveInReadyPage() {
         <SourceLine href={WOODSIDE}>Retrieved October 12, 2026</SourceLine>
         <AgentCredit checked="October 12, 2026" />
       </header>
+      <RealScoutOffice />
       <div className="grid gap-4">
         {capellaHomes.map((home) => (
           <article
@@ -90,7 +103,6 @@ export default function MoveInReadyPage() {
           },
         ]}
       />
-      <RealScoutSearch heading="Search beyond this builder list" />
     </div>
   )
 }

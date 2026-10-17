@@ -11,9 +11,10 @@ import {
   SourceLine,
 } from '@/components/editorial'
 import { JsonLd } from '@/components/json-ld'
+import { RealScoutOffice } from '@/components/realscout-office'
 import { plans } from '@/lib/area'
 import { pageMeta } from '@/lib/metadata'
-import { buildBreadcrumbList } from '@/lib/structured-data'
+import { buildBreadcrumbList, buildWebPage } from '@/lib/structured-data'
 
 type PlanPageProps = {
   params: Promise<{ slug: string }>
@@ -47,8 +48,13 @@ export default async function ModelPage({ params }: PlanPageProps) {
     notFound()
   }
 
+  const path = `/models/${plan.slug}`
+  const pageTitle = `${plan.name} | Capella Sunstone`
+  const pageDescription = `${plan.name} at Capella at Sunstone: ${plan.sqft}, ${plan.beds}, ${plan.baths}, ${plan.stories}. Source retrieved October 12, 2026.`
+
   return (
     <div className="mx-auto grid max-w-3xl gap-8 px-4 py-16">
+      <JsonLd id="schema-plan-webpage" data={buildWebPage(path, pageTitle, pageDescription)} />
       <JsonLd
         id="schema-plan-breadcrumb"
         data={buildBreadcrumbList([
@@ -70,6 +76,7 @@ export default async function ModelPage({ params }: PlanPageProps) {
       <Link className="btn w-fit" href="/contact">
         Ask for a model tour
       </Link>
+      <RealScoutOffice />
       <PlanHomes planSlug={plan.slug} />
       <RelatedLinks
         heading="Capella pages"

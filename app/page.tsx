@@ -8,26 +8,41 @@ import {
   SourceLine,
 } from '@/components/editorial'
 import { JsonLd } from '@/components/json-ld'
-import { RealScoutSearch } from '@/components/realscout-search'
+import { RealScoutOffice } from '@/components/realscout-office'
 import { SunstoneMap } from '@/components/sunstone-map'
-import { featuredPlaces, sharedFaqs, SUNSTONE, WOODSIDE } from '@/lib/area'
+import { featuredPlaces, sharedFaqs, WOODSIDE } from '@/lib/area'
 import { pageMeta } from '@/lib/metadata'
-import { CONTACT_PHONE_LINK } from '@/lib/site'
-import { buildFaqPage } from '@/lib/structured-data'
+import { CONTACT_PHONE, CONTACT_PHONE_LINK } from '@/lib/site'
+import {
+  buildBreadcrumbList,
+  buildFaqPage,
+  buildWebPage,
+} from '@/lib/structured-data'
+
+const homeTitle = 'Sunstone Las Vegas Homes for Sale'
+const homeDescription =
+  'Sunstone Las Vegas homes for sale in ZIP 89143. Ten neighborhoods and about 3,650 homes sit inside the master plan.'
 
 export const metadata = pageMeta({
-  title: 'Sunstone Las Vegas Homes for Sale',
-  description:
-    'Sunstone Las Vegas homes for sale in 89143. Capella, Lyra, Axel, Alia, and Trilogy are collections inside the master plan.',
+  title: homeTitle,
+  description: homeDescription,
   path: '/',
 })
 
 export default function HomePage() {
   return (
     <div>
+      <JsonLd
+        id="schema-home-webpage"
+        data={buildWebPage('/', homeTitle, homeDescription)}
+      />
+      <JsonLd
+        id="schema-home-breadcrumb"
+        data={buildBreadcrumbList([{ name: 'Home', path: '/' }])}
+      />
       <JsonLd id="schema-home-faq" data={buildFaqPage(sharedFaqs)} />
       <section className="hero-band">
-        <div className="mx-auto grid max-w-6xl items-end gap-10 px-4 py-16 sm:py-24 lg:grid-cols-[1.15fr_0.85fr]">
+        <div className="mx-auto grid max-w-6xl items-center gap-10 px-4 py-16 sm:py-24 lg:grid-cols-[1.15fr_0.85fr]">
           <div className="grid gap-6">
             <Eyebrow>Las Vegas 89143</Eyebrow>
             <h1 className="max-w-4xl font-heading text-5xl text-inherit sm:text-7xl">
@@ -35,17 +50,18 @@ export default function HomePage() {
               <span className="block sm:inline">Las Vegas</span>
             </h1>
             <Answer>
-              Sunstone is the master plan in northwest Las Vegas. It sits in
-              ZIP 89143 and plans about 3,650 homes. Woodside, Lennar, Shea,
-              and Richmond American build there. Capella is one Woodside
-              collection inside that plan.
+              Sunstone is the master plan in northwest Las Vegas. It sits in ZIP
+              89143 and plans about 3,650 homes. Ten neighborhoods include
+              townhomes, single-family homes, and age-qualified plans. Lennar,
+              Shea, Woodside, and Richmond American each build inside it.
             </Answer>
-            <SourceLine href={SUNSTONE}>
-              sunstonelv.com, retrieved October 13, 2026
-            </SourceLine>
-            <AgentCredit checked="October 12 and 13, 2026" />
             <a className="btn w-fit" href={CONTACT_PHONE_LINK}>
-              Call Dr. Jan Duffy
+              <span className="grid gap-1 text-center leading-none">
+                <span>Call Dr. Jan Duffy</span>
+                <span className="text-base tracking-normal">
+                  {CONTACT_PHONE}
+                </span>
+              </span>
             </a>
             <p className="text-sm">
               <Link href="/sell">Request a valuation</Link>
@@ -56,6 +72,10 @@ export default function HomePage() {
           <SunstoneMap />
         </div>
       </section>
+
+      <div className="mx-auto max-w-6xl px-4 py-12">
+        <RealScoutOffice />
+      </div>
 
       <section className="mx-auto grid max-w-6xl gap-8 px-4 py-16">
         <div className="grid gap-3">
@@ -102,13 +122,9 @@ export default function HomePage() {
         </Link>
       </section>
 
-      <section className="mx-auto max-w-6xl px-4 pb-16">
-        <RealScoutSearch heading="Search Sunstone homes" />
-      </section>
-
       <section className="mx-auto max-w-6xl px-4 pb-20">
         <h2 className="font-heading text-4xl">Questions about Sunstone</h2>
-        <AgentCredit />
+        <AgentCredit checked="October 12 and 13, 2026" />
         <div className="mt-8">
           <FaqList faqs={sharedFaqs} />
         </div>

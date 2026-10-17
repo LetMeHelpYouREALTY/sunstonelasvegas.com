@@ -6,12 +6,18 @@ import {
   Answer,
   Eyebrow,
   LogoLine,
+  RelatedLinks,
   SourceLine,
 } from '@/components/editorial'
 import { JsonLd } from '@/components/json-ld'
+import { RealScoutOffice } from '@/components/realscout-office'
 import { capellaHomes, WOODSIDE } from '@/lib/area'
 import { pageMeta } from '@/lib/metadata'
-import { buildBreadcrumbList } from '@/lib/structured-data'
+import {
+  buildBreadcrumbList,
+  buildCapellaListedHomeOffer,
+  buildWebPage,
+} from '@/lib/structured-data'
 
 type HomePageProps = {
   params: Promise<{ slug: string }>
@@ -46,8 +52,14 @@ export default async function ListedHomePage({ params }: HomePageProps) {
     notFound()
   }
 
+  const path = `/move-in-ready/${home.slug}`
+  const pageTitle = `${home.plan} ${home.lot} | Capella at Sunstone`
+  const pageDescription = `${home.plan} ${home.lot} at Capella at Sunstone, Las Vegas 89143, was listed at ${home.price} on Woodside’s page, retrieved October 12, 2026.`
+
   return (
     <div className="mx-auto grid max-w-3xl gap-6 px-4 py-16">
+      <JsonLd id="schema-listed-webpage" data={buildWebPage(path, pageTitle, pageDescription)} />
+      <JsonLd id="schema-listed-offer" data={buildCapellaListedHomeOffer(home, path)} />
       <JsonLd
         id="schema-home-breadcrumb"
         data={buildBreadcrumbList([
@@ -74,26 +86,24 @@ export default async function ListedHomePage({ params }: HomePageProps) {
       <Link className="btn w-fit" href="/contact">
         Ask if this lot is still open
       </Link>
-      <nav aria-label="Related Capella pages" className="grid gap-3">
-        <h2 className="font-heading text-3xl">Related Capella pages</h2>
-        <ul className="grid gap-2">
-          <li>
-            <Link href={`/models/${home.planSlug}`}>
-              {home.plan} plan: size, bedrooms, and options
-            </Link>
-          </li>
-          <li>
-            <Link href="/move-in-ready">
-              All six Capella homes Woodside listed on October 12, 2026
-            </Link>
-          </li>
-          <li>
-            <Link href="/communities/capella">
-              Capella at Sunstone overview
-            </Link>
-          </li>
-        </ul>
-      </nav>
+      <RealScoutOffice />
+      <RelatedLinks
+        heading="Related Capella pages"
+        links={[
+          {
+            label: `${home.plan} plan: size, bedrooms, and options`,
+            href: `/models/${home.planSlug}`,
+          },
+          {
+            label: 'All six Capella homes Woodside listed on October 12, 2026',
+            href: '/move-in-ready',
+          },
+          {
+            label: 'Capella at Sunstone overview',
+            href: '/communities/capella',
+          },
+        ]}
+      />
     </div>
   )
 }

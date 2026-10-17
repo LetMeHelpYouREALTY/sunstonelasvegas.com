@@ -9,7 +9,7 @@ import {
   SourceLine,
 } from '@/components/editorial'
 import { JsonLd } from '@/components/json-ld'
-import { RealScoutSearch } from '@/components/realscout-search'
+import { RealScoutOffice } from '@/components/realscout-office'
 import {
   HOA,
   LENNAR,
@@ -20,7 +20,11 @@ import {
   WOODSIDE,
 } from '@/lib/area'
 import { pageMeta } from '@/lib/metadata'
-import { buildBreadcrumbList, buildFaqPage } from '@/lib/structured-data'
+import {
+  buildBreadcrumbList,
+  buildFaqPage,
+  buildWebPage,
+} from '@/lib/structured-data'
 
 const rows = [
   [
@@ -53,16 +57,23 @@ const rows = [
   ],
 ]
 
+const buyersTitle = 'Buy in Sunstone, Las Vegas 89143'
+const buyersDescription =
+  'Buy in the Sunstone master plan, Las Vegas 89143. Compare Capella, Lyra, Axel, and Trilogy with dated builder prices and HOA gaps.'
+
 export const metadata = pageMeta({
-  title: 'Buy in Sunstone, Las Vegas 89143',
-  description:
-    'Buy in the Sunstone master plan, Las Vegas 89143. Compare Capella, Lyra, Axel, and Trilogy with dated builder prices and HOA gaps.',
+  title: buyersTitle,
+  description: buyersDescription,
   path: '/buyers',
 })
 
 export default function BuyersPage() {
   return (
     <div className="mx-auto grid max-w-6xl gap-16 px-4 py-16">
+      <JsonLd
+        id="schema-buyers-webpage"
+        data={buildWebPage('/buyers', buyersTitle, buyersDescription)}
+      />
       <JsonLd
         id="schema-buyers-breadcrumb"
         data={buildBreadcrumbList([
@@ -90,6 +101,7 @@ export default function BuyersPage() {
         </SourceLine>
         <AgentCredit checked="October 12, 2026" />
       </header>
+      <RealScoutOffice />
 
       <section className="grid gap-6">
         <h2 className="font-heading text-4xl">Neighborhood by neighborhood</h2>
@@ -178,8 +190,6 @@ export default function BuyersPage() {
           Lennar Axel page, retrieved October 12, 2026
         </SourceLine>
       </section>
-
-      <RealScoutSearch heading="Search homes inside Sunstone" />
 
       <section>
         <h2 className="font-heading text-4xl">Buyer questions</h2>

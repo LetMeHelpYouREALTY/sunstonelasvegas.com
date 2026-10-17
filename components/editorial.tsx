@@ -81,7 +81,9 @@ export function TextCta({
  * Answers stay visible instead of collapsing behind <details>. Google's snippet
  * guidance (April 20, 2026) asks for content that is immediately visible, and
  * the FAQ rich result was retired May 7, 2026, so the visible text is what an
- * answer engine quotes. Each question is a heading in the page outline.
+ * answer engine quotes. Each question is a heading in the page outline, and
+ * each answer keeps the `.answer` class that the WebPage speakable selector
+ * points at.
  */
 export function FaqList({ faqs }: { faqs: AreaFaq[] }) {
   return (
@@ -91,9 +93,7 @@ export function FaqList({ faqs }: { faqs: AreaFaq[] }) {
           <h3 className="font-heading text-2xl text-foreground">
             {faq.question}
           </h3>
-          <p className="mt-3 max-w-3xl text-base leading-relaxed text-muted-foreground">
-            {faq.answer}
-          </p>
+          <p className="answer mt-3 text-muted-foreground">{faq.answer}</p>
         </section>
       ))}
     </div>

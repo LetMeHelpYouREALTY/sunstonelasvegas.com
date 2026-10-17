@@ -9,20 +9,25 @@ import {
   SourceLine,
 } from '@/components/editorial'
 import { JsonLd } from '@/components/json-ld'
+import { RealScoutOffice } from '@/components/realscout-office'
 import { plans, WOODSIDE } from '@/lib/area'
 import { pageMeta } from '@/lib/metadata'
-import { buildBreadcrumbList } from '@/lib/structured-data'
+import { buildBreadcrumbList, buildWebPage } from '@/lib/structured-data'
+
+const modelsTitle = 'Capella Floor Plans | Sunstone'
+const modelsDescription =
+  'Capella at Sunstone floor plans: Aries 1,970 sq ft, Taurus 2,093 sq ft, and Virgo 2,295 sq ft. Woodside plan pages retrieved October 12, 2026.'
 
 export const metadata = pageMeta({
-  title: 'Capella Floor Plans | Sunstone',
-  description:
-    'Capella at Sunstone floor plans: Aries 1,970 sq ft, Taurus 2,093 sq ft, and Virgo 2,295 sq ft. Woodside plan pages retrieved October 12, 2026.',
+  title: modelsTitle,
+  description: modelsDescription,
   path: '/models',
 })
 
 export default function ModelsPage() {
   return (
     <div className="mx-auto grid max-w-6xl gap-16 px-4 py-16">
+      <JsonLd id="schema-models-webpage" data={buildWebPage('/models', modelsTitle, modelsDescription)} />
       <JsonLd
         id="schema-models-breadcrumb"
         data={buildBreadcrumbList([
@@ -48,6 +53,7 @@ export default function ModelsPage() {
         </SourceLine>
         <AgentCredit checked="October 12, 2026" />
       </header>
+      <RealScoutOffice />
       <div className="grid gap-6 md:grid-cols-3">
         {plans.map((plan) => (
           <article key={plan.slug} className="border border-border p-6">

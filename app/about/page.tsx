@@ -2,6 +2,7 @@ import Image from 'next/image'
 
 import { AgentCredit, Answer, Eyebrow, LogoLine } from '@/components/editorial'
 import { JsonLd } from '@/components/json-ld'
+import { RealScoutOffice } from '@/components/realscout-office'
 import { ValuationForm } from '@/components/valuation-form'
 import { pageMeta } from '@/lib/metadata'
 import {
@@ -14,12 +15,19 @@ import {
   CONTACT_PHONE_LINK,
   SALES_OFFICE_ADDRESS,
 } from '@/lib/site'
-import { buildBreadcrumbList, buildProfilePage } from '@/lib/structured-data'
+import {
+  buildBreadcrumbList,
+  buildProfilePage,
+  buildWebPage,
+} from '@/lib/structured-data'
+
+const aboutTitle = 'About Dr. Jan Duffy | Sunstone'
+const aboutDescription =
+  'Dr. Jan Duffy, REALTOR, Nevada license S.0197614.LLC, works with Capella at Sunstone and the Sunstone master plan in Las Vegas 89143.'
 
 export const metadata = pageMeta({
-  title: 'About Dr. Jan Duffy | Sunstone',
-  description:
-    'Dr. Jan Duffy, REALTOR, Nevada license S.0197614.LLC, works with Capella at Sunstone and the Sunstone master plan in Las Vegas 89143.',
+  title: aboutTitle,
+  description: aboutDescription,
   path: '/about',
 })
 
@@ -27,8 +35,12 @@ export default function AboutPage() {
   return (
     <div className="mx-auto grid max-w-6xl gap-16 px-4 py-16">
       <JsonLd
+        id="schema-about-webpage"
+        data={buildWebPage('/about', aboutTitle, aboutDescription)}
+      />
+      <JsonLd
         id="schema-about-profile"
-        data={buildProfilePage({ path: '/about', name: 'About Dr. Jan Duffy' })}
+        data={buildProfilePage('/about', aboutTitle)}
       />
       <JsonLd
         id="schema-about-breadcrumb"
@@ -57,6 +69,7 @@ export default function AboutPage() {
           </Answer>
         </div>
       </header>
+      <RealScoutOffice />
       <section>
         <h2 className="font-heading text-3xl">Brokerage and office</h2>
         <AgentCredit />

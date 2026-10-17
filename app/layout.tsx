@@ -6,10 +6,7 @@ import { ThemeProvider } from 'next-themes'
 import { JsonLd } from '@/components/json-ld'
 import SiteFooter from '@/components/site-footer'
 import SiteHeader from '@/components/site-header'
-import {
-  localBusinessJsonLd,
-  realEstateAgentJsonLd,
-} from '@/lib/structured-data'
+import { entityGraphJsonLd } from '@/lib/structured-data'
 import { SITE_LOGO, SITE_URL } from '@/lib/site'
 
 import './globals.css'
@@ -35,8 +32,7 @@ export const metadata: Metadata = {
     template: '%s',
   },
   description:
-    'Dr. Jan Duffy represents buyers and sellers at Sunstone Las Vegas, ZIP 89143. Capella is one Woodside collection inside the master plan.',
-  alternates: { canonical: '/' },
+    'Dr. Jan Duffy represents buyers and sellers at Sunstone Las Vegas, ZIP 89143. Ten neighborhoods and about 3,650 homes sit inside that plan.',
   openGraph: {
     title: 'Sunstone Las Vegas Homes for Sale',
     description:
@@ -51,6 +47,11 @@ export const metadata: Metadata = {
     title: 'Sunstone Las Vegas Homes for Sale',
     description:
       'Homes for sale at Sunstone Las Vegas, ZIP 89143, with Dr. Jan Duffy.',
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: { index: true, follow: true },
   },
 }
 
@@ -74,8 +75,12 @@ export default function RootLayout({
             gtag('config', 'G-1HCM0VVVP8');
           `}
         </Script>
-        <JsonLd id="realestateagent-schema" data={realEstateAgentJsonLd} />
-        <JsonLd id="localbusiness-schema" data={localBusinessJsonLd} />
+        <JsonLd id="entity-graph-schema" data={entityGraphJsonLd} />
+        <Script
+          src="https://em.realscout.com/widgets/realscout-web-components.umd.js"
+          type="module"
+          strategy="afterInteractive"
+        />
       </head>
       <body className={`${headingFont.variable} ${bodyFont.variable}`}>
         <ThemeProvider
