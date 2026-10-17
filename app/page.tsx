@@ -13,7 +13,7 @@ import { SunstoneMap } from '@/components/sunstone-map'
 import { featuredPlaces, sharedFaqs, SUNSTONE, WOODSIDE } from '@/lib/area'
 import { pageMeta } from '@/lib/metadata'
 import { CONTACT_PHONE_LINK } from '@/lib/site'
-import { buildFaqPage, buildWebPage } from '@/lib/structured-data'
+import { buildBreadcrumbList, buildFaqPage, buildWebPage } from '@/lib/structured-data'
 
 const homeTitle = 'Sunstone Las Vegas Homes for Sale'
 const homeDescription =
@@ -31,6 +31,10 @@ export default function HomePage() {
       <JsonLd
         id="schema-home-webpage"
         data={buildWebPage('/', homeTitle, homeDescription)}
+      />
+      <JsonLd
+        id="schema-home-breadcrumb"
+        data={buildBreadcrumbList([{ name: 'Home', path: '/' }])}
       />
       <JsonLd id="schema-home-faq" data={buildFaqPage(sharedFaqs)} />
       <section className="hero-band">

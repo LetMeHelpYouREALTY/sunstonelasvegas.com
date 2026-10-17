@@ -9,18 +9,22 @@ import { JsonLd } from '@/components/json-ld'
 import { SHEA, SUNSTONE } from '@/lib/area'
 import { pageMeta } from '@/lib/metadata'
 import { CONTACT_PHONE_LINK } from '@/lib/site'
-import { buildBreadcrumbList } from '@/lib/structured-data'
+import { buildBreadcrumbList, buildWebPage } from '@/lib/structured-data'
+
+const trilogyTitle = 'Trilogy Sunstone 55+ Home Rules'
+const trilogyDescription =
+  'Trilogy Sunstone is Shea’s 55+ neighborhood in Las Vegas 89143. Prices from $399,990 were on Shea’s page October 12, 2026. Read the CC&Rs.'
 
 export const metadata = pageMeta({
-  title: 'Trilogy Sunstone 55+ Home Rules',
-  description:
-    'Trilogy Sunstone is Shea’s 55+ neighborhood in Las Vegas 89143. Prices from $399,990 were on Shea’s page October 12, 2026. Read the CC&Rs.',
+  title: trilogyTitle,
+  description: trilogyDescription,
   path: '/trilogy',
 })
 
 export default function TrilogyPage() {
   return (
     <div className="mx-auto grid max-w-6xl gap-16 px-4 py-16">
+      <JsonLd id="schema-trilogy-webpage" data={buildWebPage('/trilogy', trilogyTitle, trilogyDescription)} />
       <JsonLd
         id="schema-trilogy-breadcrumb"
         data={buildBreadcrumbList([

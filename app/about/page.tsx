@@ -14,18 +14,22 @@ import {
   CONTACT_PHONE_LINK,
   SALES_OFFICE_ADDRESS,
 } from '@/lib/site'
-import { buildBreadcrumbList } from '@/lib/structured-data'
+import { buildBreadcrumbList, buildWebPage } from '@/lib/structured-data'
+
+const aboutTitle = 'About Dr. Jan Duffy | Sunstone'
+const aboutDescription =
+  'Dr. Jan Duffy, REALTOR, Nevada license S.0197614.LLC, works with Capella at Sunstone and the Sunstone master plan in Las Vegas 89143.'
 
 export const metadata = pageMeta({
-  title: 'About Dr. Jan Duffy | Sunstone',
-  description:
-    'Dr. Jan Duffy, REALTOR, Nevada license S.0197614.LLC, works with Capella at Sunstone and the Sunstone master plan in Las Vegas 89143.',
+  title: aboutTitle,
+  description: aboutDescription,
   path: '/about',
 })
 
 export default function AboutPage() {
   return (
     <div className="mx-auto grid max-w-6xl gap-16 px-4 py-16">
+      <JsonLd id="schema-about-webpage" data={buildWebPage('/about', aboutTitle, aboutDescription)} />
       <JsonLd
         id="schema-about-breadcrumb"
         data={buildBreadcrumbList([

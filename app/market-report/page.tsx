@@ -8,18 +8,22 @@ import {
 import { JsonLd } from '@/components/json-ld'
 import { capellaHomes, DRIVES, LENNAR, SHEA, WOODSIDE } from '@/lib/area'
 import { pageMeta } from '@/lib/metadata'
-import { buildArticle, buildBreadcrumbList } from '@/lib/structured-data'
+import { buildArticle, buildBreadcrumbList, buildWebPage } from '@/lib/structured-data'
+
+const marketTitle = 'Sunstone Market Report | Oct 2026'
+const marketDescription =
+  'Sunstone market notes for October 12, 2026. Capella asking prices, builder ranges, and drive times. No 90-day closed-sale median was available.'
 
 export const metadata = pageMeta({
-  title: 'Sunstone Market Report | Oct 2026',
-  description:
-    'Sunstone market notes for October 12, 2026. Capella asking prices, builder ranges, and drive times. No 90-day closed-sale median was available.',
+  title: marketTitle,
+  description: marketDescription,
   path: '/market-report',
 })
 
 export default function MarketReportPage() {
   return (
     <article className="mx-auto grid max-w-6xl gap-16 px-4 py-16">
+      <JsonLd id="schema-market-webpage" data={buildWebPage('/market-report', marketTitle, marketDescription)} />
       <JsonLd
         id="schema-market-article"
         data={buildArticle({
