@@ -3,7 +3,7 @@
 ## Weekly
 - Review Google Search Console → Performance (queries/landing pages).
 - Check Indexing → Pages for new errors or exclusions.
-- Spot-check Core Web Vitals for `/`, `/move-in-ready`, `/service-areas/sunstone-master-plan`.
+- Spot-check Core Web Vitals for `/`, `/move-in-ready`, `/communities/capella`.
 
 ## Monthly
 - Export GA4 Traffic Acquisition report filtered to Organic Search.
