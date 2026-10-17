@@ -6,10 +6,7 @@ import { ThemeProvider } from 'next-themes'
 import { JsonLd } from '@/components/json-ld'
 import SiteFooter from '@/components/site-footer'
 import SiteHeader from '@/components/site-header'
-import {
-  localBusinessJsonLd,
-  realEstateAgentJsonLd,
-} from '@/lib/structured-data'
+import { siteGraphJsonLd } from '@/lib/structured-data'
 import { SITE_LOGO, SITE_URL } from '@/lib/site'
 
 import './globals.css'
@@ -52,6 +49,11 @@ export const metadata: Metadata = {
     description:
       'Homes for sale at Sunstone Las Vegas, ZIP 89143, with Dr. Jan Duffy.',
   },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: { index: true, follow: true },
+  },
 }
 
 export default function RootLayout({
@@ -74,8 +76,7 @@ export default function RootLayout({
             gtag('config', 'G-1HCM0VVVP8');
           `}
         </Script>
-        <JsonLd id="realestateagent-schema" data={realEstateAgentJsonLd} />
-        <JsonLd id="localbusiness-schema" data={localBusinessJsonLd} />
+        <JsonLd id="site-graph-schema" data={siteGraphJsonLd} />
       </head>
       <body className={`${headingFont.variable} ${bodyFont.variable}`}>
         <ThemeProvider

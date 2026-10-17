@@ -5,14 +5,22 @@ import {
   AREA_NAME,
   AREA_ZIP,
   BROKERAGE_NAME,
-  CONTACT_ADDRESS,
   CONTACT_EMAIL,
   CONTACT_PHONE,
   MASTER_PLAN,
+  SALES_OFFICE_ADDRESS,
   SITE_URL,
 } from '@/lib/site'
 
 export { SITE_URL }
+
+const AGENT_ID = `${SITE_URL}/#realestateagent`
+const WEBSITE_ID = `${SITE_URL}/#website`
+const PLACE_ID = `${SITE_URL}/#capella-place`
+
+const salesOfficeMapUrl = `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(
+  SALES_OFFICE_ADDRESS,
+)}`
 
 export type BreadcrumbItem = {
   name: string
@@ -83,11 +91,21 @@ export function buildArticle(input: {
   }
 }
 
-export const placeJsonLd = {
-  '@context': 'https://schema.org',
+const placeNode = {
   '@type': 'Place',
+  '@id': PLACE_ID,
   name: AREA_NAME,
-  address: postalAddress,
+  description:
+    'Woodside Homes new construction collection inside the Sunstone master plan, northwest Las Vegas, Nevada.',
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: '9361 Blue Vega Ave',
+    addressLocality: 'Las Vegas',
+    addressRegion: 'NV',
+    postalCode: AREA_ZIP,
+    addressCountry: 'US',
+  },
+  hasMap: salesOfficeMapUrl,
   containedInPlace: {
     '@type': 'Place',
     name: `${MASTER_PLAN} master plan`,
@@ -99,6 +117,12 @@ export const placeJsonLd = {
       addressCountry: 'US',
     },
   },
+} as const satisfies Record<string, unknown>
+
+/** Standalone Place JSON-LD (prefer siteGraphJsonLd in layout). */
+export const placeJsonLd = {
+  '@context': 'https://schema.org',
+  ...placeNode,
 }
 
 const areaServed = [
@@ -120,11 +144,11 @@ const areaServed = [
   },
 ]
 
-export const realEstateAgentJsonLd = {
-  '@context': 'https://schema.org',
-  '@type': 'RealEstateAgent',
-  '@id': `${SITE_URL}/#realestateagent`,
+const agentNode = {
+  '@type': ['RealEstateAgent', 'LocalBusiness'],
+  '@id': AGENT_ID,
   name: AGENT_NAME,
+  alternateName: SITE_LOGO,
   url: SITE_URL,
   image: `${SITE_URL}/images/about/dr-jan-duffy.webp`,
   telephone: CONTACT_PHONE,
@@ -132,25 +156,48 @@ export const realEstateAgentJsonLd = {
   address: postalAddress,
   areaServed,
   identifier: AGENT_LICENSE,
+  knowsAbout: [
+    'Sunstone master plan Las Vegas',
+    'Capella at Sunstone Woodside Homes',
+    'New construction buyer representation',
+  ],
   worksFor: {
     '@type': 'Organization',
     name: BROKERAGE_NAME,
   },
-}
+} as const satisfies Record<string, unknown>
 
-export const localBusinessJsonLd = {
-  '@context': 'https://schema.org',
-  '@type': 'LocalBusiness',
-  '@id': `${SITE_URL}/#localbusiness`,
-  name: SITE_LOGO,
+const websiteNode = {
+  '@type': 'WebSite',
+  '@id': WEBSITE_ID,
   url: SITE_URL,
-  image: `${SITE_URL}/images/about/dr-jan-duffy.webp`,
-  telephone: CONTACT_PHONE,
-  email: CONTACT_EMAIL,
-  address: postalAddress,
-  areaServed,
-  parentOrganization: {
-    '@type': 'Organization',
-    name: BROKERAGE_NAME,
-  },
+  name: SITE_LOGO,
+  description:
+    'Sunstone Las Vegas homes for sale in ZIP 89143 with buyer and seller guidance from Dr. Jan Duffy.',
+  inLanguage: 'en-US',
+  publisher: { '@id': AGENT_ID },
+  about: { '@id': PLACE_ID },
+} as const satisfies Record<string, unknown>
+
+/** Single linked graph for SEO, local GEO, and answer-engine entity resolution. */
+export const siteGraphJsonLd = {
+  '@context': 'https://schema.org',
+  '@graph': [websiteNode, agentNode, placeNode],
+} as const satisfies Record<string, unknown>
+
+export const realEstateAgentJsonLd = siteGraphJsonLd
+export const localBusinessJsonLd = siteGraphJsonLd
+
+export function buildWebPage(path: string, name: string, description: string) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'WebPage',
+    '@id': `${SITE_URL}${path}#webpage`,
+    url: `${SITE_URL}${path}`,
+    name,
+    description,
+    isPartOf: { '@id': WEBSITE_ID },
+    about: { '@id': PLACE_ID },
+    inLanguage: 'en-US',
+  }
 }

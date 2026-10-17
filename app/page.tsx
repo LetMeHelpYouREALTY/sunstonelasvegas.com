@@ -13,18 +13,25 @@ import { SunstoneMap } from '@/components/sunstone-map'
 import { featuredPlaces, sharedFaqs, SUNSTONE, WOODSIDE } from '@/lib/area'
 import { pageMeta } from '@/lib/metadata'
 import { CONTACT_PHONE_LINK } from '@/lib/site'
-import { buildFaqPage } from '@/lib/structured-data'
+import { buildFaqPage, buildWebPage } from '@/lib/structured-data'
+
+const homeTitle = 'Sunstone Las Vegas Homes for Sale'
+const homeDescription =
+  'Sunstone Las Vegas homes for sale in 89143. Capella, Lyra, Axel, Alia, and Trilogy are collections inside the master plan.'
 
 export const metadata = pageMeta({
-  title: 'Sunstone Las Vegas Homes for Sale',
-  description:
-    'Sunstone Las Vegas homes for sale in 89143. Capella, Lyra, Axel, Alia, and Trilogy are collections inside the master plan.',
+  title: homeTitle,
+  description: homeDescription,
   path: '/',
 })
 
 export default function HomePage() {
   return (
     <div>
+      <JsonLd
+        id="schema-home-webpage"
+        data={buildWebPage('/', homeTitle, homeDescription)}
+      />
       <JsonLd id="schema-home-faq" data={buildFaqPage(sharedFaqs)} />
       <section className="hero-band">
         <div className="mx-auto grid max-w-6xl items-end gap-10 px-4 py-16 sm:py-24 lg:grid-cols-[1.15fr_0.85fr]">
