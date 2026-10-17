@@ -1,3 +1,5 @@
+import Link from 'next/link'
+
 import {
   AgentCredit,
   Answer,
@@ -44,12 +46,14 @@ export default function MarketReportPage() {
         </h1>
         <LogoLine />
         <Answer>
-          This report uses builder pages retrieved on October 12, 2026. Drive
-          times were measured on September 30, 2026 from Sunstone. It does not
-          include a 90-day median sale price for this master plan. A
-          days-on-market count and a list-to-sale ratio were also missing. Those
-          figures were not in an allowed local source.
+          This report covers the Sunstone master plan in Las Vegas, ZIP 89143.
+          It uses builder pages retrieved on October 12, 2026. Drive times were
+          measured on September 30, 2026 from Sunstone. It does not include a
+          90-day median sale price for this master plan. A days-on-market count
+          and a list-to-sale ratio were also missing. Those figures were not in
+          an allowed local source.
         </Answer>
+        <AgentCredit checked="October 12, 2026" />
       </header>
 
       <section>
@@ -84,6 +88,13 @@ export default function MarketReportPage() {
         <SourceLine href={WOODSIDE}>
           Source retrieved October 12, 2026
         </SourceLine>
+        <p className="mt-4 text-sm">
+          <Link href="/move-in-ready">
+            The six Capella homes Woodside listed
+          </Link>
+          <span aria-hidden="true"> · </span>
+          <Link href="/models">Capella floor plans</Link>
+        </p>
       </section>
 
       <section className="grid gap-6 md:grid-cols-2">

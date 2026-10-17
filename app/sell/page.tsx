@@ -48,15 +48,16 @@ export default function SellPage() {
         </h1>
         <LogoLine />
         <Answer>
-          A Sunstone seller is pricing against new Woodside, Lennar, and Shea
-          homes, not only resales. On October 12, 2026, Woodside listed Capella
-          from $599,950 to $679,950. No Sunstone closed-sale set from the last
-          90 days was available for this report. Send the address and we will
-          price the home you actually own.
+          A Sunstone seller in Las Vegas 89143 is pricing against new Woodside,
+          Lennar, and Shea homes, not only resales. On October 12, 2026,
+          Woodside listed Capella from $599,950 to $679,950. No Sunstone
+          closed-sale set from the last 90 days was available for this report.
+          Send the address and we will price the home you actually own.
         </Answer>
         <SourceLine href={WOODSIDE}>
           Woodside asking prices, retrieved October 12, 2026
         </SourceLine>
+        <AgentCredit checked="October 12, 2026" />
       </header>
 
       <section className="grid gap-10 lg:grid-cols-2">

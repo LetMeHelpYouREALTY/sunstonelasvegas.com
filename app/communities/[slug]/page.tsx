@@ -53,7 +53,7 @@ export default async function CollectionPage({ params }: CollectionPageProps) {
         <Eyebrow>{guide.builder}</Eyebrow>
         <h1 className="font-heading text-5xl sm:text-6xl">{guide.name}</h1>
         <LogoLine />
-        <AgentCredit />
+        <AgentCredit checked="October 12, 2026" />
         <Answer>{guide.sentences[0]}</Answer>
       </header>
       <div className="grid gap-4 text-muted-foreground">
@@ -65,6 +65,36 @@ export default async function CollectionPage({ params }: CollectionPageProps) {
       <Link className="btn w-fit" href={guide.ctaHref}>
         {guide.ctaLabel}
       </Link>
+      <nav aria-label={`More about ${guide.name}`} className="grid gap-3">
+        <h2 className="font-heading text-3xl">More about {guide.name}</h2>
+        <ul className="grid gap-2">
+          {guide.related.map((link) => (
+            <li key={link.href}>
+              <Link href={link.href}>{link.label}</Link>
+            </li>
+          ))}
+        </ul>
+      </nav>
+      <nav aria-label="Other Sunstone neighborhoods" className="grid gap-3">
+        <h2 className="font-heading text-3xl">Other Sunstone neighborhoods</h2>
+        <ul className="grid gap-2">
+          {collectionGuides
+            .filter((item) => item.slug !== guide.slug)
+            .map((item) => (
+              <li key={item.slug}>
+                <Link href={item.path}>
+                  {item.name} at Sunstone, {item.builder}
+                </Link>
+              </li>
+            ))}
+          <li>
+            <Link href="/trilogy">Trilogy Sunstone 55+ rules, Shea Homes</Link>
+          </li>
+          <li>
+            <Link href="/communities">All ten Sunstone neighborhoods</Link>
+          </li>
+        </ul>
+      </nav>
     </div>
   )
 }

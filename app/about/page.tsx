@@ -14,7 +14,7 @@ import {
   CONTACT_PHONE_LINK,
   SALES_OFFICE_ADDRESS,
 } from '@/lib/site'
-import { buildBreadcrumbList } from '@/lib/structured-data'
+import { buildBreadcrumbList, buildProfilePage } from '@/lib/structured-data'
 
 export const metadata = pageMeta({
   title: 'About Dr. Jan Duffy | Sunstone',
@@ -26,6 +26,10 @@ export const metadata = pageMeta({
 export default function AboutPage() {
   return (
     <div className="mx-auto grid max-w-6xl gap-16 px-4 py-16">
+      <JsonLd
+        id="schema-about-profile"
+        data={buildProfilePage({ path: '/about', name: 'About Dr. Jan Duffy' })}
+      />
       <JsonLd
         id="schema-about-breadcrumb"
         data={buildBreadcrumbList([

@@ -88,6 +88,7 @@ export default function BuyersPage() {
         <SourceLine href={SUNSTONE}>
           Sunstone master-plan site, retrieved October 12, 2026
         </SourceLine>
+        <AgentCredit checked="October 12, 2026" />
       </header>
 
       <section className="grid gap-6">

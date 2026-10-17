@@ -47,6 +47,7 @@ export default function CommunitiesPage() {
         <SourceLine href={SUNSTONE}>
           sunstonelv.com, retrieved October 12, 2026
         </SourceLine>
+        <AgentCredit checked="October 12, 2026" />
       </header>
 
       <section className="overflow-x-auto">
@@ -108,12 +109,25 @@ export default function CommunitiesPage() {
           </SourceLine>
         </div>
         <div>
-          <h2 className="font-heading text-3xl">Keep going</h2>
+          <h2 className="font-heading text-3xl">Pages for each neighborhood</h2>
           <AgentCredit />
           <p className="mt-3 text-muted-foreground">
             Capella plans, Trilogy’s age rule, and the October market notes are
             separate pages.
           </p>
+          <ul className="mt-3 grid gap-2 text-sm">
+            <li>
+              <Link href="/models">Capella floor plans</Link>
+            </li>
+            <li>
+              <Link href="/trilogy">Trilogy Sunstone 55+ rules</Link>
+            </li>
+            <li>
+              <Link href="/market-report">
+                Sunstone market report, October 12, 2026
+              </Link>
+            </li>
+          </ul>
           <div className="mt-4">
             <Link className="btn" href="/new-construction">
               Compare new construction

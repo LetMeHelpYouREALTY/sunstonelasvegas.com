@@ -19,13 +19,14 @@ export const LYRA_NOTE =
 export const DRIVES =
   'https://www.nevadarealestategroup.com/north-las-vegas/sunstone'
 
+/** `planSlug` matches `plans[].slug` so a listed home links to its plan page. */
 export const capellaHomes = [
-  { slug: 'aries-lot-63', plan: 'Aries', lot: 'Lot 63', price: '$599,950', beds: '3', baths: '2.5', sqft: '1,970', garage: '2' },
-  { slug: 'taurus-lot-12', plan: 'Taurus', lot: 'Lot 12', price: '$608,950', beds: '3', baths: '2.5', sqft: '2,093', garage: '2' },
-  { slug: 'aries-lot-4', plan: 'Aries', lot: 'Lot 4', price: '$616,950', beds: 'Not on card', baths: '2.5', sqft: '1,970', garage: '2' },
-  { slug: 'virgo-lot-13', plan: 'Virgo', lot: 'Lot 13', price: '$657,950', beds: 'Not on card', baths: '3.5', sqft: '2,295', garage: '2' },
-  { slug: 'virgo-lot-14', plan: 'Virgo', lot: 'Lot 14', price: '$659,950', beds: 'Not on card', baths: '3.5', sqft: '2,295', garage: '2' },
-  { slug: 'virgo-lot-15', plan: 'Virgo', lot: 'Lot 15', price: '$679,950', beds: 'Not on card', baths: '3.5', sqft: '2,295', garage: '2' },
+  { slug: 'aries-lot-63', plan: 'Aries', planSlug: 'aries', lot: 'Lot 63', price: '$599,950', beds: '3', baths: '2.5', sqft: '1,970', garage: '2' },
+  { slug: 'taurus-lot-12', plan: 'Taurus', planSlug: 'taurus', lot: 'Lot 12', price: '$608,950', beds: '3', baths: '2.5', sqft: '2,093', garage: '2' },
+  { slug: 'aries-lot-4', plan: 'Aries', planSlug: 'aries', lot: 'Lot 4', price: '$616,950', beds: 'Not on card', baths: '2.5', sqft: '1,970', garage: '2' },
+  { slug: 'virgo-lot-13', plan: 'Virgo', planSlug: 'virgo', lot: 'Lot 13', price: '$657,950', beds: 'Not on card', baths: '3.5', sqft: '2,295', garage: '2' },
+  { slug: 'virgo-lot-14', plan: 'Virgo', planSlug: 'virgo', lot: 'Lot 14', price: '$659,950', beds: 'Not on card', baths: '3.5', sqft: '2,295', garage: '2' },
+  { slug: 'virgo-lot-15', plan: 'Virgo', planSlug: 'virgo', lot: 'Lot 15', price: '$679,950', beds: 'Not on card', baths: '3.5', sqft: '2,295', garage: '2' },
 ] as const
 
 export const plans = [
@@ -185,6 +186,8 @@ export type CollectionGuide = {
   sourceHref: string
   ctaHref: string
   ctaLabel: string
+  /** Pages on this site that cover the same collection in more depth. */
+  related: readonly { label: string; href: string }[]
 }
 
 export const collectionGuides: readonly CollectionGuide[] = [
@@ -197,7 +200,7 @@ export const collectionGuides: readonly CollectionGuide[] = [
     path: '/communities/capella',
     builder: 'Woodside Homes',
     sentences: [
-      'Capella is a Woodside collection inside Sunstone in ZIP 89143.',
+      'Capella is a Woodside collection inside Sunstone in Las Vegas, ZIP 89143.',
       'The plans are single story and run 1,970 to 2,295 square feet.',
       'On October 12, 2026, Woodside listed six homes from $599,950 to $679,950.',
       'Those figures are builder asking prices, and they are not closed sales.',
@@ -206,6 +209,17 @@ export const collectionGuides: readonly CollectionGuide[] = [
     sourceHref: WOODSIDE,
     ctaHref: '/move-in-ready',
     ctaLabel: 'See the October 12 list',
+    related: [
+      {
+        label: 'Capella floor plans: Aries, Taurus, and Virgo',
+        href: '/models',
+      },
+      {
+        label: 'The six Capella homes Woodside listed',
+        href: '/move-in-ready',
+      },
+      { label: 'New homes in Sunstone by builder', href: '/new-construction' },
+    ],
   },
   {
     slug: 'lyra',
@@ -216,7 +230,7 @@ export const collectionGuides: readonly CollectionGuide[] = [
     path: '/communities/lyra',
     builder: 'Woodside Homes',
     sentences: [
-      'Lyra is a Woodside collection inside the Sunstone master plan.',
+      'Lyra is a Woodside collection inside the Sunstone master plan in Las Vegas, ZIP 89143.',
       'Lyra One runs 2,488 to 2,752 square feet with three to five bedrooms.',
       'Lyra Two runs 3,027 to 3,428 square feet with four to six bedrooms.',
       'The master-plan site labeled Lyra One from the $500s on October 12, 2026.',
@@ -226,6 +240,10 @@ export const collectionGuides: readonly CollectionGuide[] = [
     sourceHref: SUNSTONE,
     ctaHref: '/contact',
     ctaLabel: 'Ask about Lyra',
+    related: [
+      { label: 'Lyra HOA quote in the buyer guide', href: '/buyers' },
+      { label: 'New homes in Sunstone by builder', href: '/new-construction' },
+    ],
   },
   {
     slug: 'axel',
@@ -236,7 +254,7 @@ export const collectionGuides: readonly CollectionGuide[] = [
     path: '/communities/axel',
     builder: 'Lennar',
     sentences: [
-      'Axel is a Lennar collection inside Sunstone in ZIP 89143.',
+      'Axel is a Lennar collection inside Sunstone in Las Vegas, ZIP 89143.',
       'Plans run 1,807 to 1,927 square feet with two to four bedrooms.',
       'Lennar listed Axel townhomes from $383,990 to $462,565 on October 12, 2026.',
       'That page showed an approximate monthly HOA of $210.',
@@ -245,6 +263,10 @@ export const collectionGuides: readonly CollectionGuide[] = [
     sourceHref: LENNAR,
     ctaHref: '/contact',
     ctaLabel: 'Ask about Axel',
+    related: [
+      { label: 'Axel HOA figure in the buyer guide', href: '/buyers' },
+      { label: 'New homes in Sunstone by builder', href: '/new-construction' },
+    ],
   },
   {
     slug: 'alia',
@@ -255,7 +277,7 @@ export const collectionGuides: readonly CollectionGuide[] = [
     path: '/communities/alia',
     builder: 'Lennar',
     sentences: [
-      'Alia is a Lennar collection inside the Sunstone master plan.',
+      'Alia is a Lennar collection inside the Sunstone master plan in Las Vegas, ZIP 89143.',
       'Plans run 2,012 to 4,240 square feet with three to five bedrooms.',
       'The master-plan site labeled Alia from the $600s on October 12, 2026.',
       'Lennar listed Alia Estates from $862,990 on that same day.',
@@ -264,6 +286,13 @@ export const collectionGuides: readonly CollectionGuide[] = [
     sourceHref: LENNAR,
     ctaHref: '/contact',
     ctaLabel: 'Ask about Alia',
+    related: [
+      {
+        label: 'Lennar prices in the October market report',
+        href: '/market-report',
+      },
+      { label: 'New homes in Sunstone by builder', href: '/new-construction' },
+    ],
   },
 ]
 

@@ -6,6 +6,8 @@ import {
   Answer,
   Eyebrow,
   LogoLine,
+  PlanHomes,
+  RelatedLinks,
   SourceLine,
 } from '@/components/editorial'
 import { JsonLd } from '@/components/json-ld'
@@ -58,7 +60,7 @@ export default async function ModelPage({ params }: PlanPageProps) {
       <Eyebrow>Capella at Sunstone</Eyebrow>
       <h1 className="font-heading text-5xl">{plan.name}</h1>
       <LogoLine />
-      <AgentCredit />
+      <AgentCredit checked="October 12, 2026" />
       <Answer>
         {`${plan.name} is a one-story Capella plan at Sunstone in Las Vegas 89143. Woodside lists ${plan.sqft}, ${plan.beds}, and ${plan.baths}, with a ${plan.garage}. ${plan.notes} These figures were read from the Woodside plan page on October 12, 2026. Asking prices for finished homes are on the listed-homes page.`}
       </Answer>
@@ -68,6 +70,21 @@ export default async function ModelPage({ params }: PlanPageProps) {
       <Link className="btn w-fit" href="/contact">
         Ask for a model tour
       </Link>
+      <PlanHomes planSlug={plan.slug} />
+      <RelatedLinks
+        heading="Capella pages"
+        links={[
+          { label: 'All three Capella floor plans', href: '/models' },
+          {
+            label: 'Capella at Sunstone overview',
+            href: '/communities/capella',
+          },
+          {
+            label: 'The six Capella homes Woodside listed',
+            href: '/move-in-ready',
+          },
+        ]}
+      />
     </div>
   )
 }

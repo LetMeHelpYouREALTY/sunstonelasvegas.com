@@ -5,6 +5,7 @@ import {
   Answer,
   Eyebrow,
   LogoLine,
+  RelatedLinks,
   SourceLine,
 } from '@/components/editorial'
 import { JsonLd } from '@/components/json-ld'
@@ -14,9 +15,9 @@ import { pageMeta } from '@/lib/metadata'
 import { buildBreadcrumbList } from '@/lib/structured-data'
 
 export const metadata = pageMeta({
-  title: 'Capella Homes Woodside Listed',
+  title: 'Capella at Sunstone Homes Listed by Woodside',
   description:
-    'Six Capella at Sunstone homes Woodside listed on October 12, 2026, from $599,950 to $679,950. Builder asking prices, not MLS listings.',
+    'Six Capella at Sunstone homes in Las Vegas 89143 that Woodside listed on October 12, 2026, from $599,950 to $679,950. Builder asking prices, not MLS listings.',
   path: '/move-in-ready',
 })
 
@@ -37,13 +38,15 @@ export default function MoveInReadyPage() {
         </h1>
         <LogoLine />
         <Answer>
-          These six homes were on Woodside’s Capella page on October 12, 2026.
-          Asking prices run from $599,950 to $679,950 for one-story plans. They
-          are builder prices, not closed sales and not an MLS feed. Woodside
-          called this release a final opportunity on that page. Confirm the lot
-          is still available before you schedule a tour.
+          These six Capella at Sunstone homes, in Las Vegas 89143, were on
+          Woodside’s Capella page on October 12, 2026. Asking prices run from
+          $599,950 to $679,950 for one-story plans. They are builder prices, not
+          closed sales and not an MLS feed. Woodside called this release a final
+          opportunity on that page. Confirm the lot is still available before
+          you schedule a tour.
         </Answer>
         <SourceLine href={WOODSIDE}>Retrieved October 12, 2026</SourceLine>
+        <AgentCredit checked="October 12, 2026" />
       </header>
       <div className="grid gap-4">
         {capellaHomes.map((home) => (
@@ -59,10 +62,34 @@ export default function MoveInReadyPage() {
             <p>
               {home.sqft} sq ft · {home.baths} baths
             </p>
-            <Link href={`/move-in-ready/${home.slug}`}>Details</Link>
+            <p className="grid gap-1">
+              <Link href={`/move-in-ready/${home.slug}`}>
+                {home.plan} {home.lot} details
+              </Link>
+              <Link href={`/models/${home.planSlug}`}>
+                {home.plan} plan facts
+              </Link>
+            </p>
           </article>
         ))}
       </div>
+      <RelatedLinks
+        heading="Capella pages"
+        links={[
+          {
+            label: 'Capella floor plans: Aries, Taurus, and Virgo',
+            href: '/models',
+          },
+          {
+            label: 'Capella at Sunstone overview',
+            href: '/communities/capella',
+          },
+          {
+            label: 'Sunstone market report, October 12, 2026',
+            href: '/market-report',
+          },
+        ]}
+      />
       <RealScoutSearch heading="Search beyond this builder list" />
     </div>
   )

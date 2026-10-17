@@ -33,8 +33,8 @@ export async function generateMetadata({ params }: HomePageProps) {
     })
   }
   return pageMeta({
-    title: `${home.plan} ${home.lot} | Capella`,
-    description: `${home.plan} ${home.lot} at Capella at Sunstone was listed at ${home.price} on Woodside’s page, retrieved October 12, 2026.`,
+    title: `${home.plan} ${home.lot} | Capella at Sunstone`,
+    description: `${home.plan} ${home.lot} at Capella at Sunstone, Las Vegas 89143, was listed at ${home.price} on Woodside’s page, retrieved October 12, 2026.`,
     path: `/move-in-ready/${home.slug}`,
   })
 }
@@ -64,9 +64,9 @@ export default async function ListedHomePage({ params }: HomePageProps) {
         {home.plan} {home.lot}
       </h1>
       <LogoLine />
-      <AgentCredit />
+      <AgentCredit checked="October 12, 2026" />
       <Answer>
-        {`Woodside priced ${home.plan} ${home.lot} at ${home.price} on October 12, 2026. The card showed ${home.sqft} square feet, ${home.baths} baths, and a ${home.garage}-car garage. ${home.beds === 'Not on card' ? 'The card did not print a bedroom count for this lot.' : `The card printed ${home.beds} bedrooms for this lot.`} This page does not show a photograph of that lot. Treat the price as a builder asking price, not a closed sale.`}
+        {`${home.plan} ${home.lot} is a Woodside home in Capella at Sunstone, Las Vegas 89143. Woodside priced it at ${home.price} on October 12, 2026. The card showed ${home.sqft} square feet, ${home.baths} baths, and a ${home.garage}-car garage. ${home.beds === 'Not on card' ? 'The card did not print a bedroom count for this lot.' : `The card printed ${home.beds} bedrooms for this lot.`} This page does not show a photograph of that lot. Treat the price as a builder asking price, not a closed sale.`}
       </Answer>
       <SourceLine href={WOODSIDE}>
         Woodside Homes, retrieved October 12, 2026
@@ -74,6 +74,26 @@ export default async function ListedHomePage({ params }: HomePageProps) {
       <Link className="btn w-fit" href="/contact">
         Ask if this lot is still open
       </Link>
+      <nav aria-label="Related Capella pages" className="grid gap-3">
+        <h2 className="font-heading text-3xl">Related Capella pages</h2>
+        <ul className="grid gap-2">
+          <li>
+            <Link href={`/models/${home.planSlug}`}>
+              {home.plan} plan: size, bedrooms, and options
+            </Link>
+          </li>
+          <li>
+            <Link href="/move-in-ready">
+              All six Capella homes Woodside listed on October 12, 2026
+            </Link>
+          </li>
+          <li>
+            <Link href="/communities/capella">
+              Capella at Sunstone overview
+            </Link>
+          </li>
+        </ul>
+      </nav>
     </div>
   )
 }

@@ -5,6 +5,7 @@ import {
   Answer,
   Eyebrow,
   LogoLine,
+  RelatedLinks,
   SourceLine,
 } from '@/components/editorial'
 import { JsonLd } from '@/components/json-ld'
@@ -45,6 +46,7 @@ export default function ModelsPage() {
         <SourceLine href={WOODSIDE}>
           Woodside Homes, retrieved October 12, 2026
         </SourceLine>
+        <AgentCredit checked="October 12, 2026" />
       </header>
       <div className="grid gap-6 md:grid-cols-3">
         {plans.map((plan) => (
@@ -60,6 +62,23 @@ export default function ModelsPage() {
           </article>
         ))}
       </div>
+      <RelatedLinks
+        heading="Capella pages"
+        links={[
+          {
+            label: 'Capella at Sunstone overview',
+            href: '/communities/capella',
+          },
+          {
+            label: 'The six Capella homes Woodside listed',
+            href: '/move-in-ready',
+          },
+          {
+            label: 'New homes in Sunstone by builder',
+            href: '/new-construction',
+          },
+        ]}
+      />
     </div>
   )
 }

@@ -1,3 +1,5 @@
+import Link from 'next/link'
+
 import {
   AgentCredit,
   Answer,
@@ -44,6 +46,7 @@ export default function TrilogyPage() {
         <SourceLine href={SHEA}>
           Shea Homes, retrieved October 12, 2026
         </SourceLine>
+        <AgentCredit checked="October 12, 2026" />
       </header>
 
       <section className="grid gap-8 md:grid-cols-2">
@@ -78,6 +81,11 @@ export default function TrilogyPage() {
         <p className="mt-3 max-w-3xl text-muted-foreground">
           Woodside does not label Capella as 55+. Do not apply Trilogy’s age
           rule to a Capella lot unless the recorded documents say so.
+        </p>
+        <p className="mt-3 text-sm">
+          <Link href="/communities/capella">Capella at Sunstone</Link>
+          <span aria-hidden="true"> · </span>
+          <Link href="/communities">All Sunstone neighborhoods</Link>
         </p>
         <a className="btn mt-6" href={CONTACT_PHONE_LINK}>
           Call Dr. Jan Duffy about a tour

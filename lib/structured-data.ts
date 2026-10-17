@@ -1,4 +1,5 @@
 import {
+  AGENT_CREDENTIAL,
   AGENT_LICENSE,
   AGENT_NAME,
   SITE_LOGO,
@@ -56,6 +57,60 @@ export function buildFaqPage(faqs: { question: string; answer: string }[]) {
   }
 }
 
+const PERSON_ID = `${SITE_URL}/#person`
+
+const areaServed = [
+  {
+    '@type': 'Place',
+    name: AREA_NAME,
+    address: postalAddress,
+  },
+  {
+    '@type': 'Place',
+    name: `${MASTER_PLAN} master plan`,
+    address: {
+      '@type': 'PostalAddress',
+      addressLocality: 'Las Vegas',
+      addressRegion: 'NV',
+      postalCode: AREA_ZIP,
+      addressCountry: 'US',
+    },
+  },
+]
+
+/**
+ * The one Person entity for the agent. Every name, license, phone, and address
+ * value comes from lib/site.ts. No sameAs: the repo holds no profile URL.
+ */
+const personEntity = {
+  '@type': 'Person',
+  '@id': PERSON_ID,
+  name: AGENT_NAME,
+  jobTitle: AGENT_CREDENTIAL,
+  description: `${AGENT_CREDENTIAL}, Nevada license ${AGENT_LICENSE}, ${BROKERAGE_NAME}`,
+  url: `${SITE_URL}/about`,
+  image: `${SITE_URL}/images/about/dr-jan-duffy.webp`,
+  telephone: CONTACT_PHONE,
+  email: CONTACT_EMAIL,
+  address: postalAddress,
+  worksFor: {
+    '@type': 'Organization',
+    name: BROKERAGE_NAME,
+  },
+  hasCredential: {
+    '@type': 'EducationalOccupationalCredential',
+    credentialCategory: 'license',
+    name: `Nevada real estate license ${AGENT_LICENSE}`,
+  },
+  knowsAbout: [
+    `${MASTER_PLAN} master plan, Las Vegas, NV ${AREA_ZIP}`,
+    AREA_NAME,
+    'Trilogy Sunstone 55+ rules',
+    'New construction in Sunstone',
+  ],
+  areaServed,
+}
+
 export function buildArticle(input: {
   headline: string
   description: string
@@ -73,13 +128,27 @@ export function buildArticle(input: {
     image: [`${SITE_URL}/opengraph-image`],
     author: {
       '@type': 'Person',
+      '@id': PERSON_ID,
       name: AGENT_NAME,
+      jobTitle: AGENT_CREDENTIAL,
       url: `${SITE_URL}/about`,
     },
     publisher: {
       '@type': 'Organization',
       name: BROKERAGE_NAME,
     },
+  }
+}
+
+/** ProfilePage for /about. The page is about one person tied to this site. */
+export function buildProfilePage(input: { path: string; name: string }) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'ProfilePage',
+    '@id': `${SITE_URL}${input.path}#profilepage`,
+    url: `${SITE_URL}${input.path}`,
+    name: input.name,
+    mainEntity: personEntity,
   }
 }
 
@@ -101,25 +170,6 @@ export const placeJsonLd = {
   },
 }
 
-const areaServed = [
-  {
-    '@type': 'Place',
-    name: AREA_NAME,
-    address: postalAddress,
-  },
-  {
-    '@type': 'Place',
-    name: `${MASTER_PLAN} master plan`,
-    address: {
-      '@type': 'PostalAddress',
-      addressLocality: 'Las Vegas',
-      addressRegion: 'NV',
-      postalCode: AREA_ZIP,
-      addressCountry: 'US',
-    },
-  },
-]
-
 export const realEstateAgentJsonLd = {
   '@context': 'https://schema.org',
   '@type': 'RealEstateAgent',
@@ -135,6 +185,13 @@ export const realEstateAgentJsonLd = {
   worksFor: {
     '@type': 'Organization',
     name: BROKERAGE_NAME,
+  },
+  founder: {
+    '@type': 'Person',
+    '@id': PERSON_ID,
+    name: AGENT_NAME,
+    jobTitle: AGENT_CREDENTIAL,
+    url: `${SITE_URL}/about`,
   },
 }
 

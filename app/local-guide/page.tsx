@@ -11,7 +11,7 @@ import { JsonLd } from '@/components/json-ld'
 import { DRIVES, LENNAR, SUNSTONE } from '@/lib/area'
 import { pageMeta } from '@/lib/metadata'
 import { CONTACT_PHONE_LINK } from '@/lib/site'
-import { buildBreadcrumbList } from '@/lib/structured-data'
+import { buildArticle, buildBreadcrumbList } from '@/lib/structured-data'
 
 const GUIDE =
   'https://www.homes.com/local-guide/las-vegas-nv/sunstone-neighborhood/'
@@ -25,7 +25,17 @@ export const metadata = pageMeta({
 
 export default function LocalGuidePage() {
   return (
-    <div className="mx-auto grid max-w-6xl gap-16 px-4 py-16">
+    <article className="mx-auto grid max-w-6xl gap-16 px-4 py-16">
+      <JsonLd
+        id="schema-guide-article"
+        data={buildArticle({
+          headline: 'Sunstone neighborhood guide, read October 13, 2026',
+          description:
+            'What the Homes.com Sunstone guide says about parks, school names, price bands, and drive times in Las Vegas 89143, checked against builder and association pages.',
+          path: '/local-guide',
+          datePublished: '2026-10-13',
+        })}
+      />
       <JsonLd
         id="schema-guide-breadcrumb"
         data={buildBreadcrumbList([
@@ -48,6 +58,7 @@ export default function LocalGuidePage() {
         <SourceLine href={GUIDE}>
           Homes.com Sunstone guide, retrieved October 13, 2026
         </SourceLine>
+        <AgentCredit checked="October 13, 2026" />
       </header>
 
       <section className="grid max-w-3xl gap-3">
@@ -105,6 +116,15 @@ export default function LocalGuidePage() {
           upper $700,000s. It says condos and duplexes stay in the lower
           $400,000s. The guide page does not date that price range. Woodside’s
           Capella list on October 12, 2026 ran from $599,950 to $679,950.
+        </p>
+        <p className="text-sm">
+          <Link href="/move-in-ready">
+            The six Capella homes Woodside listed
+          </Link>
+          <span aria-hidden="true"> · </span>
+          <Link href="/communities">
+            Sunstone neighborhoods and price bands
+          </Link>
         </p>
         <p className="text-muted-foreground">
           The guide says every property sits in an HOA. It says those HOA fees
@@ -207,6 +227,11 @@ export default function LocalGuidePage() {
             reservations. Shea’s own page lists a coffeehouse and a culinary
             studio. The guide’s restaurant names go beyond that list.
           </p>
+          <p className="mt-2 text-sm">
+            <Link href="/trilogy">
+              What Shea says the Cabochon Club includes
+            </Link>
+          </p>
         </div>
         <div>
           <h3 className="font-heading text-2xl">Lowe’s and Target</h3>
@@ -257,6 +282,6 @@ export default function LocalGuidePage() {
           </a>
         </div>
       </section>
-    </div>
+    </article>
   )
 }

@@ -38,12 +38,13 @@ export default function NewConstructionPage() {
         </h1>
         <LogoLine />
         <Answer>
-          Three builders published Sunstone prices on October 12, 2026. Woodside
-          listed Capella from $599,950 to $679,950 and called it a final
-          opportunity. Lennar showed a Sunstone range of $383,990 to $966,883.
-          Shea priced Trilogy from $399,990, with base incentives of $26,000 or
-          $28,000 on some plans.
+          Three builders published prices for Sunstone, in Las Vegas 89143, on
+          October 12, 2026. Woodside listed Capella from $599,950 to $679,950
+          and called it a final opportunity. Lennar showed a Sunstone range of
+          $383,990 to $966,883. Shea priced Trilogy from $399,990, with base
+          incentives of $26,000 or $28,000 on some plans.
         </Answer>
+        <AgentCredit checked="October 12, 2026" />
       </header>
 
       <section className="grid gap-8 md:grid-cols-3">
@@ -68,6 +69,11 @@ export default function NewConstructionPage() {
             HOA was shown as $210.
           </p>
           <SourceLine href={LENNAR}>Retrieved October 12, 2026</SourceLine>
+          <p className="mt-6 text-sm">
+            <Link href="/communities/axel">Axel at Sunstone</Link>
+            <span aria-hidden="true"> · </span>
+            <Link href="/communities/alia">Alia at Sunstone</Link>
+          </p>
         </article>
         <article className="border border-border p-6">
           <h2 className="font-heading text-3xl">Shea</h2>
@@ -77,6 +83,9 @@ export default function NewConstructionPage() {
             included a $26,000 or $28,000 base incentive that day.
           </p>
           <SourceLine href={SHEA}>Lot map stamped October 12, 2026</SourceLine>
+          <p className="mt-6 text-sm">
+            <Link href="/trilogy">Trilogy Sunstone 55+ rules</Link>
+          </p>
         </article>
       </section>
 
@@ -98,6 +107,9 @@ export default function NewConstructionPage() {
         <div className="mt-6">
           <FaqList faqs={sharedFaqs.slice(0, 6)} />
         </div>
+        <p className="mt-6 text-sm">
+          <Link href="/faqs">All Sunstone home questions on one page</Link>
+        </p>
       </section>
     </div>
   )

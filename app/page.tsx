@@ -43,6 +43,7 @@ export default function HomePage() {
             <SourceLine href={SUNSTONE}>
               sunstonelv.com, retrieved October 13, 2026
             </SourceLine>
+            <AgentCredit checked="October 12 and 13, 2026" />
             <a className="btn w-fit" href={CONTACT_PHONE_LINK}>
               Call Dr. Jan Duffy
             </a>
@@ -111,6 +112,9 @@ export default function HomePage() {
         <div className="mt-8">
           <FaqList faqs={sharedFaqs} />
         </div>
+        <p className="mt-6 text-sm">
+          <Link href="/faqs">All Sunstone home questions on one page</Link>
+        </p>
       </section>
     </div>
   )

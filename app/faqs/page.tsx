@@ -4,6 +4,7 @@ import {
   Eyebrow,
   FaqList,
   LogoLine,
+  RelatedLinks,
 } from '@/components/editorial'
 import { JsonLd } from '@/components/json-ld'
 import { sharedFaqs } from '@/lib/area'
@@ -31,14 +32,33 @@ export default function FaqsPage() {
       <Eyebrow>Questions</Eyebrow>
       <h1 className="font-heading text-5xl">Sunstone home questions</h1>
       <LogoLine />
-      <AgentCredit />
+      <AgentCredit checked="October 12, 2026" />
       <Answer>
-        These answers cover HOA fees, Capella prices, and the 55+ label. They
-        also cover gates, SID notes, drive times, and builders. Each answer uses
-        a source dated September 28 through October 12, 2026. If a dollar amount
-        was missing, the answer says so plainly.
+        These answers cover the Sunstone master plan in Las Vegas, ZIP 89143:
+        HOA fees, Capella prices, and the 55+ label. They also cover gates, SID
+        notes, drive times, and builders. Each answer uses a source dated
+        September 28 through October 12, 2026. If a dollar amount was missing,
+        the answer says so plainly.
       </Answer>
       <FaqList faqs={sharedFaqs} />
+      <RelatedLinks
+        heading="Pages behind these answers"
+        links={[
+          {
+            label: 'Sunstone neighborhoods and builders',
+            href: '/communities',
+          },
+          {
+            label: 'Capella at Sunstone prices and plans',
+            href: '/communities/capella',
+          },
+          { label: 'Trilogy Sunstone 55+ rules', href: '/trilogy' },
+          {
+            label: 'Sunstone market report, October 12, 2026',
+            href: '/market-report',
+          },
+        ]}
+      />
     </div>
   )
 }

@@ -22,6 +22,8 @@ const links = [
   { href: '/trilogy', label: 'Trilogy 55+ rules' },
   { href: '/market-report', label: 'Market report' },
   { href: '/models', label: 'Capella floor plans' },
+  { href: '/move-in-ready', label: 'Capella homes Woodside listed' },
+  { href: '/faqs', label: 'Sunstone home questions' },
   { href: '/contact', label: 'Contact' },
 ]
 

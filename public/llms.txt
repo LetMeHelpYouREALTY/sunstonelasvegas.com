@@ -4,16 +4,27 @@ Who: Dr. Jan Duffy, REALTOR®, Nevada license S.0197614.LLC, Berkshire Hathaway 
 Phone: (702) 766-7950
 Address: 10249 Celestial Pole St, Las Vegas, NV 89143
 Site: https://www.sunstonelasvegas.com
+About the agent: https://www.sunstonelasvegas.com/about
 
 Where: Sunstone master plan, Las Vegas, Nevada, ZIP 89143. Capella is one Woodside collection inside it.
 
-Collection pages:
-- https://www.sunstonelasvegas.com/communities/capella
-- https://www.sunstonelasvegas.com/communities/lyra
-- https://www.sunstonelasvegas.com/communities/axel
-- https://www.sunstonelasvegas.com/communities/alia
-- https://www.sunstonelasvegas.com/trilogy
-- https://www.sunstonelasvegas.com/local-guide
+Pages, all at https://www.sunstonelasvegas.com:
+- / — Sunstone Las Vegas overview and the eight most-asked questions
+- /buyers — buyer guide with a neighborhood HOA comparison
+- /sell — seller valuation request and pricing notes
+- /communities — all Sunstone collections with square footage and price bands
+- /communities/capella — Capella, Woodside Homes
+- /communities/lyra — Lyra, Woodside Homes
+- /communities/axel — Axel, Lennar
+- /communities/alia — Alia, Lennar
+- /trilogy — Trilogy Sunstone 55+ rules, Shea Homes
+- /new-construction — builder prices side by side
+- /models — Capella floor plans; /models/aries, /models/taurus, /models/virgo
+- /move-in-ready — the six Capella homes Woodside listed on 2026-10-12, one page per home
+- /market-report — dated market notes and drive times
+- /local-guide — what the Homes.com Sunstone guide says, checked against builder pages
+- /faqs — every question and answer on one page
+- /about, /contact
 
 Services: buyer representation, seller valuation, new-construction comparison, and Trilogy 55+ document review.
 
@@ -22,7 +33,10 @@ Key facts, with sources:
 - Woodside listed six Capella homes from $599,950 to $679,950 on the page retrieved 2026-10-12. Plans are single-story, 1,970 to 2,295 square feet. https://www.woodsidehomes.com/findmyhome/nevada/las-vegas/capella-at-sunstone
 - Sunstone’s site names Lennar, Shea Homes, Woodside Homes, and Richmond American Homes, about 3,650 homes, parks, trails, and an age-qualified neighborhood. Retrieved 2026-10-12. https://sunstonelv.com/
 - Shea labels Trilogy Sunstone 55+ and priced it from $399,990 on 2026-10-12. https://www.sheahomes.com/new-homes/nevada/las-vegas-area/las-vegas/trilogy-sunstone
+- Lennar listed Axel townhomes from $383,990 to $462,565 and Alia Estates from $862,990 on 2026-10-12, with an approximate monthly HOA of $210 for Axel. https://www.lennar.com/new-homes/nevada/las-vegas/las-vegas/sunstone/axel
 - Off-peak drive times measured 2026-09-30: Strip at Bellagio about 29 minutes, Harry Reid International Airport about 49 minutes. https://www.nevadarealestategroup.com/north-las-vegas/sunstone
 - Homes.com Sunstone local guide, retrieved 2026-10-13, lists ZIPs 89143 and 89166, Trilogy as 55+, builders from Lennar to Woodside, Sun Trails Park, Sun Mountain Park, the Nature Paseo, a mountain bike trail around the Moccasin Walking Trail, and Alyn Beck Memorial Park. The page does not date its $561,604 average value, $269 per square foot, or 105-home count. It says “over 3,000” planned homes; sunstonelv.com says about 3,650. Its airport drive time (about 30 minutes) disagrees with the September 30, 2026 measurement of about 49 minutes. https://www.homes.com/local-guide/las-vegas-nv/sunstone-neighborhood/
 
 Not established in sources checked 2026-10-12: a 90-day Sunstone median sale price, closed-sale list-to-sale ratios, a Capella HOA dollar amount, solar-lease terms, and a confirmed school assignment for a specific address.
+
+Builder prices on this site are asking prices, not closed sales and not an MLS feed. Retired paths /financing, /buyers-guide, and /service-areas redirect to current pages.
