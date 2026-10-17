@@ -68,7 +68,7 @@ export function FaqList({ faqs }: { faqs: AreaFaq[] }) {
           <summary className="cursor-pointer font-heading text-2xl text-foreground">
             {faq.question}
           </summary>
-          <p className="mt-3 max-w-3xl text-base leading-relaxed text-muted-foreground">
+          <p className="answer mt-3 text-muted-foreground">
             {faq.answer}
           </p>
         </details>

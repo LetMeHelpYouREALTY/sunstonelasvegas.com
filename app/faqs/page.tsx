@@ -9,7 +9,7 @@ import { JsonLd } from '@/components/json-ld'
 import { RealScoutOffice } from '@/components/realscout-office'
 import { sharedFaqs } from '@/lib/area'
 import { pageMeta } from '@/lib/metadata'
-import { buildBreadcrumbList, buildFaqPage } from '@/lib/structured-data'
+import { buildBreadcrumbList, buildFaqPage, buildWebPage } from '@/lib/structured-data'
 
 export const metadata = pageMeta({
   title: 'Sunstone Home Questions | 89143',
@@ -29,6 +29,15 @@ export default function FaqsPage() {
         ])}
       />
       <JsonLd id="schema-faqs" data={buildFaqPage(sharedFaqs)} />
+      <JsonLd
+        id="schema-faqs-webpage"
+        data={buildWebPage({
+          name: 'Sunstone Home Questions',
+          description:
+            'Answers on Sunstone HOA fees, Capella prices, gates, SID notes, drive times, and builders.',
+          path: '/faqs',
+        })}
+      />
       <Eyebrow>Questions</Eyebrow>
       <h1 className="font-heading text-5xl">Sunstone home questions</h1>
       <LogoLine />

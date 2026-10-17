@@ -11,7 +11,11 @@ import { JsonLd } from '@/components/json-ld'
 import { RealScoutOffice } from '@/components/realscout-office'
 import { collectionRows, HOA, SUNSTONE } from '@/lib/area'
 import { pageMeta } from '@/lib/metadata'
-import { buildBreadcrumbList, placeJsonLd } from '@/lib/structured-data'
+import {
+  buildBreadcrumbList,
+  buildWebPage,
+  placeJsonLd,
+} from '@/lib/structured-data'
 
 export const metadata = pageMeta({
   title: 'Sunstone Neighborhood Guide',
@@ -30,6 +34,15 @@ export default function CommunitiesPage() {
           { name: 'Home', path: '/' },
           { name: 'Neighborhoods', path: '/communities' },
         ])}
+      />
+      <JsonLd
+        id="schema-communities-webpage"
+        data={buildWebPage({
+          name: 'Sunstone Neighborhood Guide',
+          description:
+            'Sunstone neighborhoods in Las Vegas 89143, with square footage and price bands dated October 12, 2026.',
+          path: '/communities',
+        })}
       />
       <header className="grid gap-4">
         <Eyebrow>Sunstone master plan</Eyebrow>

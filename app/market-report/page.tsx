@@ -9,7 +9,11 @@ import { JsonLd } from '@/components/json-ld'
 import { RealScoutOffice } from '@/components/realscout-office'
 import { capellaHomes, DRIVES, LENNAR, SHEA, WOODSIDE } from '@/lib/area'
 import { pageMeta } from '@/lib/metadata'
-import { buildArticle, buildBreadcrumbList } from '@/lib/structured-data'
+import {
+  buildArticle,
+  buildBreadcrumbList,
+  buildWebPage,
+} from '@/lib/structured-data'
 
 export const metadata = pageMeta({
   title: 'Sunstone Market Report | Oct 2026',
@@ -29,6 +33,15 @@ export default function MarketReportPage() {
             'Builder asking prices and drive times for Capella at Sunstone and the Sunstone master plan.',
           path: '/market-report',
           datePublished: '2026-10-12',
+        })}
+      />
+      <JsonLd
+        id="schema-market-webpage"
+        data={buildWebPage({
+          name: 'Sunstone Market Report',
+          description:
+            'Sunstone market notes for October 12, 2026. No 90-day closed-sale median was available.',
+          path: '/market-report',
         })}
       />
       <JsonLd

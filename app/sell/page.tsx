@@ -11,7 +11,11 @@ import { RealScoutOffice } from '@/components/realscout-office'
 import { ValuationForm } from '@/components/valuation-form'
 import { LYRA_NOTE, sharedFaqs, WOODSIDE } from '@/lib/area'
 import { pageMeta } from '@/lib/metadata'
-import { buildBreadcrumbList, buildFaqPage } from '@/lib/structured-data'
+import {
+  buildBreadcrumbList,
+  buildFaqPage,
+  buildWebPage,
+} from '@/lib/structured-data'
 
 const sellFaqs = sharedFaqs.filter((faq) =>
   [
@@ -42,6 +46,15 @@ export default function SellPage() {
         ])}
       />
       <JsonLd id="schema-sell-faq" data={buildFaqPage(sellFaqs)} />
+      <JsonLd
+        id="schema-sell-webpage"
+        data={buildWebPage({
+          name: 'Sell a Sunstone Home',
+          description:
+            'Request a valuation for a Sunstone or Capella home in Las Vegas 89143.',
+          path: '/sell',
+        })}
+      />
       <header className="grid gap-4">
         <Eyebrow>Sellers in 89143</Eyebrow>
         <h1 className="max-w-3xl font-heading text-5xl sm:text-6xl">

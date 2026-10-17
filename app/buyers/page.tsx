@@ -20,7 +20,11 @@ import {
   WOODSIDE,
 } from '@/lib/area'
 import { pageMeta } from '@/lib/metadata'
-import { buildBreadcrumbList, buildFaqPage } from '@/lib/structured-data'
+import {
+  buildBreadcrumbList,
+  buildFaqPage,
+  buildWebPage,
+} from '@/lib/structured-data'
 
 const rows = [
   [
@@ -71,6 +75,15 @@ export default function BuyersPage() {
         ])}
       />
       <JsonLd id="schema-buyers-faq" data={buildFaqPage(sharedFaqs)} />
+      <JsonLd
+        id="schema-buyers-webpage"
+        data={buildWebPage({
+          name: 'Buy in Sunstone, Las Vegas 89143',
+          description:
+            'Buyer notes for Sunstone Las Vegas in ZIP 89143, including builder ranges and dated sources.',
+          path: '/buyers',
+        })}
+      />
       <header className="grid gap-4">
         <Eyebrow>Buyers</Eyebrow>
         <h1 className="max-w-3xl font-heading text-5xl sm:text-6xl">

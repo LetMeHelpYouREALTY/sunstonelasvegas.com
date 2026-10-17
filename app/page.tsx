@@ -13,7 +13,7 @@ import { SunstoneMap } from '@/components/sunstone-map'
 import { featuredPlaces, sharedFaqs, WOODSIDE } from '@/lib/area'
 import { pageMeta } from '@/lib/metadata'
 import { CONTACT_PHONE, CONTACT_PHONE_LINK } from '@/lib/site'
-import { buildFaqPage } from '@/lib/structured-data'
+import { buildFaqPage, buildWebPage } from '@/lib/structured-data'
 
 export const metadata = pageMeta({
   title: 'Sunstone Las Vegas Homes for Sale',
@@ -26,6 +26,15 @@ export default function HomePage() {
   return (
     <div>
       <JsonLd id="schema-home-faq" data={buildFaqPage(sharedFaqs)} />
+      <JsonLd
+        id="schema-home-webpage"
+        data={buildWebPage({
+          name: 'Sunstone Las Vegas Homes for Sale',
+          description:
+            'Sunstone Las Vegas homes for sale in ZIP 89143. Ten neighborhoods and about 3,650 homes sit inside the master plan.',
+          path: '/',
+        })}
+      />
       <section className="hero-band">
         <div className="mx-auto grid max-w-6xl items-center gap-10 px-4 py-16 sm:py-24 lg:grid-cols-[1.15fr_0.85fr]">
           <div className="grid gap-6">

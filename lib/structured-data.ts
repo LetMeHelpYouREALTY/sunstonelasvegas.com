@@ -71,14 +71,28 @@ export function buildArticle(input: {
     dateModified: input.datePublished,
     mainEntityOfPage: `${SITE_URL}${input.path}`,
     image: [`${SITE_URL}/opengraph-image`],
-    author: {
-      '@type': 'Person',
-      name: AGENT_NAME,
-      url: `${SITE_URL}/about`,
-    },
-    publisher: {
-      '@type': 'Organization',
-      name: BROKERAGE_NAME,
+    author: { '@id': `${SITE_URL}/#person` },
+    publisher: { '@id': `${SITE_URL}/#org` },
+  }
+}
+
+export function buildWebPage(input: {
+  name: string
+  description: string
+  path: string
+}) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'WebPage',
+    '@id': `${SITE_URL}${input.path}#webpage`,
+    url: `${SITE_URL}${input.path}`,
+    name: input.name,
+    description: input.description,
+    isPartOf: { '@id': `${SITE_URL}/#website` },
+    about: { '@id': `${SITE_URL}/#place` },
+    speakable: {
+      '@type': 'SpeakableSpecification',
+      cssSelector: ['.answer'],
     },
   }
 }
@@ -86,18 +100,14 @@ export function buildArticle(input: {
 export const placeJsonLd = {
   '@context': 'https://schema.org',
   '@type': 'Place',
-  name: AREA_NAME,
-  address: postalAddress,
-  containedInPlace: {
-    '@type': 'Place',
-    name: `${MASTER_PLAN} master plan`,
-    address: {
-      '@type': 'PostalAddress',
-      addressLocality: 'Las Vegas',
-      addressRegion: 'NV',
-      postalCode: AREA_ZIP,
-      addressCountry: 'US',
-    },
+  '@id': `${SITE_URL}/#place`,
+  name: `${MASTER_PLAN} master plan`,
+  address: {
+    '@type': 'PostalAddress',
+    addressLocality: 'Las Vegas',
+    addressRegion: 'NV',
+    postalCode: AREA_ZIP,
+    addressCountry: 'US',
   },
 }
 
@@ -120,37 +130,58 @@ const areaServed = [
   },
 ]
 
-export const realEstateAgentJsonLd = {
+export const entityGraphJsonLd = {
   '@context': 'https://schema.org',
-  '@type': 'RealEstateAgent',
-  '@id': `${SITE_URL}/#realestateagent`,
-  name: AGENT_NAME,
-  url: SITE_URL,
-  image: `${SITE_URL}/images/about/dr-jan-duffy.webp`,
-  telephone: CONTACT_PHONE,
-  email: CONTACT_EMAIL,
-  address: postalAddress,
-  areaServed,
-  identifier: AGENT_LICENSE,
-  worksFor: {
-    '@type': 'Organization',
-    name: BROKERAGE_NAME,
-  },
-}
-
-export const localBusinessJsonLd = {
-  '@context': 'https://schema.org',
-  '@type': 'LocalBusiness',
-  '@id': `${SITE_URL}/#localbusiness`,
-  name: SITE_LOGO,
-  url: SITE_URL,
-  image: `${SITE_URL}/images/about/dr-jan-duffy.webp`,
-  telephone: CONTACT_PHONE,
-  email: CONTACT_EMAIL,
-  address: postalAddress,
-  areaServed,
-  parentOrganization: {
-    '@type': 'Organization',
-    name: BROKERAGE_NAME,
-  },
+  '@graph': [
+    {
+      '@type': 'WebSite',
+      '@id': `${SITE_URL}/#website`,
+      url: SITE_URL,
+      name: SITE_LOGO,
+      inLanguage: 'en-US',
+      publisher: { '@id': `${SITE_URL}/#org` },
+    },
+    {
+      '@type': 'Organization',
+      '@id': `${SITE_URL}/#org`,
+      name: BROKERAGE_NAME,
+      url: SITE_URL,
+    },
+    {
+      '@type': 'Person',
+      '@id': `${SITE_URL}/#person`,
+      name: AGENT_NAME,
+      url: `${SITE_URL}/about`,
+      telephone: CONTACT_PHONE,
+      email: CONTACT_EMAIL,
+      identifier: AGENT_LICENSE,
+      image: `${SITE_URL}/images/about/dr-jan-duffy.webp`,
+      worksFor: { '@id': `${SITE_URL}/#org` },
+    },
+    {
+      '@type': 'RealEstateAgent',
+      '@id': `${SITE_URL}/#agent`,
+      name: AGENT_NAME,
+      url: SITE_URL,
+      image: `${SITE_URL}/images/about/dr-jan-duffy.webp`,
+      telephone: CONTACT_PHONE,
+      email: CONTACT_EMAIL,
+      address: postalAddress,
+      areaServed,
+      identifier: AGENT_LICENSE,
+      worksFor: { '@id': `${SITE_URL}/#org` },
+    },
+    {
+      '@type': 'LocalBusiness',
+      '@id': `${SITE_URL}/#business`,
+      name: SITE_LOGO,
+      url: SITE_URL,
+      image: `${SITE_URL}/images/about/dr-jan-duffy.webp`,
+      telephone: CONTACT_PHONE,
+      email: CONTACT_EMAIL,
+      address: postalAddress,
+      areaServed,
+      parentOrganization: { '@id': `${SITE_URL}/#org` },
+    },
+  ],
 }
