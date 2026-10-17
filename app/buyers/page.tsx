@@ -57,16 +57,23 @@ const rows = [
   ],
 ]
 
+const buyersTitle = 'Buy in Sunstone, Las Vegas 89143'
+const buyersDescription =
+  'Buy in the Sunstone master plan, Las Vegas 89143. Compare Capella, Lyra, Axel, and Trilogy with dated builder prices and HOA gaps.'
+
 export const metadata = pageMeta({
-  title: 'Buy in Sunstone, Las Vegas 89143',
-  description:
-    'Buy in the Sunstone master plan, Las Vegas 89143. Compare Capella, Lyra, Axel, and Trilogy with dated builder prices and HOA gaps.',
+  title: buyersTitle,
+  description: buyersDescription,
   path: '/buyers',
 })
 
 export default function BuyersPage() {
   return (
     <div className="mx-auto grid max-w-6xl gap-16 px-4 py-16">
+      <JsonLd
+        id="schema-buyers-webpage"
+        data={buildWebPage('/buyers', buyersTitle, buyersDescription)}
+      />
       <JsonLd
         id="schema-buyers-breadcrumb"
         data={buildBreadcrumbList([
@@ -75,15 +82,6 @@ export default function BuyersPage() {
         ])}
       />
       <JsonLd id="schema-buyers-faq" data={buildFaqPage(sharedFaqs)} />
-      <JsonLd
-        id="schema-buyers-webpage"
-        data={buildWebPage({
-          name: 'Buy in Sunstone, Las Vegas 89143',
-          description:
-            'Buyer notes for Sunstone Las Vegas in ZIP 89143, including builder ranges and dated sources.',
-          path: '/buyers',
-        })}
-      />
       <header className="grid gap-4">
         <Eyebrow>Buyers</Eyebrow>
         <h1 className="max-w-3xl font-heading text-5xl sm:text-6xl">

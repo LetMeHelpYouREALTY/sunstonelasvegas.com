@@ -17,17 +17,27 @@ import {
   placeJsonLd,
 } from '@/lib/structured-data'
 
+const communitiesTitle = 'Sunstone Neighborhood Guide'
+const communitiesDescription =
+  'Sunstone neighborhoods in Las Vegas 89143: Capella, Lyra, Axel, Alia, and Trilogy. Square footage and price bands retrieved October 12, 2026.'
+
 export const metadata = pageMeta({
-  title: 'Sunstone Neighborhood Guide',
-  description:
-    'Sunstone neighborhoods in Las Vegas 89143: Capella, Lyra, Axel, Alia, and Trilogy. Square footage and price bands retrieved October 12, 2026.',
+  title: communitiesTitle,
+  description: communitiesDescription,
   path: '/communities',
 })
 
 export default function CommunitiesPage() {
   return (
     <div className="mx-auto grid max-w-6xl gap-16 px-4 py-16">
-      <JsonLd id="schema-place" data={placeJsonLd} />
+      <JsonLd
+        id="schema-communities-webpage"
+        data={buildWebPage(
+          '/communities',
+          communitiesTitle,
+          communitiesDescription,
+        )}
+      />
       <JsonLd
         id="schema-communities-breadcrumb"
         data={buildBreadcrumbList([
@@ -35,15 +45,7 @@ export default function CommunitiesPage() {
           { name: 'Neighborhoods', path: '/communities' },
         ])}
       />
-      <JsonLd
-        id="schema-communities-webpage"
-        data={buildWebPage({
-          name: 'Sunstone Neighborhood Guide',
-          description:
-            'Sunstone neighborhoods in Las Vegas 89143, with square footage and price bands dated October 12, 2026.',
-          path: '/communities',
-        })}
-      />
+      <JsonLd id="schema-place" data={placeJsonLd} />
       <header className="grid gap-4">
         <Eyebrow>Sunstone master plan</Eyebrow>
         <h1 className="font-heading text-5xl sm:text-6xl">

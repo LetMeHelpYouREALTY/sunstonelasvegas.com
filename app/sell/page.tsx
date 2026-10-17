@@ -28,16 +28,23 @@ const sellFaqs = sharedFaqs.filter((faq) =>
   ].includes(faq.question),
 )
 
+const sellTitle = 'Sell My Sunstone Home | Dr. Duffy'
+const sellDescription =
+  'Request a valuation for a Sunstone or Capella home in Las Vegas 89143. Woodside’s October 12, 2026 list ran $599,950 to $679,950.'
+
 export const metadata = pageMeta({
-  title: 'Sell My Sunstone Home | Dr. Duffy',
-  description:
-    'Request a valuation for a Sunstone or Capella home in Las Vegas 89143. Woodside’s October 12, 2026 list ran $599,950 to $679,950.',
+  title: sellTitle,
+  description: sellDescription,
   path: '/sell',
 })
 
 export default function SellPage() {
   return (
     <div className="mx-auto grid max-w-6xl gap-16 px-4 py-16">
+      <JsonLd
+        id="schema-sell-webpage"
+        data={buildWebPage('/sell', sellTitle, sellDescription)}
+      />
       <JsonLd
         id="schema-sell-breadcrumb"
         data={buildBreadcrumbList([
@@ -46,15 +53,6 @@ export default function SellPage() {
         ])}
       />
       <JsonLd id="schema-sell-faq" data={buildFaqPage(sellFaqs)} />
-      <JsonLd
-        id="schema-sell-webpage"
-        data={buildWebPage({
-          name: 'Sell a Sunstone Home',
-          description:
-            'Request a valuation for a Sunstone or Capella home in Las Vegas 89143.',
-          path: '/sell',
-        })}
-      />
       <header className="grid gap-4">
         <Eyebrow>Sellers in 89143</Eyebrow>
         <h1 className="max-w-3xl font-heading text-5xl sm:text-6xl">

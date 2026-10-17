@@ -17,6 +17,11 @@ export function pageMeta({
     title: { absolute: title },
     description,
     alternates: { canonical: path },
+    robots: {
+      index: true,
+      follow: true,
+      googleBot: { index: true, follow: true },
+    },
     openGraph: {
       title,
       description,

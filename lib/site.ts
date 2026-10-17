@@ -17,7 +17,11 @@ export const HOA_OFFICE_ADDRESS =
 
 export const SITE_URL = 'https://www.sunstonelasvegas.com'
 
-/** Hosts that serve this app and should send visitors to SITE_URL. */
+/**
+ * Google Search Console: use one primary URL-prefix property for SITE_URL.
+ * Alias hosts below 301 to SITE_URL (see next.config.ts); verify aliases only
+ * to confirm redirects, not as separate sitemap/index targets.
+ */
 export const ALIAS_HOSTS = [
   'sunstonelasvegas.com',
   'sunstonewoodsidehomes.com',

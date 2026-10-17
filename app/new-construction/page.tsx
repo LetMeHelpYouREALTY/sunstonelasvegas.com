@@ -12,18 +12,25 @@ import { JsonLd } from '@/components/json-ld'
 import { RealScoutOffice } from '@/components/realscout-office'
 import { LENNAR, SHEA, sharedFaqs, WOODSIDE } from '@/lib/area'
 import { pageMeta } from '@/lib/metadata'
-import { buildBreadcrumbList, buildFaqPage } from '@/lib/structured-data'
+import { buildBreadcrumbList, buildFaqPage, buildWebPage } from '@/lib/structured-data'
+
+const newConstructionTitle = 'New Homes in Sunstone | Las Vegas'
+const newConstructionDescription =
+  'New construction in Sunstone, Las Vegas 89143. Woodside, Lennar, and Shea prices retrieved October 12, 2026, including Capella from $599,950.'
 
 export const metadata = pageMeta({
-  title: 'New Homes in Sunstone | Las Vegas',
-  description:
-    'New construction in Sunstone, Las Vegas 89143. Woodside, Lennar, and Shea prices retrieved October 12, 2026, including Capella from $599,950.',
+  title: newConstructionTitle,
+  description: newConstructionDescription,
   path: '/new-construction',
 })
 
 export default function NewConstructionPage() {
   return (
     <div className="mx-auto grid max-w-6xl gap-16 px-4 py-16">
+      <JsonLd
+        id="schema-new-webpage"
+        data={buildWebPage('/new-construction', newConstructionTitle, newConstructionDescription)}
+      />
       <JsonLd
         id="schema-new-breadcrumb"
         data={buildBreadcrumbList([

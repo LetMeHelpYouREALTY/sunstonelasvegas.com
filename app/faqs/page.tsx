@@ -9,18 +9,29 @@ import { JsonLd } from '@/components/json-ld'
 import { RealScoutOffice } from '@/components/realscout-office'
 import { sharedFaqs } from '@/lib/area'
 import { pageMeta } from '@/lib/metadata'
-import { buildBreadcrumbList, buildFaqPage, buildWebPage } from '@/lib/structured-data'
+import {
+  buildBreadcrumbList,
+  buildFaqPage,
+  buildWebPage,
+} from '@/lib/structured-data'
+
+const faqsTitle = 'Sunstone Home Questions | 89143'
+const faqsDescription =
+  'Answers on Sunstone HOA fees, Capella prices, gates, SID notes, drive times, and builders. Sources dated September 28 to October 12, 2026.'
 
 export const metadata = pageMeta({
-  title: 'Sunstone Home Questions | 89143',
-  description:
-    'Answers on Sunstone HOA fees, Capella prices, gates, SID notes, drive times, and builders. Sources dated September 28 to October 12, 2026.',
+  title: faqsTitle,
+  description: faqsDescription,
   path: '/faqs',
 })
 
 export default function FaqsPage() {
   return (
     <div className="mx-auto grid max-w-3xl gap-8 px-4 py-16">
+      <JsonLd
+        id="schema-faqs-webpage"
+        data={buildWebPage('/faqs', faqsTitle, faqsDescription)}
+      />
       <JsonLd
         id="schema-faqs-breadcrumb"
         data={buildBreadcrumbList([
@@ -29,15 +40,6 @@ export default function FaqsPage() {
         ])}
       />
       <JsonLd id="schema-faqs" data={buildFaqPage(sharedFaqs)} />
-      <JsonLd
-        id="schema-faqs-webpage"
-        data={buildWebPage({
-          name: 'Sunstone Home Questions',
-          description:
-            'Answers on Sunstone HOA fees, Capella prices, gates, SID notes, drive times, and builders.',
-          path: '/faqs',
-        })}
-      />
       <Eyebrow>Questions</Eyebrow>
       <h1 className="font-heading text-5xl">Sunstone home questions</h1>
       <LogoLine />

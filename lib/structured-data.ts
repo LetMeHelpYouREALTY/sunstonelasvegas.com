@@ -1,3 +1,4 @@
+import { capellaHomes } from '@/lib/area'
 import {
   AGENT_LICENSE,
   AGENT_NAME,
@@ -5,14 +6,22 @@ import {
   AREA_NAME,
   AREA_ZIP,
   BROKERAGE_NAME,
-  CONTACT_ADDRESS,
   CONTACT_EMAIL,
   CONTACT_PHONE,
   MASTER_PLAN,
   SITE_URL,
 } from '@/lib/site'
 
+type CapellaListedHome = (typeof capellaHomes)[number]
+
 export { SITE_URL }
+
+const AGENT_ID = `${SITE_URL}/#agent`
+const WEBSITE_ID = `${SITE_URL}/#website`
+const PLACE_ID = `${SITE_URL}/#place`
+const ORG_ID = `${SITE_URL}/#org`
+const PERSON_ID = `${SITE_URL}/#person`
+const BUSINESS_ID = `${SITE_URL}/#business`
 
 export type BreadcrumbItem = {
   name: string
@@ -71,25 +80,22 @@ export function buildArticle(input: {
     dateModified: input.datePublished,
     mainEntityOfPage: `${SITE_URL}${input.path}`,
     image: [`${SITE_URL}/opengraph-image`],
-    author: { '@id': `${SITE_URL}/#person` },
-    publisher: { '@id': `${SITE_URL}/#org` },
+    author: { '@id': PERSON_ID },
+    publisher: { '@id': ORG_ID },
   }
 }
 
-export function buildWebPage(input: {
-  name: string
-  description: string
-  path: string
-}) {
+export function buildWebPage(path: string, name: string, description: string) {
   return {
     '@context': 'https://schema.org',
     '@type': 'WebPage',
-    '@id': `${SITE_URL}${input.path}#webpage`,
-    url: `${SITE_URL}${input.path}`,
-    name: input.name,
-    description: input.description,
-    isPartOf: { '@id': `${SITE_URL}/#website` },
-    about: { '@id': `${SITE_URL}/#place` },
+    '@id': `${SITE_URL}${path}#webpage`,
+    url: `${SITE_URL}${path}`,
+    name,
+    description,
+    isPartOf: { '@id': WEBSITE_ID },
+    about: { '@id': PLACE_ID },
+    inLanguage: 'en-US',
     speakable: {
       '@type': 'SpeakableSpecification',
       cssSelector: ['.answer'],
@@ -97,10 +103,9 @@ export function buildWebPage(input: {
   }
 }
 
-export const placeJsonLd = {
-  '@context': 'https://schema.org',
+const placeNode = {
   '@type': 'Place',
-  '@id': `${SITE_URL}/#place`,
+  '@id': PLACE_ID,
   name: `${MASTER_PLAN} master plan`,
   address: {
     '@type': 'PostalAddress',
@@ -109,6 +114,12 @@ export const placeJsonLd = {
     postalCode: AREA_ZIP,
     addressCountry: 'US',
   },
+} as const satisfies Record<string, unknown>
+
+/** Standalone Place JSON-LD for the Sunstone master plan. */
+export const placeJsonLd = {
+  '@context': 'https://schema.org',
+  ...placeNode,
 }
 
 const areaServed = [
@@ -135,32 +146,34 @@ export const entityGraphJsonLd = {
   '@graph': [
     {
       '@type': 'WebSite',
-      '@id': `${SITE_URL}/#website`,
+      '@id': WEBSITE_ID,
       url: SITE_URL,
       name: SITE_LOGO,
+      description:
+        'Sunstone Las Vegas homes for sale in ZIP 89143 with buyer and seller guidance from Dr. Jan Duffy.',
       inLanguage: 'en-US',
-      publisher: { '@id': `${SITE_URL}/#org` },
+      publisher: { '@id': ORG_ID },
     },
     {
       '@type': 'Organization',
-      '@id': `${SITE_URL}/#org`,
+      '@id': ORG_ID,
       name: BROKERAGE_NAME,
       url: SITE_URL,
     },
     {
       '@type': 'Person',
-      '@id': `${SITE_URL}/#person`,
+      '@id': PERSON_ID,
       name: AGENT_NAME,
       url: `${SITE_URL}/about`,
       telephone: CONTACT_PHONE,
       email: CONTACT_EMAIL,
       identifier: AGENT_LICENSE,
       image: `${SITE_URL}/images/about/dr-jan-duffy.webp`,
-      worksFor: { '@id': `${SITE_URL}/#org` },
+      worksFor: { '@id': ORG_ID },
     },
     {
       '@type': 'RealEstateAgent',
-      '@id': `${SITE_URL}/#agent`,
+      '@id': AGENT_ID,
       name: AGENT_NAME,
       url: SITE_URL,
       image: `${SITE_URL}/images/about/dr-jan-duffy.webp`,
@@ -169,11 +182,16 @@ export const entityGraphJsonLd = {
       address: postalAddress,
       areaServed,
       identifier: AGENT_LICENSE,
-      worksFor: { '@id': `${SITE_URL}/#org` },
+      knowsAbout: [
+        'Sunstone master plan Las Vegas',
+        'Capella at Sunstone Woodside Homes',
+        'New construction buyer representation',
+      ],
+      worksFor: { '@id': ORG_ID },
     },
     {
       '@type': 'LocalBusiness',
-      '@id': `${SITE_URL}/#business`,
+      '@id': BUSINESS_ID,
       name: SITE_LOGO,
       url: SITE_URL,
       image: `${SITE_URL}/images/about/dr-jan-duffy.webp`,
@@ -181,7 +199,74 @@ export const entityGraphJsonLd = {
       email: CONTACT_EMAIL,
       address: postalAddress,
       areaServed,
-      parentOrganization: { '@id': `${SITE_URL}/#org` },
+      parentOrganization: { '@id': ORG_ID },
     },
   ],
+}
+
+function parseUsdPrice(priceLabel: string): number {
+  const digits = priceLabel.replace(/[^0-9]/g, '')
+  return Number.parseInt(digits, 10)
+}
+
+/** Index of Woodside Capella quick-move-in pages (AEO / rich results). */
+export function buildCapellaInventoryList() {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    name: 'Capella at Sunstone homes listed by Woodside (October 12, 2026)',
+    description:
+      'Builder asking prices for six Capella lots on Woodside’s community page—not MLS or closed sales.',
+    numberOfItems: capellaHomes.length,
+    itemListElement: capellaHomes.map((home, index) => ({
+      '@type': 'ListItem',
+      position: index + 1,
+      name: `${home.plan} ${home.lot}`,
+      url: `${SITE_URL}/move-in-ready/${home.slug}`,
+    })),
+  }
+}
+
+/** Builder asking-price record for one Capella lot page. */
+export function buildCapellaListedHomeOffer(
+  home: CapellaListedHome,
+  path: string,
+) {
+  const sqft = Number.parseInt(home.sqft.replace(/[^0-9]/g, ''), 10)
+  const bedrooms =
+    home.beds === 'Not on card' ? undefined : Number.parseInt(home.beds, 10)
+
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'Offer',
+    name: `${home.plan} ${home.lot}`,
+    url: `${SITE_URL}${path}`,
+    price: parseUsdPrice(home.price),
+    priceCurrency: 'USD',
+    availability: 'https://schema.org/InStock',
+    itemCondition: 'https://schema.org/NewCondition',
+    seller: { '@id': AGENT_ID },
+    offeredBy: {
+      '@type': 'Organization',
+      name: 'Woodside Homes',
+      url: 'https://www.woodsidehomes.com/findmyhome/nevada/las-vegas/capella-at-sunstone',
+    },
+    itemOffered: {
+      '@type': 'SingleFamilyResidence',
+      name: `Capella at Sunstone ${home.plan} ${home.lot}`,
+      address: {
+        '@type': 'PostalAddress',
+        addressLocality: 'Las Vegas',
+        addressRegion: 'NV',
+        postalCode: AREA_ZIP,
+        addressCountry: 'US',
+      },
+      floorSize: {
+        '@type': 'QuantitativeValue',
+        value: sqft,
+        unitCode: 'FTK',
+      },
+      ...(bedrooms ? { numberOfRooms: bedrooms } : {}),
+    },
+  }
 }

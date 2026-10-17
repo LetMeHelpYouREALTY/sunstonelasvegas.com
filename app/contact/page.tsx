@@ -13,7 +13,11 @@ import {
   CONTACT_PHONE_LINK,
   SALES_OFFICE_ADDRESS,
 } from '@/lib/site'
-import { buildBreadcrumbList } from '@/lib/structured-data'
+import { buildBreadcrumbList, buildWebPage } from '@/lib/structured-data'
+
+const contactTitle = 'Contact Dr. Jan Duffy | Sunstone'
+const contactDescription =
+  'Call Dr. Jan Duffy at (702) 766-7950 for Capella at Sunstone in Las Vegas 89143. Office address 10249 Celestial Pole St.'
 
 const MAP_EMBED_URL =
   'https://maps.google.com/maps?q=10249%20Celestial%20Pole%20St%20Las%20Vegas%2C%20NV%2089143&output=embed'
@@ -23,15 +27,18 @@ const REVIEWS_URL =
   'https://www.google.com/maps/search/?api=1&query=10249+Celestial+Pole+St+Las+Vegas+NV+89143'
 
 export const metadata = pageMeta({
-  title: 'Contact Dr. Jan Duffy | Sunstone',
-  description:
-    'Call Dr. Jan Duffy at (702) 766-7950 for Capella at Sunstone in Las Vegas 89143. Office address 10249 Celestial Pole St.',
+  title: contactTitle,
+  description: contactDescription,
   path: '/contact',
 })
 
 export default function ContactPage() {
   return (
     <div className="mx-auto grid max-w-6xl gap-16 px-4 py-16">
+      <JsonLd
+        id="schema-contact-webpage"
+        data={buildWebPage('/contact', contactTitle, contactDescription)}
+      />
       <JsonLd
         id="schema-contact-breadcrumb"
         data={buildBreadcrumbList([

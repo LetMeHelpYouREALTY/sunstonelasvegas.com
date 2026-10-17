@@ -17,10 +17,13 @@ import {
 } from '@/lib/site'
 import { buildBreadcrumbList, buildWebPage } from '@/lib/structured-data'
 
+const aboutTitle = 'About Dr. Jan Duffy | Sunstone'
+const aboutDescription =
+  'Dr. Jan Duffy, REALTOR, Nevada license S.0197614.LLC, works with Capella at Sunstone and the Sunstone master plan in Las Vegas 89143.'
+
 export const metadata = pageMeta({
-  title: 'About Dr. Jan Duffy | Sunstone',
-  description:
-    'Dr. Jan Duffy, REALTOR, Nevada license S.0197614.LLC, works with Capella at Sunstone and the Sunstone master plan in Las Vegas 89143.',
+  title: aboutTitle,
+  description: aboutDescription,
   path: '/about',
 })
 
@@ -28,20 +31,15 @@ export default function AboutPage() {
   return (
     <div className="mx-auto grid max-w-6xl gap-16 px-4 py-16">
       <JsonLd
+        id="schema-about-webpage"
+        data={buildWebPage('/about', aboutTitle, aboutDescription)}
+      />
+      <JsonLd
         id="schema-about-breadcrumb"
         data={buildBreadcrumbList([
           { name: 'Home', path: '/' },
           { name: 'About', path: '/about' },
         ])}
-      />
-      <JsonLd
-        id="schema-about-webpage"
-        data={buildWebPage({
-          name: 'About Dr. Jan Duffy',
-          description:
-            'Dr. Jan Duffy, REALTOR, Nevada license S.0197614.LLC, at Sunstone in Las Vegas 89143.',
-          path: '/about',
-        })}
       />
       <header className="grid gap-8 md:grid-cols-[16rem_1fr] md:items-start">
         <Image

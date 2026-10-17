@@ -13,28 +13,34 @@ import { SunstoneMap } from '@/components/sunstone-map'
 import { featuredPlaces, sharedFaqs, WOODSIDE } from '@/lib/area'
 import { pageMeta } from '@/lib/metadata'
 import { CONTACT_PHONE, CONTACT_PHONE_LINK } from '@/lib/site'
-import { buildFaqPage, buildWebPage } from '@/lib/structured-data'
+import {
+  buildBreadcrumbList,
+  buildFaqPage,
+  buildWebPage,
+} from '@/lib/structured-data'
+
+const homeTitle = 'Sunstone Las Vegas Homes for Sale'
+const homeDescription =
+  'Sunstone Las Vegas homes for sale in ZIP 89143. Ten neighborhoods and about 3,650 homes sit inside the master plan.'
 
 export const metadata = pageMeta({
-  title: 'Sunstone Las Vegas Homes for Sale',
-  description:
-    'Sunstone Las Vegas homes for sale in ZIP 89143. Ten neighborhoods and about 3,650 homes sit inside the master plan.',
+  title: homeTitle,
+  description: homeDescription,
   path: '/',
 })
 
 export default function HomePage() {
   return (
     <div>
-      <JsonLd id="schema-home-faq" data={buildFaqPage(sharedFaqs)} />
       <JsonLd
         id="schema-home-webpage"
-        data={buildWebPage({
-          name: 'Sunstone Las Vegas Homes for Sale',
-          description:
-            'Sunstone Las Vegas homes for sale in ZIP 89143. Ten neighborhoods and about 3,650 homes sit inside the master plan.',
-          path: '/',
-        })}
+        data={buildWebPage('/', homeTitle, homeDescription)}
       />
+      <JsonLd
+        id="schema-home-breadcrumb"
+        data={buildBreadcrumbList([{ name: 'Home', path: '/' }])}
+      />
+      <JsonLd id="schema-home-faq" data={buildFaqPage(sharedFaqs)} />
       <section className="hero-band">
         <div className="mx-auto grid max-w-6xl items-center gap-10 px-4 py-16 sm:py-24 lg:grid-cols-[1.15fr_0.85fr]">
           <div className="grid gap-6">
@@ -44,15 +50,17 @@ export default function HomePage() {
               <span className="block sm:inline">Las Vegas</span>
             </h1>
             <Answer>
-              Sunstone is the master plan in northwest Las Vegas. It sits in
-              ZIP 89143 and plans about 3,650 homes. Ten neighborhoods include
+              Sunstone is the master plan in northwest Las Vegas. It sits in ZIP
+              89143 and plans about 3,650 homes. Ten neighborhoods include
               townhomes, single-family homes, and age-qualified plans. Lennar,
               Shea, Woodside, and Richmond American each build inside it.
             </Answer>
             <a className="btn w-fit" href={CONTACT_PHONE_LINK}>
               <span className="grid gap-1 text-center leading-none">
                 <span>Call Dr. Jan Duffy</span>
-                <span className="text-base tracking-normal">{CONTACT_PHONE}</span>
+                <span className="text-base tracking-normal">
+                  {CONTACT_PHONE}
+                </span>
               </span>
             </a>
             <p className="text-sm">

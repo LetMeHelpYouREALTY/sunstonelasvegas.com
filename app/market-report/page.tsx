@@ -15,16 +15,23 @@ import {
   buildWebPage,
 } from '@/lib/structured-data'
 
+const marketTitle = 'Sunstone Market Report | Oct 2026'
+const marketDescription =
+  'Sunstone market notes for October 12, 2026. Capella asking prices, builder ranges, and drive times. No 90-day closed-sale median was available.'
+
 export const metadata = pageMeta({
-  title: 'Sunstone Market Report | Oct 2026',
-  description:
-    'Sunstone market notes for October 12, 2026. Capella asking prices, builder ranges, and drive times. No 90-day closed-sale median was available.',
+  title: marketTitle,
+  description: marketDescription,
   path: '/market-report',
 })
 
 export default function MarketReportPage() {
   return (
     <article className="mx-auto grid max-w-6xl gap-16 px-4 py-16">
+      <JsonLd
+        id="schema-market-webpage"
+        data={buildWebPage('/market-report', marketTitle, marketDescription)}
+      />
       <JsonLd
         id="schema-market-article"
         data={buildArticle({
@@ -33,15 +40,6 @@ export default function MarketReportPage() {
             'Builder asking prices and drive times for Capella at Sunstone and the Sunstone master plan.',
           path: '/market-report',
           datePublished: '2026-10-12',
-        })}
-      />
-      <JsonLd
-        id="schema-market-webpage"
-        data={buildWebPage({
-          name: 'Sunstone Market Report',
-          description:
-            'Sunstone market notes for October 12, 2026. No 90-day closed-sale median was available.',
-          path: '/market-report',
         })}
       />
       <JsonLd

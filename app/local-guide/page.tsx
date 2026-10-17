@@ -12,21 +12,28 @@ import { RealScoutOffice } from '@/components/realscout-office'
 import { DRIVES, LENNAR, SUNSTONE } from '@/lib/area'
 import { pageMeta } from '@/lib/metadata'
 import { CONTACT_PHONE_LINK } from '@/lib/site'
-import { buildBreadcrumbList } from '@/lib/structured-data'
+import { buildBreadcrumbList, buildWebPage } from '@/lib/structured-data'
 
 const GUIDE =
   'https://www.homes.com/local-guide/las-vegas-nv/sunstone-neighborhood/'
 
+const localGuideTitle = 'Sunstone Local Guide | Las Vegas'
+const localGuideDescription =
+  'Sunstone local guide for Las Vegas 89143. Parks, school names, and drive notes from Homes.com, retrieved October 13, 2026.'
+
 export const metadata = pageMeta({
-  title: 'Sunstone Local Guide | Las Vegas',
-  description:
-    'Sunstone local guide for Las Vegas 89143. Parks, school names, and drive notes from Homes.com, retrieved October 13, 2026.',
+  title: localGuideTitle,
+  description: localGuideDescription,
   path: '/local-guide',
 })
 
 export default function LocalGuidePage() {
   return (
     <div className="mx-auto grid max-w-6xl gap-16 px-4 py-16">
+      <JsonLd
+        id="schema-guide-webpage"
+        data={buildWebPage('/local-guide', localGuideTitle, localGuideDescription)}
+      />
       <JsonLd
         id="schema-guide-breadcrumb"
         data={buildBreadcrumbList([

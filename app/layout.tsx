@@ -48,6 +48,11 @@ export const metadata: Metadata = {
     description:
       'Homes for sale at Sunstone Las Vegas, ZIP 89143, with Dr. Jan Duffy.',
   },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: { index: true, follow: true },
+  },
 }
 
 export default function RootLayout({
