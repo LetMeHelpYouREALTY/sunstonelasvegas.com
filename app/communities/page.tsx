@@ -10,19 +10,25 @@ import {
 import { JsonLd } from '@/components/json-ld'
 import { collectionRows, HOA, SUNSTONE } from '@/lib/area'
 import { pageMeta } from '@/lib/metadata'
-import { buildBreadcrumbList, placeJsonLd } from '@/lib/structured-data'
+import { buildBreadcrumbList, buildWebPage } from '@/lib/structured-data'
+
+const communitiesTitle = 'Sunstone Neighborhood Guide'
+const communitiesDescription =
+  'Sunstone neighborhoods in Las Vegas 89143: Capella, Lyra, Axel, Alia, and Trilogy. Square footage and price bands retrieved October 12, 2026.'
 
 export const metadata = pageMeta({
-  title: 'Sunstone Neighborhood Guide',
-  description:
-    'Sunstone neighborhoods in Las Vegas 89143: Capella, Lyra, Axel, Alia, and Trilogy. Square footage and price bands retrieved October 12, 2026.',
+  title: communitiesTitle,
+  description: communitiesDescription,
   path: '/communities',
 })
 
 export default function CommunitiesPage() {
   return (
     <div className="mx-auto grid max-w-6xl gap-16 px-4 py-16">
-      <JsonLd id="schema-place" data={placeJsonLd} />
+      <JsonLd
+        id="schema-communities-webpage"
+        data={buildWebPage('/communities', communitiesTitle, communitiesDescription)}
+      />
       <JsonLd
         id="schema-communities-breadcrumb"
         data={buildBreadcrumbList([

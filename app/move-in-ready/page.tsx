@@ -11,18 +11,30 @@ import { JsonLd } from '@/components/json-ld'
 import { RealScoutSearch } from '@/components/realscout-search'
 import { capellaHomes, WOODSIDE } from '@/lib/area'
 import { pageMeta } from '@/lib/metadata'
-import { buildBreadcrumbList } from '@/lib/structured-data'
+import {
+  buildBreadcrumbList,
+  buildCapellaInventoryList,
+  buildWebPage,
+} from '@/lib/structured-data'
+
+const inventoryTitle = 'Capella Homes Woodside Listed'
+const inventoryDescription =
+  'Six Capella at Sunstone homes Woodside listed on October 12, 2026, from $599,950 to $679,950. Builder asking prices, not MLS listings.'
 
 export const metadata = pageMeta({
-  title: 'Capella Homes Woodside Listed',
-  description:
-    'Six Capella at Sunstone homes Woodside listed on October 12, 2026, from $599,950 to $679,950. Builder asking prices, not MLS listings.',
+  title: inventoryTitle,
+  description: inventoryDescription,
   path: '/move-in-ready',
 })
 
 export default function MoveInReadyPage() {
   return (
     <div className="mx-auto grid max-w-6xl gap-16 px-4 py-16">
+      <JsonLd
+        id="schema-inventory-webpage"
+        data={buildWebPage('/move-in-ready', inventoryTitle, inventoryDescription)}
+      />
+      <JsonLd id="schema-inventory-list" data={buildCapellaInventoryList()} />
       <JsonLd
         id="schema-inventory-breadcrumb"
         data={buildBreadcrumbList([

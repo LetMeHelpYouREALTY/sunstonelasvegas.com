@@ -1,3 +1,4 @@
+import { capellaHomes } from '@/lib/area'
 import {
   AGENT_LICENSE,
   AGENT_NAME,
@@ -11,6 +12,8 @@ import {
   SALES_OFFICE_ADDRESS,
   SITE_URL,
 } from '@/lib/site'
+
+type CapellaListedHome = (typeof capellaHomes)[number]
 
 export { SITE_URL }
 
@@ -199,5 +202,71 @@ export function buildWebPage(path: string, name: string, description: string) {
     isPartOf: { '@id': WEBSITE_ID },
     about: { '@id': PLACE_ID },
     inLanguage: 'en-US',
+  }
+}
+
+function parseUsdPrice(priceLabel: string): number {
+  const digits = priceLabel.replace(/[^0-9]/g, '')
+  return Number.parseInt(digits, 10)
+}
+
+/** Index of Woodside Capella quick-move-in pages (AEO / rich results). */
+export function buildCapellaInventoryList() {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    name: 'Capella at Sunstone homes listed by Woodside (October 12, 2026)',
+    description:
+      'Builder asking prices for six Capella lots on Woodside’s community page—not MLS or closed sales.',
+    numberOfItems: capellaHomes.length,
+    itemListElement: capellaHomes.map((home, index) => ({
+      '@type': 'ListItem',
+      position: index + 1,
+      name: `${home.plan} ${home.lot}`,
+      url: `${SITE_URL}/move-in-ready/${home.slug}`,
+    })),
+  }
+}
+
+/** Builder asking-price record for one Capella lot page. */
+export function buildCapellaListedHomeOffer(home: CapellaListedHome, path: string) {
+  const sqft = Number.parseInt(home.sqft.replace(/[^0-9]/g, ''), 10)
+  const bedrooms =
+    home.beds === 'Not on card' ? undefined : Number.parseInt(home.beds, 10)
+
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'Offer',
+    name: `${home.plan} ${home.lot}`,
+    url: `${SITE_URL}${path}`,
+    price: parseUsdPrice(home.price),
+    priceCurrency: 'USD',
+    availability: 'https://schema.org/InStock',
+    itemCondition: 'https://schema.org/NewCondition',
+    seller: { '@id': AGENT_ID },
+    offeredBy: {
+      '@type': 'Organization',
+      name: 'Woodside Homes',
+      url: 'https://www.woodsidehomes.com/findmyhome/nevada/las-vegas/capella-at-sunstone',
+    },
+    itemOffered: {
+      '@type': 'SingleFamilyResidence',
+      name: `Capella at Sunstone ${home.plan} ${home.lot}`,
+      address: {
+        '@type': 'PostalAddress',
+        addressLocality: 'Las Vegas',
+        addressRegion: 'NV',
+        postalCode: AREA_ZIP,
+        addressCountry: 'US',
+      },
+      floorSize: {
+        '@type': 'QuantitativeValue',
+        value: sqft,
+        unitCode: 'FTK',
+      },
+      ...(bedrooms
+        ? { numberOfRooms: bedrooms }
+        : {}),
+    },
   }
 }

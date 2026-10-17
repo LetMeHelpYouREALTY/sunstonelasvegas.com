@@ -11,7 +11,11 @@ import {
 import { JsonLd } from '@/components/json-ld'
 import { capellaHomes, WOODSIDE } from '@/lib/area'
 import { pageMeta } from '@/lib/metadata'
-import { buildBreadcrumbList } from '@/lib/structured-data'
+import {
+  buildBreadcrumbList,
+  buildCapellaListedHomeOffer,
+  buildWebPage,
+} from '@/lib/structured-data'
 
 type HomePageProps = {
   params: Promise<{ slug: string }>
@@ -46,8 +50,14 @@ export default async function ListedHomePage({ params }: HomePageProps) {
     notFound()
   }
 
+  const path = `/move-in-ready/${home.slug}`
+  const pageTitle = `${home.plan} ${home.lot} | Capella`
+  const pageDescription = `${home.plan} ${home.lot} at Capella at Sunstone was listed at ${home.price} on Woodside’s page, retrieved October 12, 2026.`
+
   return (
     <div className="mx-auto grid max-w-3xl gap-6 px-4 py-16">
+      <JsonLd id="schema-listed-webpage" data={buildWebPage(path, pageTitle, pageDescription)} />
+      <JsonLd id="schema-listed-offer" data={buildCapellaListedHomeOffer(home, path)} />
       <JsonLd
         id="schema-home-breadcrumb"
         data={buildBreadcrumbList([

@@ -20,7 +20,7 @@ import {
   WOODSIDE,
 } from '@/lib/area'
 import { pageMeta } from '@/lib/metadata'
-import { buildBreadcrumbList, buildFaqPage } from '@/lib/structured-data'
+import { buildBreadcrumbList, buildFaqPage, buildWebPage } from '@/lib/structured-data'
 
 const rows = [
   [
@@ -53,16 +53,20 @@ const rows = [
   ],
 ]
 
+const buyersTitle = 'Buy in Sunstone, Las Vegas 89143'
+const buyersDescription =
+  'Buy in the Sunstone master plan, Las Vegas 89143. Compare Capella, Lyra, Axel, and Trilogy with dated builder prices and HOA gaps.'
+
 export const metadata = pageMeta({
-  title: 'Buy in Sunstone, Las Vegas 89143',
-  description:
-    'Buy in the Sunstone master plan, Las Vegas 89143. Compare Capella, Lyra, Axel, and Trilogy with dated builder prices and HOA gaps.',
+  title: buyersTitle,
+  description: buyersDescription,
   path: '/buyers',
 })
 
 export default function BuyersPage() {
   return (
     <div className="mx-auto grid max-w-6xl gap-16 px-4 py-16">
+      <JsonLd id="schema-buyers-webpage" data={buildWebPage('/buyers', buyersTitle, buyersDescription)} />
       <JsonLd
         id="schema-buyers-breadcrumb"
         data={buildBreadcrumbList([

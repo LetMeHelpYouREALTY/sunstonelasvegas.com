@@ -10,7 +10,7 @@ import { JsonLd } from '@/components/json-ld'
 import { ValuationForm } from '@/components/valuation-form'
 import { LYRA_NOTE, sharedFaqs, WOODSIDE } from '@/lib/area'
 import { pageMeta } from '@/lib/metadata'
-import { buildBreadcrumbList, buildFaqPage } from '@/lib/structured-data'
+import { buildBreadcrumbList, buildFaqPage, buildWebPage } from '@/lib/structured-data'
 
 const sellFaqs = sharedFaqs.filter((faq) =>
   [
@@ -23,16 +23,20 @@ const sellFaqs = sharedFaqs.filter((faq) =>
   ].includes(faq.question),
 )
 
+const sellTitle = 'Sell My Sunstone Home | Dr. Duffy'
+const sellDescription =
+  'Request a valuation for a Sunstone or Capella home in Las Vegas 89143. Woodside’s October 12, 2026 list ran $599,950 to $679,950.'
+
 export const metadata = pageMeta({
-  title: 'Sell My Sunstone Home | Dr. Duffy',
-  description:
-    'Request a valuation for a Sunstone or Capella home in Las Vegas 89143. Woodside’s October 12, 2026 list ran $599,950 to $679,950.',
+  title: sellTitle,
+  description: sellDescription,
   path: '/sell',
 })
 
 export default function SellPage() {
   return (
     <div className="mx-auto grid max-w-6xl gap-16 px-4 py-16">
+      <JsonLd id="schema-sell-webpage" data={buildWebPage('/sell', sellTitle, sellDescription)} />
       <JsonLd
         id="schema-sell-breadcrumb"
         data={buildBreadcrumbList([

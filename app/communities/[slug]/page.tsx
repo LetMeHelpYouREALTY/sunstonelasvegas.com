@@ -5,7 +5,7 @@ import { AgentCredit, Answer, Eyebrow, LogoLine, SourceLine } from '@/components
 import { JsonLd } from '@/components/json-ld'
 import { collectionGuides } from '@/lib/area'
 import { pageMeta } from '@/lib/metadata'
-import { buildBreadcrumbList } from '@/lib/structured-data'
+import { buildBreadcrumbList, buildWebPage } from '@/lib/structured-data'
 
 type CollectionPageProps = {
   params: Promise<{ slug: string }>
@@ -41,6 +41,10 @@ export default async function CollectionPage({ params }: CollectionPageProps) {
 
   return (
     <div className="mx-auto grid max-w-3xl gap-8 px-4 py-16">
+      <JsonLd
+        id={`schema-${guide.slug}-webpage`}
+        data={buildWebPage(guide.path, guide.title, guide.description)}
+      />
       <JsonLd
         id={`schema-${guide.slug}-breadcrumb`}
         data={buildBreadcrumbList([
