@@ -7,9 +7,7 @@ import { ValuationForm } from '@/components/valuation-form'
 import { pageMeta } from '@/lib/metadata'
 import {
   AGENT_CREDENTIAL,
-  AGENT_LICENSE,
   AGENT_NAME,
-  BROKERAGE_NAME,
   CONTACT_ADDRESS,
   CONTACT_PHONE,
   CONTACT_PHONE_LINK,
@@ -23,7 +21,7 @@ import {
 
 const aboutTitle = 'About Dr. Jan Duffy | Sunstone'
 const aboutDescription =
-  'Dr. Jan Duffy, REALTOR, Nevada license S.0197614.LLC, works with Capella at Sunstone and the Sunstone master plan in Las Vegas 89143.'
+  'Dr. Jan Duffy, REALTOR, in real estate since 1983, works with Capella at Sunstone and the Sunstone master plan in Las Vegas 89143.'
 
 export const metadata = pageMeta({
   title: aboutTitle,
@@ -65,16 +63,16 @@ export default function AboutPage() {
           </h1>
           <LogoLine />
           <Answer>
-            {`${AGENT_NAME} is a ${AGENT_CREDENTIAL} holding Nevada license ${AGENT_LICENSE}. She works with buyers and sellers in Capella at Sunstone, Las Vegas 89143. This page does not publish a sales total. The published address is ${CONTACT_ADDRESS}. Call the site number when you want a valuation.`}
+            {`${AGENT_NAME} is a ${AGENT_CREDENTIAL} in real estate since 1983. She works with buyers and sellers in Capella at Sunstone, Las Vegas 89143. This page does not publish a sales total. The published address is ${CONTACT_ADDRESS}. Call the site number when you want a valuation.`}
           </Answer>
         </div>
       </header>
       <RealScoutOffice />
       <section>
-        <h2 className="font-heading text-3xl">Brokerage and office</h2>
+        <h2 className="font-heading text-3xl">Sales office</h2>
         <AgentCredit />
         <p className="mt-3 max-w-3xl text-muted-foreground">
-          {BROKERAGE_NAME}. The builder’s Capella sales office is{' '}
+          The builder’s Capella sales office is{' '}
           {SALES_OFFICE_ADDRESS}.
         </p>
         <a className="btn mt-6" href={CONTACT_PHONE_LINK}>

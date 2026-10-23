@@ -41,7 +41,7 @@ export default function SiteFooter() {
           />
           <p className="font-heading text-3xl leading-tight">{SITE_LOGO}</p>
           <p className="text-sm leading-relaxed text-muted-foreground">
-            {AGENT_CREDENTIAL}. Nevada license {AGENT_LICENSE}. Homes in Capella
+            {AGENT_CREDENTIAL}, in real estate since 1983. Homes in Capella
             at Sunstone and the Sunstone master plan, Las Vegas 89143.
           </p>
         </div>
@@ -69,8 +69,8 @@ export default function SiteFooter() {
       <div className="border-t border-border">
         <div className="mx-auto max-w-6xl space-y-2 px-4 py-6 text-xs leading-relaxed text-muted-foreground">
           <p>
-            {AGENT_NAME}, {AGENT_CREDENTIAL} | Nevada license {AGENT_LICENSE} |{' '}
-            {BROKERAGE_NAME}
+            {AGENT_NAME}, {AGENT_CREDENTIAL} | {BROKERAGE_NAME} since September
+            2008 · License {AGENT_LICENSE}
           </p>
           <p>
             Equal Housing Opportunity. Builder prices are not MLS listings.
@@ -78,7 +78,7 @@ export default function SiteFooter() {
             county before you offer.
           </p>
           <p>
-            © {new Date().getFullYear()} {BROKERAGE_NAME}
+            © {new Date().getFullYear()} {AGENT_NAME}
           </p>
         </div>
       </div>

@@ -3,7 +3,6 @@ import Link from 'next/link'
 import { capellaHomes, type AreaFaq } from '@/lib/area'
 import {
   AGENT_CREDENTIAL,
-  AGENT_LICENSE,
   AGENT_NAME,
   SITE_LOGO,
 } from '@/lib/site'
@@ -28,7 +27,7 @@ export function AgentCredit({ checked }: { checked?: string }) {
   }
   return (
     <p className="source-line">
-      By {AGENT_NAME}, {AGENT_CREDENTIAL}, Nevada license {AGENT_LICENSE}.
+      By {AGENT_NAME}, {AGENT_CREDENTIAL}.
       Sources checked {checked}.
     </p>
   )
