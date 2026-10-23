@@ -63,7 +63,7 @@ export default function AboutPage() {
           </h1>
           <LogoLine />
           <Answer>
-            {`${AGENT_NAME} is a ${AGENT_CREDENTIAL} in real estate since 1983. She works with buyers and sellers in Capella at Sunstone, Las Vegas 89143. This page does not publish a sales total. The published address is ${CONTACT_ADDRESS}. Call the site number when you want a valuation.`}
+            {`${AGENT_NAME} is a Top 1% Las Vegas ${AGENT_CREDENTIAL} in real estate since 1983. She works with buyers and sellers in Capella at Sunstone, Las Vegas 89143. This page does not publish a sales total. The published address is ${CONTACT_ADDRESS}. Call the site number when you want a valuation.`}
           </Answer>
         </div>
       </header>
