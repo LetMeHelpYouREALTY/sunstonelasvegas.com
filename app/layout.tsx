@@ -10,7 +10,6 @@ import { entityGraphJsonLd } from '@/lib/structured-data'
 import { SITE_LOGO, SITE_URL } from '@/lib/site'
 
 import './globals.css'
-import WidgetTracker from './widget-tracker'
 
 const bodyFont = Manrope({
   subsets: ['latin'],
@@ -96,7 +95,6 @@ export default function RootLayout({
             <SiteFooter />
           </div>
         </ThemeProvider>
-        <WidgetTracker />
       </body>
     </html>
   )
