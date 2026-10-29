@@ -41,7 +41,7 @@ export default function SiteFooter() {
           />
           <p className="font-heading text-3xl leading-tight">{SITE_LOGO}</p>
           <p className="text-sm leading-relaxed text-muted-foreground">
-            {AGENT_CREDENTIAL}, in real estate since 1983. Homes in Capella
+            {AGENT_CREDENTIAL}, licensed since 2008 · 35 years in Las Vegas. Homes in Capella
             at Sunstone and the Sunstone master plan, Las Vegas 89143.
           </p>
         </div>
