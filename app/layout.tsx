@@ -10,6 +10,8 @@ import { entityGraphJsonLd } from '@/lib/structured-data'
 import { SITE_LOGO, SITE_URL } from '@/lib/site'
 
 import './globals.css'
+import { Analytics as VercelAnalytics } from "@vercel/analytics/next";
+import { SpeedInsights as VercelSpeedInsights } from "@vercel/speed-insights/next";
 
 const bodyFont = Manrope({
   subsets: ['latin'],
@@ -95,6 +97,8 @@ export default function RootLayout({
             <SiteFooter />
           </div>
         </ThemeProvider>
+        <VercelAnalytics />
+        <VercelSpeedInsights />
       </body>
     </html>
   )
