@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { Cormorant_Garamond, Manrope } from 'next/font/google'
 import Script from 'next/script'
 import { ThemeProvider } from 'next-themes'
+import { Analytics } from '@vercel/analytics/next'
 
 import { JsonLd } from '@/components/json-ld'
 import SiteFooter from '@/components/site-footer'
@@ -118,6 +119,7 @@ export default function RootLayout({
             <main className="flex-1">{children}</main>
             <SiteFooter />
           </div>
+          <Analytics />
         </ThemeProvider>
       </body>
     </html>
