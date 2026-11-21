@@ -72,9 +72,9 @@ export const metadata: Metadata = {
       'max-video-preview': -1,
     },
   },
-  verification: {
-    google: GOOGLE_SITE_VERIFICATION,
-  },
+  ...(GOOGLE_SITE_VERIFICATION
+    ? { verification: { google: GOOGLE_SITE_VERIFICATION } }
+    : {}),
   alternates: {
     canonical: '/',
   },
