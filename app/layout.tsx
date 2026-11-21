@@ -3,6 +3,7 @@ import { Cormorant_Garamond, Manrope } from 'next/font/google'
 import Script from 'next/script'
 import { ThemeProvider } from 'next-themes'
 import { Analytics } from '@vercel/analytics/next'
+import { SpeedInsights } from '@vercel/speed-insights/next'
 
 import { JsonLd } from '@/components/json-ld'
 import SiteFooter from '@/components/site-footer'
@@ -120,6 +121,7 @@ export default function RootLayout({
             <SiteFooter />
           </div>
           <Analytics />
+          <SpeedInsights />
         </ThemeProvider>
       </body>
     </html>
