@@ -37,9 +37,11 @@ export const AGENT_PORTRAIT_MARK = '/images/about/dr-jan-duffy-mark.webp'
 export const SITE_URL = 'https://www.sunstonelasvegas.com'
 
 /**
- * Google Search Console: use one primary URL-prefix property for SITE_URL.
- * Alias hosts below 301 to SITE_URL (see next.config.ts); verify aliases only
- * to confirm redirects, not as separate sitemap/index targets.
+ * Google Search Console: primary property = SITE_URL (www.sunstonelasvegas.com).
+ * Prefer Domain property on sunstonelasvegas.com (DNS TXT already live) or
+ * URL-prefix on SITE_URL (meta + HTML file via lib/gsc.ts). Submit
+ * `${SITE_URL}/sitemap.xml` after verify. Alias hosts 308 → SITE_URL
+ * (next.config.ts) — do not submit separate sitemaps for aliases.
  */
 export const ALIAS_HOSTS = [
   'sunstonelasvegas.com',

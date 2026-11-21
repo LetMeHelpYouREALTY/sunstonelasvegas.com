@@ -9,6 +9,7 @@ import { JsonLd } from '@/components/json-ld'
 import SiteFooter from '@/components/site-footer'
 import SiteHeader from '@/components/site-header'
 import { entityGraphJsonLd } from '@/lib/structured-data'
+import { GOOGLE_SITE_VERIFICATION } from '@/lib/gsc'
 import {
   SITE_BRAND,
   SITE_LOGO,
@@ -63,7 +64,16 @@ export const metadata: Metadata = {
   robots: {
     index: true,
     follow: true,
-    googleBot: { index: true, follow: true },
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+      'max-video-preview': -1,
+    },
+  },
+  verification: {
+    google: GOOGLE_SITE_VERIFICATION,
   },
   alternates: {
     canonical: '/',
