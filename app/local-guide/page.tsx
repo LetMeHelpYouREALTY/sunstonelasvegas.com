@@ -1,5 +1,6 @@
 import Link from 'next/link'
 
+import { CalendlyCta } from '@/components/calendly-cta'
 import {
   AgentCredit,
   Answer,
@@ -8,10 +9,9 @@ import {
   SourceLine,
 } from '@/components/editorial'
 import { JsonLd } from '@/components/json-ld'
-import { RealScoutOffice } from '@/components/realscout-office'
+import { RealScoutAfterHero } from '@/components/realscout-office'
 import { DRIVES, LENNAR, SUNSTONE } from '@/lib/area'
 import { pageMeta } from '@/lib/metadata'
-import { CONTACT_PHONE_LINK } from '@/lib/site'
 import {
   buildArticle,
   buildBreadcrumbList,
@@ -72,7 +72,7 @@ export default function LocalGuidePage() {
         </SourceLine>
         <AgentCredit checked="October 13, 2026" />
       </header>
-      <RealScoutOffice />
+      <RealScoutAfterHero />
 
       <section className="grid max-w-3xl gap-3">
         <h2 className="font-heading text-4xl">Figures with no date</h2>
@@ -286,14 +286,14 @@ export default function LocalGuidePage() {
         <AgentCredit />
         <p className="text-muted-foreground">
           The guide lists other agents and undated sale counts. This site does
-          not republish that agent roster. Call the site number when you want a
-          Capella or Sunstone tour.
+          not republish that agent roster. Book Calendly for a Capella or
+          Sunstone tour — no contact forms.
         </p>
-        <div>
-          <a className="btn" href={CONTACT_PHONE_LINK}>
-            Call Dr. Jan Duffy
-          </a>
-        </div>
+        <CalendlyCta
+          kind="buyer"
+          content="local-guide-page"
+          also={['showing', 'market']}
+        />
       </section>
     </article>
   )

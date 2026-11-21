@@ -6,8 +6,10 @@ import {
   LogoLine,
   RelatedLinks,
 } from '@/components/editorial'
+import { CalendlyCta } from '@/components/calendly-cta'
+
 import { JsonLd } from '@/components/json-ld'
-import { RealScoutOffice } from '@/components/realscout-office'
+import { RealScoutAfterHero } from '@/components/realscout-office'
 import { sharedFaqs } from '@/lib/area'
 import { pageMeta } from '@/lib/metadata'
 import {
@@ -52,7 +54,7 @@ export default function FaqsPage() {
         September 28 through October 12, 2026. If a dollar amount was missing,
         the answer says so plainly.
       </Answer>
-      <RealScoutOffice />
+      <RealScoutAfterHero />
       <FaqList faqs={sharedFaqs} />
       <RelatedLinks
         heading="Pages behind these answers"
@@ -71,6 +73,13 @@ export default function FaqsPage() {
             href: '/market-report',
           },
         ]}
+      />
+
+      <CalendlyCta
+        kind="market"
+        content="faqs-page"
+        heading="Book with Dr. Jan Duffy"
+        also={['showing']}
       />
     </div>
   )

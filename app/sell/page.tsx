@@ -1,3 +1,4 @@
+import { CalendlyCta } from '@/components/calendly-cta'
 import {
   AgentCredit,
   Answer,
@@ -7,9 +8,15 @@ import {
   SourceLine,
 } from '@/components/editorial'
 import { JsonLd } from '@/components/json-ld'
-import { RealScoutOffice } from '@/components/realscout-office'
-import { ValuationForm } from '@/components/valuation-form'
-import { LYRA_NOTE, sharedFaqs, WOODSIDE } from '@/lib/area'
+import { PageHeroImage } from '@/components/page-media'
+import { RealScoutAfterHero } from '@/components/realscout-office'
+import {
+  CAPELLA_CHECKED,
+  capellaInventorySentence,
+  LYRA_NOTE,
+  sharedFaqs,
+  WOODSIDE,
+} from '@/lib/area'
 import { pageMeta } from '@/lib/metadata'
 import {
   buildBreadcrumbList,
@@ -28,9 +35,8 @@ const sellFaqs = sharedFaqs.filter((faq) =>
   ].includes(faq.question),
 )
 
-const sellTitle = 'Sell My Sunstone Home | Dr. Duffy'
-const sellDescription =
-  'Request a valuation for a Sunstone or Capella home in Las Vegas 89143. Woodside’s October 12, 2026 list ran $599,950 to $679,950.'
+const sellTitle = 'Sell My Sunstone Home | Sunstone Woodside'
+const sellDescription = `Request a Capella or Sunstone valuation with Dr. Jan Duffy. ${capellaInventorySentence()} Book on Calendly — no forms.`
 
 export const metadata = pageMeta({
   title: sellTitle,
@@ -53,7 +59,7 @@ export default function SellPage() {
         ])}
       />
       <JsonLd id="schema-sell-faq" data={buildFaqPage(sellFaqs)} />
-      <header className="grid gap-4">
+      <header className="grid gap-6">
         <Eyebrow>Sellers in 89143</Eyebrow>
         <h1 className="max-w-3xl font-heading text-5xl sm:text-6xl">
           Sell my Sunstone home
@@ -61,29 +67,31 @@ export default function SellPage() {
         <LogoLine />
         <Answer>
           A Sunstone seller in Las Vegas 89143 is pricing against new Woodside,
-          Lennar, and Shea homes, not only resales. On October 12, 2026,
-          Woodside listed Capella from $599,950 to $679,950. No Sunstone
-          closed-sale set from the last 90 days was available for this report.
-          Send the address and we will price the home you actually own.
+          Lennar, and Shea homes, not only resales. {capellaInventorySentence()}{' '}
+          No Sunstone closed-sale set from the last 90 days was available for
+          this report. Book a listing consultation with your address.
         </Answer>
         <SourceLine href={WOODSIDE}>
-          Woodside asking prices, retrieved October 12, 2026
+          Woodside asking prices, retrieved {CAPELLA_CHECKED}
         </SourceLine>
-        <AgentCredit checked="October 12, 2026" />
+        <AgentCredit checked={CAPELLA_CHECKED} />
+        <PageHeroImage imageKey="sell" priority />
       </header>
-      <RealScoutOffice />
+      <RealScoutAfterHero />
 
       <section className="grid gap-10 lg:grid-cols-2">
-        <div>
-          <h2 className="font-heading text-4xl">Request a valuation</h2>
+        <div className="grid gap-6">
+          <h2 className="font-heading text-4xl">Book a listing consultation</h2>
           <AgentCredit />
-          <p className="mt-4 text-muted-foreground">
-            Use the address, not a community average. Dr. Jan Duffy replies by
-            phone or email.
+          <p className="text-muted-foreground">
+            Use Calendly — this site has no valuation forms. Dr. Jan Duffy
+            replies by phone or Zoom with subdivision-level comps.
           </p>
-          <div className="mt-6">
-            <ValuationForm />
-          </div>
+          <CalendlyCta
+            kind="seller"
+            content="sell-valuation"
+            also={['market', 'zoom']}
+          />
         </div>
         <div className="grid gap-8">
           <div>
@@ -113,10 +121,9 @@ export default function SellPage() {
             <AgentCredit />
             <p className="mt-3 text-muted-foreground">
               Order the NRS 116.4109 resale package when you go under contract.
-              It carries the dues, the gate rules, and any special assessment. A
-              transfer-fee dollar amount was not on the association site on
-              October 12, 2026.
+              It carries the dues, the gate rules, and any special assessment.
             </p>
+            <CalendlyCta kind="seller" content="sell-hoa" also={['market']} />
           </div>
         </div>
       </section>
@@ -126,6 +133,9 @@ export default function SellPage() {
         <AgentCredit />
         <div className="mt-6">
           <FaqList faqs={sellFaqs} />
+        </div>
+        <div className="mt-8">
+          <CalendlyCta kind="seller" content="sell-faq" also={['market']} />
         </div>
       </section>
     </div>

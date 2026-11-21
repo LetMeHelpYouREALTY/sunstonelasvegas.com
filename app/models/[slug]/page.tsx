@@ -10,8 +10,9 @@ import {
   RelatedLinks,
   SourceLine,
 } from '@/components/editorial'
+import { CalendlyCta } from '@/components/calendly-cta'
 import { JsonLd } from '@/components/json-ld'
-import { RealScoutOffice } from '@/components/realscout-office'
+import { RealScoutAfterHero } from '@/components/realscout-office'
 import { plans } from '@/lib/area'
 import { pageMeta } from '@/lib/metadata'
 import { buildBreadcrumbList, buildWebPage } from '@/lib/structured-data'
@@ -76,7 +77,7 @@ export default async function ModelPage({ params }: PlanPageProps) {
       <Link className="btn w-fit" href="/contact">
         Ask for a model tour
       </Link>
-      <RealScoutOffice />
+      <RealScoutAfterHero />
       <PlanHomes planSlug={plan.slug} />
       <RelatedLinks
         heading="Capella pages"
@@ -91,6 +92,13 @@ export default async function ModelPage({ params }: PlanPageProps) {
             href: '/move-in-ready',
           },
         ]}
+      />
+
+      <CalendlyCta
+        kind="showing"
+        content="model-slug"
+        heading="Book with Dr. Jan Duffy"
+        also={['showing', 'market']}
       />
     </div>
   )

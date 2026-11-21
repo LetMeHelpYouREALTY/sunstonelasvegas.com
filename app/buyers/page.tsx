@@ -8,8 +8,10 @@ import {
   LogoLine,
   SourceLine,
 } from '@/components/editorial'
+import { CalendlyCta } from '@/components/calendly-cta'
+
 import { JsonLd } from '@/components/json-ld'
-import { RealScoutOffice } from '@/components/realscout-office'
+import { RealScoutAfterHero } from '@/components/realscout-office'
 import {
   HOA,
   LENNAR,
@@ -101,7 +103,7 @@ export default function BuyersPage() {
         </SourceLine>
         <AgentCredit checked="October 12, 2026" />
       </header>
-      <RealScoutOffice />
+      <RealScoutAfterHero />
 
       <section className="grid gap-6">
         <h2 className="font-heading text-4xl">Neighborhood by neighborhood</h2>
@@ -198,6 +200,13 @@ export default function BuyersPage() {
           <FaqList faqs={sharedFaqs} />
         </div>
       </section>
+
+      <CalendlyCta
+        kind="buyer"
+        content="buyers-page"
+        heading="Book with Dr. Jan Duffy"
+        also={['showing']}
+      />
     </div>
   )
 }

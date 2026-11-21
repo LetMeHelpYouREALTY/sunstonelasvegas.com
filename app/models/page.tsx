@@ -8,8 +8,10 @@ import {
   RelatedLinks,
   SourceLine,
 } from '@/components/editorial'
+import { CalendlyCta } from '@/components/calendly-cta'
+
 import { JsonLd } from '@/components/json-ld'
-import { RealScoutOffice } from '@/components/realscout-office'
+import { RealScoutAfterHero } from '@/components/realscout-office'
 import { plans, WOODSIDE } from '@/lib/area'
 import { pageMeta } from '@/lib/metadata'
 import { buildBreadcrumbList, buildWebPage } from '@/lib/structured-data'
@@ -53,7 +55,7 @@ export default function ModelsPage() {
         </SourceLine>
         <AgentCredit checked="October 12, 2026" />
       </header>
-      <RealScoutOffice />
+      <RealScoutAfterHero />
       <div className="grid gap-6 md:grid-cols-3">
         {plans.map((plan) => (
           <article key={plan.slug} className="border border-border p-6">
@@ -84,6 +86,13 @@ export default function ModelsPage() {
             href: '/new-construction',
           },
         ]}
+      />
+
+      <CalendlyCta
+        kind="showing"
+        content="models-page"
+        heading="Book with Dr. Jan Duffy"
+        also={['showing']}
       />
     </div>
   )

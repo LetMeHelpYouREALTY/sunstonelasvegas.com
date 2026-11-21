@@ -8,8 +8,10 @@ import {
   LogoLine,
   SourceLine,
 } from '@/components/editorial'
+import { CalendlyCta } from '@/components/calendly-cta'
+
 import { JsonLd } from '@/components/json-ld'
-import { RealScoutOffice } from '@/components/realscout-office'
+import { RealScoutAfterHero } from '@/components/realscout-office'
 import { LENNAR, SHEA, sharedFaqs, WOODSIDE } from '@/lib/area'
 import { pageMeta } from '@/lib/metadata'
 import { buildBreadcrumbList, buildFaqPage, buildWebPage } from '@/lib/structured-data'
@@ -54,7 +56,7 @@ export default function NewConstructionPage() {
         </Answer>
         <AgentCredit checked="October 12, 2026" />
       </header>
-      <RealScoutOffice />
+      <RealScoutAfterHero />
 
       <section className="grid gap-8 md:grid-cols-3">
         <article className="border border-border p-6">
@@ -120,6 +122,13 @@ export default function NewConstructionPage() {
           <Link href="/faqs">All Sunstone home questions on one page</Link>
         </p>
       </section>
+
+      <CalendlyCta
+        kind="buyer"
+        content="new-construction-page"
+        heading="Book with Dr. Jan Duffy"
+        also={['showing']}
+      />
     </div>
   )
 }

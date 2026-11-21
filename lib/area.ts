@@ -18,16 +18,66 @@ export const LYRA_NOTE =
   'https://www.nevadarealestategroup.com/blog/woodside-oakley-lyra-sunstone-northwest-las-vegas'
 export const DRIVES =
   'https://www.nevadarealestategroup.com/north-las-vegas/sunstone'
+export const HOMES_GUIDE =
+  'https://www.homes.com/local-guide/las-vegas-nv/sunstone-neighborhood/'
+
+/** Retrieval date for the live Woodside Capella inventory used on this site. */
+export const CAPELLA_CHECKED = 'November 20, 2026'
+
+/**
+ * Former Capella lot URLs that no longer appear on Woodside’s Capella page.
+ * Keep permanent redirects so Google consolidates signals to /move-in-ready.
+ */
+export const retiredCapellaSlugs = [
+  'taurus-lot-12',
+  'virgo-lot-13',
+  'virgo-lot-14',
+] as const
 
 /** `planSlug` matches `plans[].slug` so a listed home links to its plan page. */
 export const capellaHomes = [
-  { slug: 'aries-lot-63', plan: 'Aries', planSlug: 'aries', lot: 'Lot 63', price: '$599,950', beds: '3', baths: '2.5', sqft: '1,970', garage: '2' },
-  { slug: 'taurus-lot-12', plan: 'Taurus', planSlug: 'taurus', lot: 'Lot 12', price: '$608,950', beds: '3', baths: '2.5', sqft: '2,093', garage: '2' },
-  { slug: 'aries-lot-4', plan: 'Aries', planSlug: 'aries', lot: 'Lot 4', price: '$616,950', beds: 'Not on card', baths: '2.5', sqft: '1,970', garage: '2' },
-  { slug: 'virgo-lot-13', plan: 'Virgo', planSlug: 'virgo', lot: 'Lot 13', price: '$657,950', beds: 'Not on card', baths: '3.5', sqft: '2,295', garage: '2' },
-  { slug: 'virgo-lot-14', plan: 'Virgo', planSlug: 'virgo', lot: 'Lot 14', price: '$659,950', beds: 'Not on card', baths: '3.5', sqft: '2,295', garage: '2' },
-  { slug: 'virgo-lot-15', plan: 'Virgo', planSlug: 'virgo', lot: 'Lot 15', price: '$679,950', beds: 'Not on card', baths: '3.5', sqft: '2,295', garage: '2' },
+  {
+    slug: 'aries-lot-63',
+    plan: 'Aries',
+    planSlug: 'aries',
+    lot: 'Lot 63',
+    price: '$560,950',
+    beds: '3',
+    baths: '2.5',
+    sqft: '1,970',
+    garage: '2',
+  },
+  {
+    slug: 'aries-lot-4',
+    plan: 'Aries',
+    planSlug: 'aries',
+    lot: 'Lot 4',
+    price: '$578,950',
+    beds: 'Not on card',
+    baths: '2.5',
+    sqft: '1,970',
+    garage: '2',
+  },
+  {
+    slug: 'virgo-lot-15',
+    plan: 'Virgo',
+    planSlug: 'virgo',
+    lot: 'Lot 15',
+    price: '$641,950',
+    beds: 'Not on card',
+    baths: '3.5',
+    sqft: '2,295',
+    garage: '2',
+  },
 ] as const
+
+export const CAPELLA_PRICE_LOW = capellaHomes[0].price
+export const CAPELLA_PRICE_HIGH = capellaHomes[capellaHomes.length - 1].price
+export const CAPELLA_HOME_COUNT = capellaHomes.length
+
+export function capellaInventorySentence(): string {
+  return `On ${CAPELLA_CHECKED}, Woodside listed ${CAPELLA_HOME_COUNT} Capella homes from ${CAPELLA_PRICE_LOW} to ${CAPELLA_PRICE_HIGH}.`
+}
 
 export const plans = [
   {
@@ -81,7 +131,7 @@ export const collectionRows: CollectionRow[] = [
     builder: 'Woodside',
     sqft: '1,970–2,295',
     beds: '3–4',
-    band: 'From the $600s',
+    band: 'From the $500s',
     path: '/communities/capella',
   },
   {
@@ -194,37 +244,38 @@ export const collectionGuides: readonly CollectionGuide[] = [
   {
     slug: 'capella',
     name: 'Capella',
-    title: 'Capella at Sunstone Las Vegas',
-    description:
-      'Capella is a Woodside collection in Sunstone Las Vegas 89143. On October 12, 2026, six homes were listed from $599,950 to $679,950.',
+    title: 'Capella at Sunstone Las Vegas | Woodside Homes',
+    description: `Capella is Woodside’s single-story collection in Sunstone Las Vegas 89143. ${capellaInventorySentence()} Asking prices, not closed sales.`,
     path: '/communities/capella',
     builder: 'Woodside Homes',
     sentences: [
       'Capella is a Woodside collection inside Sunstone in Las Vegas, ZIP 89143.',
       'The plans are single story and run 1,970 to 2,295 square feet.',
-      'On October 12, 2026, Woodside listed six homes from $599,950 to $679,950.',
+      capellaInventorySentence(),
       'Those figures are builder asking prices, and they are not closed sales.',
+      'Woodside labeled Capella a final opportunity and sells from 9361 Blue Vega Ave.',
     ],
-    sourceLabel: 'Woodside Capella page, retrieved October 12, 2026',
+    sourceLabel: `Woodside Capella page, retrieved ${CAPELLA_CHECKED}`,
     sourceHref: WOODSIDE,
     ctaHref: '/move-in-ready',
-    ctaLabel: 'See the October 12 list',
+    ctaLabel: `See the ${CAPELLA_CHECKED} list`,
     related: [
       {
         label: 'Capella floor plans: Aries, Taurus, and Virgo',
         href: '/models',
       },
       {
-        label: 'The six Capella homes Woodside listed',
+        label: 'Capella homes Woodside listed now',
         href: '/move-in-ready',
       },
+      { label: 'Woodside Homes at Sunstone', href: '/woodside' },
       { label: 'New homes in Sunstone by builder', href: '/new-construction' },
     ],
   },
   {
     slug: 'lyra',
     name: 'Lyra',
-    title: 'Lyra at Sunstone Las Vegas',
+    title: 'Lyra at Sunstone Las Vegas | Woodside Homes',
     description:
       'Lyra is a Woodside collection in Sunstone Las Vegas 89143. Lyra One and Lyra Two square-foot bands were read on October 12, 2026.',
     path: '/communities/lyra',
@@ -242,13 +293,14 @@ export const collectionGuides: readonly CollectionGuide[] = [
     ctaLabel: 'Ask about Lyra',
     related: [
       { label: 'Lyra HOA quote in the buyer guide', href: '/buyers' },
+      { label: 'Woodside Homes at Sunstone', href: '/woodside' },
       { label: 'New homes in Sunstone by builder', href: '/new-construction' },
     ],
   },
   {
     slug: 'axel',
     name: 'Axel',
-    title: 'Axel at Sunstone Las Vegas',
+    title: 'Axel at Sunstone Las Vegas | Lennar',
     description:
       'Axel is a Lennar collection in Sunstone Las Vegas 89143. Townhomes were listed from $383,990 to $462,565 on October 12, 2026.',
     path: '/communities/axel',
@@ -271,7 +323,7 @@ export const collectionGuides: readonly CollectionGuide[] = [
   {
     slug: 'alia',
     name: 'Alia',
-    title: 'Alia at Sunstone Las Vegas',
+    title: 'Alia at Sunstone Las Vegas | Lennar',
     description:
       'Alia is a Lennar collection in Sunstone, Las Vegas 89143. Lennar listed Alia Estates from $862,990 on October 12, 2026.',
     path: '/communities/alia',
@@ -288,7 +340,7 @@ export const collectionGuides: readonly CollectionGuide[] = [
     ctaLabel: 'Ask about Alia',
     related: [
       {
-        label: 'Lennar prices in the October market report',
+        label: 'Lennar prices in the market report',
         href: '/market-report',
       },
       { label: 'New homes in Sunstone by builder', href: '/new-construction' },
@@ -300,7 +352,7 @@ export const featuredPlaces = [
   {
     name: 'Capella',
     builder: 'Woodside Homes',
-    band: 'Listed from $599,950',
+    band: `Listed from ${CAPELLA_PRICE_LOW}`,
     path: '/communities/capella',
   },
   {
@@ -329,18 +381,48 @@ export const featuredPlaces = [
   },
 ]
 
+/** Hyperlocal services unique to this Capella / Sunstone site. */
+export const hyperlocalServices = [
+  {
+    slug: 'buyer-representation',
+    name: 'Capella buyer representation',
+    path: '/services#buyer-representation',
+    summary:
+      'Compare Woodside Capella lots against Lyra, Axel, Alia, and Trilogy with dated builder cards, not ZIP averages.',
+  },
+  {
+    slug: 'seller-valuation',
+    name: 'Sunstone seller valuation',
+    path: '/services#seller-valuation',
+    summary:
+      'Price a Sunstone resale against the Capella asking list and other builder bands inside 89143.',
+  },
+  {
+    slug: 'new-construction',
+    name: 'New-construction walkthroughs',
+    path: '/services#new-construction',
+    summary:
+      'Tour Capella with the Woodside sales office at 9361 Blue Vega Ave. and confirm options before you reserve.',
+  },
+  {
+    slug: 'trilogy-55',
+    name: 'Trilogy 55+ document review',
+    path: '/services#trilogy-55',
+    summary:
+      'Read Shea’s 55+ rules for Trilogy Sunstone before you write, separate from Capella’s age policy.',
+  },
+] as const
+
 export type AreaFaq = { question: string; answer: string }
 
 export const sharedFaqs: AreaFaq[] = [
   {
     question: 'What are HOA fees in Capella at Sunstone?',
-    answer:
-      'Woodside did not print a Capella dues amount on October 12, 2026. The master association page also omitted a dollar figure. Ask for the current budget before you offer.',
+    answer: `Woodside did not print a Capella dues amount on ${CAPELLA_CHECKED}. The master association page also omitted a dollar figure. Ask for the current budget before you offer.`,
   },
   {
     question: 'How much are Capella at Sunstone homes?',
-    answer:
-      'On October 12, 2026, Woodside listed six homes from $599,950 to $679,950. Those figures are builder asking prices, and they are not closed sales.',
+    answer: `${capellaInventorySentence()} Those figures are builder asking prices, and they are not closed sales.`,
   },
   {
     question: 'Is Sunstone a 55+ community?',
@@ -364,12 +446,15 @@ export const sharedFaqs: AreaFaq[] = [
   },
   {
     question: 'Which builders are in the Sunstone master plan?',
-    answer:
-      'Sunstone’s site names Lennar, Shea Homes, Woodside Homes, and Richmond American Homes. Capella is a Woodside neighborhood. Retrieved October 12, 2026.',
+    answer: `Sunstone’s site names Lennar, Shea Homes, Woodside Homes, and Richmond American Homes. Capella is a Woodside neighborhood. Capella inventory checked ${CAPELLA_CHECKED}.`,
   },
   {
     question: 'How fast are Sunstone homes selling?',
+    answer: `A Sunstone-only days-on-market figure for the last 90 days was not in the sources checked ${CAPELLA_CHECKED}. Do not treat a ZIP 89143 average as a Sunstone number.`,
+  },
+  {
+    question: 'Who represents buyers at Capella at Sunstone?',
     answer:
-      'A Sunstone-only days-on-market figure for the last 90 days was not in the sources checked October 12, 2026. Do not treat a ZIP 89143 average as a Sunstone number.',
+      'Dr. Jan Duffy, REALTOR®, works Capella at Sunstone and the Sunstone master plan from this site. Call (702) 766-7950 for a Capella tour or valuation.',
   },
 ]

@@ -1,12 +1,14 @@
-import Image from 'next/image'
 import Link from 'next/link'
 
-import { CONTACT_PHONE, CONTACT_PHONE_LINK, SITE_LOGO } from '@/lib/site'
+import { AgentMark, BrandLockup } from '@/components/agent-mark'
+import { CONTACT_PHONE, CONTACT_PHONE_LINK } from '@/lib/site'
 
 const navItems = [
   { href: '/buyers', label: 'Buy' },
   { href: '/sell', label: 'Sell' },
+  { href: '/services', label: 'Services' },
   { href: '/communities', label: 'Neighborhoods' },
+  { href: '/woodside', label: 'Woodside' },
   { href: '/new-construction', label: 'New homes' },
   { href: '/market-report', label: 'Market' },
   { href: '/about', label: 'About' },
@@ -17,22 +19,16 @@ export default function SiteHeader() {
   return (
     <header className="border-b border-border bg-background">
       <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-5">
-        <Link href="/" className="flex items-center gap-3 text-foreground">
-          <Image
-            src="/images/about/dr-jan-duffy.webp"
-            alt=""
-            width={44}
-            height={44}
-            className="h-11 w-11"
-          />
-          <span className="font-heading text-2xl leading-tight md:hidden">
-            Sunstone
+        <Link href="/" className="flex items-center gap-3 text-foreground no-underline">
+          <AgentMark size="sm" />
+          <span className="md:hidden">
+            <BrandLockup compact />
           </span>
-          <span className="hidden font-heading text-2xl leading-tight md:inline">
-            {SITE_LOGO}
+          <span className="hidden md:inline">
+            <BrandLockup />
           </span>
         </Link>
-        <nav className="hidden items-center gap-6 xl:flex" aria-label="Primary">
+        <nav className="hidden items-center gap-5 xl:flex" aria-label="Primary">
           {navItems.map((item) => (
             <Link
               key={item.href}

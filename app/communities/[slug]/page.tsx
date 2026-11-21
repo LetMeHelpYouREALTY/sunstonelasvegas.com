@@ -2,8 +2,9 @@ import Link from 'next/link'
 import { notFound } from 'next/navigation'
 
 import { AgentCredit, Answer, Eyebrow, LogoLine, SourceLine } from '@/components/editorial'
+import { CalendlyCta } from '@/components/calendly-cta'
 import { JsonLd } from '@/components/json-ld'
-import { RealScoutOffice } from '@/components/realscout-office'
+import { RealScoutAfterHero } from '@/components/realscout-office'
 import { collectionGuides } from '@/lib/area'
 import { pageMeta } from '@/lib/metadata'
 import { buildBreadcrumbList, buildWebPage } from '@/lib/structured-data'
@@ -61,7 +62,7 @@ export default async function CollectionPage({ params }: CollectionPageProps) {
         <AgentCredit checked="October 12, 2026" />
         <Answer>{guide.sentences[0]}</Answer>
       </header>
-      <RealScoutOffice />
+      <RealScoutAfterHero />
       <div className="grid gap-4 text-muted-foreground">
         {guide.sentences.slice(1).map((sentence) => (
           <p key={sentence}>{sentence}</p>
@@ -101,6 +102,13 @@ export default async function CollectionPage({ params }: CollectionPageProps) {
           </li>
         </ul>
       </nav>
+
+      <CalendlyCta
+        kind="buyer"
+        content="community-slug"
+        heading="Book with Dr. Jan Duffy"
+        also={['showing', 'market']}
+      />
     </div>
   )
 }

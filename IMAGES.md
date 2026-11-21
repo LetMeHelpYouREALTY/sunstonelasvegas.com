@@ -1,29 +1,32 @@
 # Images
 
-Date: 2026-10-12
+Date: 2026-11-20 (America/Los_Angeles)
 
 ## What shipped
 
-No photographic WebP files were generated. `XAI_API_KEY` is not in this environment. The brief requires the xAI image API and does not allow a substitute generator.
+Editorial WebP photos generated for Capella / Sunstone Woodside pages. Illustrative only — not specific MLS listing photos or builder lot photos. No people, no text overlays, no logos, no street numbers.
 
-No page references a placeholder photograph. The old file `public/og-image.png` was a screenshot of the v0 Platform API demo. It is removed so `/og-image.png` is no longer served. Social cards come from `app/opengraph-image.tsx`: a charcoal typographic card with the words “Las Vegas 89143,” “Capella at Sunstone,” and “Homes for sale.” That card contains text on purpose. It is not a listing photo. It shows no person, logo, brokerage mark, or street address.
+Agent portrait (favicon + section mark): `public/images/about/dr-jan-duffy.webp` and `dr-jan-duffy-mark.webp`, also `app/icon.png` and `app/apple-icon.png`.
 
-`next.config.ts` still prefers AVIF and WebP for any future `next/image` use. Heroes on this build are type, so there is no image layout shift.
+| Heading / use | File |
+| --- | --- |
+| Capella at Sunstone homes | `public/images/home/capella-at-sunstone-homes-for-sale.webp` |
+| Sell my Sunstone home | `public/images/sell/sell-my-sunstone-home.webp` |
+| Buy in Sunstone | `public/images/buyers/buy-in-sunstone.webp` |
+| Sunstone neighborhoods | `public/images/communities/sunstone-neighborhoods.webp` |
+| New homes in Sunstone | `public/images/new-construction/new-homes-in-sunstone.webp` |
+| Trilogy Sunstone 55+ | `public/images/trilogy/trilogy-sunstone-55-rules.webp` |
+| Sunstone market report | `public/images/market-report/sunstone-market-report.webp` |
+| Capella floor plans | `public/images/models/capella-floor-plans.webp` |
+| Capella open-concept interior | `public/images/models/capella-open-concept-interior.webp` |
+| Capella homes Woodside listed | `public/images/move-in-ready/capella-homes-woodside-listed.webp` |
+| Sunstone local guide | `public/images/local-guide/sunstone-local-guide.webp` |
+| Sunstone amenities | `public/images/amenities/sunstone-amenities.webp` |
+| Services | `public/images/services/sunstone-services.webp` |
+| Woodside at Sunstone | `public/images/woodside/woodside-at-sunstone.webp` |
+| Capella touring | `public/images/touring/capella-touring.webp` |
+| Contact | `public/images/contact/contact-capella-sunstone.webp` |
 
-## Headings ready for generation when a key exists
+Brand lockup: **Sunstone Woodside** with subline **Homes by Dr. Jan Duffy**.
 
-Each prompt is editorial luxury photography: Las Vegas desert-modern architecture, desert xeriscape, Spring Mountains or Red Rock where the heading calls for them, golden-hour light, 16:9 for a hero and 4:3 for a section. No people, no text, no logos, no brokerage marks, no recognizable address. Illustrative only.
-
-| Heading | Intended file | Status |
-| --- | --- | --- |
-| Capella at Sunstone homes for sale | `public/images/home/capella-at-sunstone-homes-for-sale.webp` | Not generated |
-| Sell my Sunstone home | `public/images/sell/sell-my-sunstone-home.webp` | Not generated |
-| Buy in Sunstone | `public/images/buyers/buy-in-sunstone.webp` | Not generated |
-| Sunstone neighborhoods | `public/images/communities/sunstone-neighborhoods.webp` | Not generated |
-| New homes in Sunstone | `public/images/new-construction/new-homes-in-sunstone.webp` | Not generated |
-| Trilogy Sunstone 55+ rules | `public/images/trilogy/trilogy-sunstone-55-rules.webp` | Not generated |
-| Sunstone market report | `public/images/market-report/sunstone-market-report.webp` | Not generated |
-
-Prompt pattern, not yet sent to an API:
-
-> Editorial luxury photograph, 16:9, golden-hour light, Las Vegas desert-modern single-story homes, warm stone and charcoal walls, xeriscape, distant Spring Mountains, no people, no text, no logos, no street numbers, not a specific real address.
+License number and brokerage name appear only in the site footer.

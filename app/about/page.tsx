@@ -1,15 +1,15 @@
 import Image from 'next/image'
 
+import { CalendlyCta } from '@/components/calendly-cta'
 import { AgentCredit, Answer, Eyebrow, LogoLine } from '@/components/editorial'
 import { JsonLd } from '@/components/json-ld'
-import { RealScoutOffice } from '@/components/realscout-office'
-import { ValuationForm } from '@/components/valuation-form'
+import { RealScoutAfterHero } from '@/components/realscout-office'
 import { pageMeta } from '@/lib/metadata'
 import {
   AGENT_CREDENTIAL,
   AGENT_NAME,
+  AGENT_PORTRAIT,
   CONTACT_ADDRESS,
-  CONTACT_PHONE,
   CONTACT_PHONE_LINK,
   SALES_OFFICE_ADDRESS,
 } from '@/lib/site'
@@ -19,9 +19,9 @@ import {
   buildWebPage,
 } from '@/lib/structured-data'
 
-const aboutTitle = 'About Dr. Jan Duffy | Sunstone'
+const aboutTitle = 'About Dr. Jan Duffy | Sunstone Woodside'
 const aboutDescription =
-  'Dr. Jan Duffy, REALTOR, licensed since 2008 · 35 years in Las Vegas, works with Capella at Sunstone and the Sunstone master plan in Las Vegas 89143.'
+  'Dr. Jan Duffy, REALTOR®, 35 years in Las Vegas, works Capella at Sunstone and Sunstone Woodside Homes in Las Vegas 89143.'
 
 export const metadata = pageMeta({
   title: aboutTitle,
@@ -49,12 +49,13 @@ export default function AboutPage() {
       />
       <header className="grid gap-8 md:grid-cols-[16rem_1fr] md:items-start">
         <Image
-          src="/images/about/dr-jan-duffy.webp"
-          alt="Portrait of Dr. Jan Duffy"
+          src={AGENT_PORTRAIT}
+          alt={`Portrait of ${AGENT_NAME}`}
           width={640}
           height={640}
           sizes="(min-width: 768px) 16rem, 12rem"
-          className="h-48 w-48 md:h-64 md:w-64"
+          className="h-48 w-48 rounded-full md:h-64 md:w-64"
+          priority
         />
         <div className="grid gap-4">
           <Eyebrow>About</Eyebrow>
@@ -63,27 +64,42 @@ export default function AboutPage() {
           </h1>
           <LogoLine />
           <Answer>
-            {`${AGENT_NAME} is a Las Vegas ${AGENT_CREDENTIAL} licensed since 2008 · 35 years in Las Vegas. She works with buyers and sellers in Capella at Sunstone, Las Vegas 89143. This page does not publish a sales total. The published address is ${CONTACT_ADDRESS}. Call the site number when you want a valuation.`}
+            {`${AGENT_NAME} is a Las Vegas ${AGENT_CREDENTIAL} with 35 years in Las Vegas. She works Capella at Sunstone and Sunstone Woodside Homes in Las Vegas 89143. This page does not publish a sales total. The published address is ${CONTACT_ADDRESS}. Book Calendly for a valuation or tour.`}
           </Answer>
+          <AgentCredit />
         </div>
       </header>
-      <RealScoutOffice />
+      <RealScoutAfterHero />
       <section>
         <h2 className="font-heading text-3xl">Sales office</h2>
         <AgentCredit />
         <p className="mt-3 max-w-3xl text-muted-foreground">
-          The builder’s Capella sales office is{' '}
-          {SALES_OFFICE_ADDRESS}.
+          The builder’s Capella sales office is {SALES_OFFICE_ADDRESS}.
         </p>
         <a className="btn mt-6" href={CONTACT_PHONE_LINK}>
           Call Dr. Jan Duffy
         </a>
+        <div className="mt-8">
+          <CalendlyCta
+            kind="buyer"
+            content="about-sales-office"
+            also={['seller', 'showing']}
+          />
+        </div>
       </section>
       <section>
-        <h2 className="font-heading text-3xl">Valuation request</h2>
+        <h2 className="font-heading text-3xl">Book with Dr. Jan Duffy</h2>
         <AgentCredit />
-        <div className="mt-4 max-w-xl">
-          <ValuationForm />
+        <p className="mt-3 max-w-3xl text-muted-foreground">
+          No contact forms on this site. Use Calendly for buyer, seller,
+          showing, or market calls.
+        </p>
+        <div className="mt-6">
+          <CalendlyCta
+            kind="seller"
+            content="about-valuation"
+            also={['buyer', 'market', 'zoom']}
+          />
         </div>
       </section>
     </div>

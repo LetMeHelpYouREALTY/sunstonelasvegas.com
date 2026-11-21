@@ -7,8 +7,10 @@ import {
   LogoLine,
   SourceLine,
 } from '@/components/editorial'
+import { CalendlyCta } from '@/components/calendly-cta'
+
 import { JsonLd } from '@/components/json-ld'
-import { RealScoutOffice } from '@/components/realscout-office'
+import { RealScoutAfterHero } from '@/components/realscout-office'
 import { SHEA, SUNSTONE } from '@/lib/area'
 import { pageMeta } from '@/lib/metadata'
 import { CONTACT_PHONE_LINK } from '@/lib/site'
@@ -53,7 +55,7 @@ export default function TrilogyPage() {
         </SourceLine>
         <AgentCredit checked="October 12, 2026" />
       </header>
-      <RealScoutOffice />
+      <RealScoutAfterHero />
 
       <section className="grid gap-8 md:grid-cols-2">
         <div>
@@ -97,6 +99,13 @@ export default function TrilogyPage() {
           Call Dr. Jan Duffy about a tour
         </a>
       </section>
+
+      <CalendlyCta
+        kind="market"
+        content="trilogy-page"
+        heading="Book with Dr. Jan Duffy"
+        also={['showing']}
+      />
     </div>
   )
 }

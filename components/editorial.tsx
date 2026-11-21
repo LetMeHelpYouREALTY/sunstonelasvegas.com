@@ -1,10 +1,18 @@
+import type { ReactNode } from 'react'
+import Image from 'next/image'
 import Link from 'next/link'
 
-import { capellaHomes, type AreaFaq } from '@/lib/area'
+import {
+  CAPELLA_CHECKED,
+  capellaHomes,
+  type AreaFaq,
+} from '@/lib/area'
 import {
   AGENT_CREDENTIAL,
   AGENT_NAME,
-  SITE_LOGO,
+  AGENT_PORTRAIT_MARK,
+  SITE_BRAND,
+  SITE_TAGLINE,
 } from '@/lib/site'
 
 export function Eyebrow({ children }: { children: string }) {
@@ -13,27 +21,41 @@ export function Eyebrow({ children }: { children: string }) {
 
 export function LogoLine({ className = '' }: { className?: string }) {
   return (
-    <p className={`text-sm tracking-wide ${className}`.trim()}>{SITE_LOGO}</p>
-  )
-}
-
-/**
- * Short credit under a heading. With `checked`, it becomes the page byline:
- * who wrote the page, the license behind it, and when the sources were read.
- */
-export function AgentCredit({ checked }: { checked?: string }) {
-  if (!checked) {
-    return <p className="mt-3 text-sm text-muted-foreground">{AGENT_NAME}</p>
-  }
-  return (
-    <p className="source-line">
-      By {AGENT_NAME}, {AGENT_CREDENTIAL}.
-      Sources checked {checked}.
+    <p className={`grid gap-0.5 text-sm tracking-wide ${className}`.trim()}>
+      <span className="font-medium">{SITE_BRAND}</span>
+      <span className="text-muted-foreground">{SITE_TAGLINE}</span>
     </p>
   )
 }
 
-export function Answer({ children }: { children: string }) {
+/**
+ * Short credit under a heading. Includes the agent portrait mark so every
+ * section reinforces E-E-A-T for Capella / Sunstone Woodside queries.
+ */
+export function AgentCredit({ checked }: { checked?: string }) {
+  return (
+    <div className="mt-3 flex items-center gap-3">
+      <Image
+        src={AGENT_PORTRAIT_MARK}
+        alt={`${AGENT_NAME}, ${AGENT_CREDENTIAL}`}
+        width={40}
+        height={40}
+        className="h-10 w-10 rounded-full"
+      />
+      {checked ? (
+        <p className="source-line">
+          By {AGENT_NAME}, {AGENT_CREDENTIAL}. Sources checked {checked}.
+        </p>
+      ) : (
+        <p className="text-sm text-muted-foreground">
+          {AGENT_NAME}, {AGENT_CREDENTIAL}
+        </p>
+      )}
+    </div>
+  )
+}
+
+export function Answer({ children }: { children: ReactNode }) {
   return <p className="answer">{children}</p>
 }
 
@@ -41,7 +63,7 @@ export function SourceLine({
   children,
   href,
 }: {
-  children: string
+  children: ReactNode
   href: string
 }) {
   return (
@@ -137,10 +159,11 @@ export function PlanHomes({ planSlug }: { planSlug: string }) {
       <h2 className="font-heading text-3xl">
         Which listed Capella homes use this plan?
       </h2>
+      <AgentCredit />
       <p className="text-muted-foreground">
         Woodside listed{' '}
         {homes.length === 1 ? 'one home' : `${homes.length} homes`} on this plan
-        on October 12, 2026. Each price is a builder asking price, not a closed
+        on {CAPELLA_CHECKED}. Each price is a builder asking price, not a closed
         sale.
       </p>
       <ul className="grid gap-2">

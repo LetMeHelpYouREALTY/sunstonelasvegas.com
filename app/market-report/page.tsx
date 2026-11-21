@@ -1,5 +1,6 @@
 import Link from 'next/link'
 
+import { CalendlyCta } from '@/components/calendly-cta'
 import {
   AgentCredit,
   Answer,
@@ -8,7 +9,7 @@ import {
   SourceLine,
 } from '@/components/editorial'
 import { JsonLd } from '@/components/json-ld'
-import { RealScoutOffice } from '@/components/realscout-office'
+import { RealScoutAfterHero } from '@/components/realscout-office'
 import { capellaHomes, DRIVES, LENNAR, SHEA, WOODSIDE } from '@/lib/area'
 import { pageMeta } from '@/lib/metadata'
 import {
@@ -67,7 +68,7 @@ export default function MarketReportPage() {
         </Answer>
         <AgentCredit checked="October 12, 2026" />
       </header>
-      <RealScoutOffice />
+      <RealScoutAfterHero />
 
       <section>
         <h2 className="font-heading text-4xl">Capella asking prices</h2>
@@ -159,6 +160,16 @@ export default function MarketReportPage() {
             No confirmed school assignment for a specific Sunstone address.
           </li>
         </ul>
+      </section>
+
+      <section className="grid gap-4">
+        <h2 className="font-heading text-3xl">Talk through the numbers</h2>
+        <AgentCredit />
+        <CalendlyCta
+          kind="market"
+          content="market-report-page"
+          also={['buyer', 'seller']}
+        />
       </section>
     </article>
   )

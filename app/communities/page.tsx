@@ -7,8 +7,10 @@ import {
   LogoLine,
   SourceLine,
 } from '@/components/editorial'
+import { CalendlyCta } from '@/components/calendly-cta'
+
 import { JsonLd } from '@/components/json-ld'
-import { RealScoutOffice } from '@/components/realscout-office'
+import { RealScoutAfterHero } from '@/components/realscout-office'
 import { collectionRows, HOA, SUNSTONE } from '@/lib/area'
 import { pageMeta } from '@/lib/metadata'
 import {
@@ -65,7 +67,7 @@ export default function CommunitiesPage() {
         </SourceLine>
         <AgentCredit checked="October 12, 2026" />
       </header>
-      <RealScoutOffice />
+      <RealScoutAfterHero />
 
       <section className="overflow-x-auto">
         <h2 className="font-heading text-4xl">Collections</h2>
@@ -152,6 +154,13 @@ export default function CommunitiesPage() {
           </div>
         </div>
       </section>
+
+      <CalendlyCta
+        kind="buyer"
+        content="communities-page"
+        heading="Book with Dr. Jan Duffy"
+        also={['showing']}
+      />
     </div>
   )
 }

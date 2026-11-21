@@ -7,7 +7,12 @@ import { JsonLd } from '@/components/json-ld'
 import SiteFooter from '@/components/site-footer'
 import SiteHeader from '@/components/site-header'
 import { entityGraphJsonLd } from '@/lib/structured-data'
-import { SITE_LOGO, SITE_URL } from '@/lib/site'
+import {
+  SITE_BRAND,
+  SITE_LOGO,
+  SITE_TAGLINE,
+  SITE_URL,
+} from '@/lib/site'
 
 import './globals.css'
 
@@ -28,15 +33,21 @@ const headingFont = Cormorant_Garamond({
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: 'Sunstone Las Vegas Homes for Sale',
+    default: 'Sunstone Woodside Homes | Capella Las Vegas 89143',
     template: '%s',
   },
-  description:
-    'Dr. Jan Duffy represents buyers and sellers at Sunstone Las Vegas, ZIP 89143. Ten neighborhoods and about 3,650 homes sit inside that plan.',
+  description: `${SITE_BRAND} — ${SITE_TAGLINE}. Capella at Sunstone single-story Woodside Homes in Las Vegas ZIP 89143.`,
+  keywords: [
+    'Sunstone Woodside Homes',
+    'Capella at Sunstone',
+    'Woodside Homes Las Vegas',
+    'Sunstone Las Vegas 89143',
+    'Capella Woodside Homes',
+    'Dr. Jan Duffy',
+  ],
   openGraph: {
-    title: 'Sunstone Las Vegas Homes for Sale',
-    description:
-      'Homes for sale at Sunstone Las Vegas, ZIP 89143, with Dr. Jan Duffy.',
+    title: 'Sunstone Woodside Homes | Capella Las Vegas',
+    description: `${SITE_TAGLINE}. Capella at Sunstone and Sunstone master plan homes in ZIP 89143.`,
     url: SITE_URL,
     siteName: SITE_LOGO,
     locale: 'en_US',
@@ -44,14 +55,16 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Sunstone Las Vegas Homes for Sale',
-    description:
-      'Homes for sale at Sunstone Las Vegas, ZIP 89143, with Dr. Jan Duffy.',
+    title: 'Sunstone Woodside Homes | Capella Las Vegas',
+    description: `${SITE_TAGLINE}. Capella at Sunstone, Las Vegas 89143.`,
   },
   robots: {
     index: true,
     follow: true,
     googleBot: { index: true, follow: true },
+  },
+  alternates: {
+    canonical: '/',
   },
 }
 
@@ -81,6 +94,17 @@ export default function RootLayout({
           type="module"
           strategy="afterInteractive"
         />
+        <Script id="widget-tracker" strategy="afterInteractive">
+          {`
+            (function(w,i,d,g,e,t){w["WidgetTrackerObject"]=g;(w[g]=w[g]||function()
+            {(w[g].q=w[g].q||[]).push(arguments);}),(w[g].ds=1*new Date());(e="script"),
+            (t=d.createElement(e)),(e=d.getElementsByTagName(e)[0]);t.async=1;t.src=i;
+            e.parentNode.insertBefore(t,e);})
+            (window,"https://widgetbe.com/agent",document,"widgetTracker");
+            window.widgetTracker("create", "WT-XQHVYQWW");
+            window.widgetTracker("send", "pageview");
+          `}
+        </Script>
       </head>
       <body className={`${headingFont.variable} ${bodyFont.variable}`}>
         <ThemeProvider
