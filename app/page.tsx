@@ -3,13 +3,11 @@ import Link from 'next/link'
 import { CalendlyCta } from '@/components/calendly-cta'
 import {
   AgentCredit,
-  Answer,
-  Eyebrow,
   FaqList,
   SourceLine,
 } from '@/components/editorial'
 import { JsonLd } from '@/components/json-ld'
-import { PageHeroImage } from '@/components/page-media'
+import { LuxuryHero } from '@/components/luxury-hero'
 import { RealScoutAfterHero } from '@/components/realscout-office'
 import {
   CAPELLA_CHECKED,
@@ -22,7 +20,6 @@ import {
   WOODSIDE,
 } from '@/lib/area'
 import { pageMeta } from '@/lib/metadata'
-import { CONTACT_PHONE, CONTACT_PHONE_LINK } from '@/lib/site'
 import {
   buildBreadcrumbList,
   buildFaqPage,
@@ -50,49 +47,16 @@ export default function HomePage() {
         data={buildBreadcrumbList([{ name: 'Home', path: '/' }])}
       />
       <JsonLd id="schema-home-faq" data={buildFaqPage(sharedFaqs)} />
-      <section className="hero-band">
-        <div className="mx-auto grid max-w-6xl gap-8 px-4 py-14 sm:py-20">
-          <div className="grid gap-6 lg:max-w-3xl">
-            <Eyebrow>Woodside Homes · Las Vegas 89143</Eyebrow>
-            <h1 className="font-heading text-5xl text-inherit sm:text-7xl">
-              Capella at Sunstone homes
-            </h1>
-            <p className="font-heading text-2xl text-inherit sm:text-3xl">
-              Sunstone | Homes by Dr. Jan Duffy
-            </p>
-            <Answer>
-              Capella is Woodside’s single-story collection inside the Sunstone
-              master plan in northwest Las Vegas, ZIP 89143. Plans run 1,970 to
-              2,295 square feet. {capellaInventorySentence()} Those figures are
-              builder asking prices, not closed sales.
-            </Answer>
-            <div className="flex flex-wrap gap-3">
-              <a className="btn w-fit" href={CONTACT_PHONE_LINK}>
-                <span className="grid gap-1 text-center leading-none">
-                  <span>Call Dr. Jan Duffy</span>
-                  <span className="text-base tracking-normal">
-                    {CONTACT_PHONE}
-                  </span>
-                </span>
-              </a>
-              <a
-                className="btn-line w-fit border-[#f4efe6] text-[#f4efe6]"
-                href="https://calendly.com/drjanduffy/buyer-consultation-30-min?utm_source=sunstonelasvegas.com&utm_medium=website&utm_content=home-hero-buyer"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Book a Capella buyer consultation
-              </a>
-            </div>
-            <p className="text-sm">
-              <Link href="/sell">Sell my Sunstone home</Link>
-              <span aria-hidden="true"> · </span>
-              <Link href="/services">Hyperlocal services</Link>
-            </p>
-          </div>
-          <PageHeroImage imageKey="home" priority />
-        </div>
-      </section>
+
+      <LuxuryHero
+        imageKey="home"
+        headline="Capella at Sunstone — Woodside Homes, Las Vegas 89143"
+        support={`Single-story Capella plans from ${CAPELLA_PRICE_LOW}. Tour with Dr. Jan Duffy.`}
+        primaryHref="https://calendly.com/drjanduffy/buyer-consultation-30-min?utm_source=sunstonelasvegas.com&utm_medium=website&utm_content=home-hero-buyer"
+        primaryLabel="Book a Capella consultation"
+        secondaryHref="/move-in-ready"
+        secondaryLabel={`See ${CAPELLA_HOME_COUNT} homes`}
+      />
 
       <RealScoutAfterHero />
 
@@ -101,8 +65,16 @@ export default function HomePage() {
           <h2 className="font-heading text-4xl">Sunstone neighborhoods</h2>
           <AgentCredit />
           <p className="max-w-3xl text-muted-foreground">
-            Five collections have their own pages on this Capella-focused site.
-            Capella asking prices were checked {CAPELLA_CHECKED}.
+            Capella is Woodside’s single-story collection inside the Sunstone
+            master plan in northwest Las Vegas. Plans run 1,970 to 2,295 square
+            feet. {capellaInventorySentence()} Those figures are builder asking
+            prices, not closed sales. Five collections have their own pages on
+            this Capella-focused site.
+          </p>
+          <p className="text-sm">
+            <Link href="/sell">Sell my Sunstone home</Link>
+            <span aria-hidden="true"> · </span>
+            <Link href="/services">Hyperlocal services</Link>
           </p>
         </div>
         <ul className="place-index grid gap-4 sm:grid-cols-2 lg:grid-cols-3">

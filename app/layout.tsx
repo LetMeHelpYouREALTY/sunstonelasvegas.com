@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { Cormorant_Garamond, Manrope } from 'next/font/google'
+import { Instrument_Serif, Manrope } from 'next/font/google'
 import Script from 'next/script'
 import { ThemeProvider } from 'next-themes'
 import { Analytics } from '@vercel/analytics/next'
@@ -26,10 +26,10 @@ const bodyFont = Manrope({
   display: 'swap',
 })
 
-const headingFont = Cormorant_Garamond({
+const headingFont = Instrument_Serif({
   subsets: ['latin'],
   variable: '--font-heading',
-  weight: ['500', '600'],
+  weight: '400',
   display: 'swap',
 })
 
